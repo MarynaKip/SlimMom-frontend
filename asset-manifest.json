@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/slim-mom-frontend/static/css/main.a617e044.chunk.css",
+    "main.js": "/slim-mom-frontend/static/js/main.c81db30a.chunk.js",
+    "main.js.map": "/slim-mom-frontend/static/js/main.c81db30a.chunk.js.map",
+    "runtime-main.js": "/slim-mom-frontend/static/js/runtime-main.f636642d.js",
+    "runtime-main.js.map": "/slim-mom-frontend/static/js/runtime-main.f636642d.js.map",
+    "static/js/2.1892d246.chunk.js": "/slim-mom-frontend/static/js/2.1892d246.chunk.js",
+    "static/js/2.1892d246.chunk.js.map": "/slim-mom-frontend/static/js/2.1892d246.chunk.js.map",
+    "static/js/3.d5959c31.chunk.js": "/slim-mom-frontend/static/js/3.d5959c31.chunk.js",
+    "static/js/3.d5959c31.chunk.js.map": "/slim-mom-frontend/static/js/3.d5959c31.chunk.js.map",
+    "index.html": "/slim-mom-frontend/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/slim-mom-frontend/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.1892d246.chunk.js.LICENSE.txt": "/slim-mom-frontend/static/js/2.1892d246.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/slim-mom-frontend/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f636642d.js",
+    "static/js/2.1892d246.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.c81db30a.chunk.js"
+  ]
+}
