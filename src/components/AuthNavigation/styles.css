@@ -1,0 +1,29 @@
+.navigation_container {
+  display: flex;
+}
+.link {
+  /* font-family: Gotham Pro,sans-serif;  */
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 13.4px;
+  text-decoration: none;
+  color: #9b9faa;
+}
+.link:not(:last-child) {
+  margin-right: 15px;
+}
+.link:hover,
+.link:focus,
+.active_link {
+  color: #212121;
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation_container {
+    display: flex;
+    margin-bottom: 9px;
+  }
+  .link:not(:last-child) {
+    margin-right: 14px;
+  }
+}
