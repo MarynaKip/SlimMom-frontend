@@ -1,0 +1,38 @@
+.logo {
+  position: relative;
+  transform: translate(0, 0);
+}
+.logo-image {
+  width: 46px;
+  height: 44px;
+  background: center/contain no-repeat url('../../images/logo-mobile-mini.png');
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .logo-image {
+    width: 162px;
+    background: center/contain no-repeat
+      url('../../images/logo-tablet-mini.png');
+  }
+  .logo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-18px, 13px);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .logo-image {
+    width: 170px;
+    height: 67px;
+
+    background: center/contain no-repeat
+      url('../../images/logo-desctop-mini.png');
+  }
+  .logo {
+    position: absolute;
+    bottom: 7px;
+    /* margin-right: 22px; */
+    /* margin-bottom: 7px; */
+    transform: translateX(-25px);
+  }
+}
