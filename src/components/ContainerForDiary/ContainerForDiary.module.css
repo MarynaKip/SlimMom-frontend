@@ -7,7 +7,6 @@
   .diaryContainer {
     max-width: 768px;
     padding: 100px 87px 61px 92px;
-    background-color: yellow;
     outline: 1px solid green;
   }
 }
@@ -16,7 +15,6 @@
     max-width: 745px;
     padding:137px 30px 96px 115px;
     margin-left: 0;
-    background-color: yellow;
     outline: 1px solid green;
   }
 }
