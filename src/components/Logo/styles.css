@@ -2,13 +2,18 @@
   position: relative;
   transform: translate(0, 0);
 }
-.logo-image {
+.logo_image {
   width: 46px;
   height: 44px;
   background: center/contain no-repeat url('../../images/logo-mobile-mini.png');
 }
+.auth_logo_image {
+  width: 162px;
+  height: 44px;
+  background: center/contain no-repeat url('../../images/logo-tablet-mini.png');
+}
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .logo-image {
+  .logo_image {
     width: 162px;
     background: center/contain no-repeat
       url('../../images/logo-tablet-mini.png');
@@ -19,9 +24,16 @@
     left: 0;
     transform: translate(-18px, 13px);
   }
+  .auth_logo_image {
+    width: 162px;
+    height: 44px;
+    background: center/contain no-repeat
+      url('../../images/logo-tablet-mini.png');
+  }
 }
 @media screen and (min-width: 1280px) {
-  .logo-image {
+  .logo_image,
+  .auth_logo_image {
     width: 170px;
     height: 67px;
 
