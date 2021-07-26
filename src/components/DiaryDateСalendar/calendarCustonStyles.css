@@ -1,9 +1,10 @@
 @media screen and (max-width: 768px) {
   .react-calendar {
     border: 1px solid #fc842d !important;
+    font-family: Verdana, sans-serif;
+
   }
   .react-calendar__month-view__weekdays__weekday {
-    font-family: Verdana, sans-serif;
     font-size: 12px;
     color: black;
     font-weight: 500;
@@ -24,6 +25,8 @@
 @media screen and (min-width: 768px) {
   .react-calendar {
     border: 1px solid #fc842d !important;
+    font-family: Verdana, sans-serif;
+
   }
   .react-calendar__month-view__weekdays__weekday {
     font-size: 16px;
