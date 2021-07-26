@@ -3,6 +3,7 @@ import styles from '../DiaryDateСalendar/DiaryDateСalendar.module.css'
 import CalendarIcon from '../DiaryDateСalendar/CalendarIcon.jsx';
 // import {useState} from "react-redux";
 import React, { useState } from 'react';
+import '../DiaryDateСalendar/calendarCustonStyles.css'
 
 
 

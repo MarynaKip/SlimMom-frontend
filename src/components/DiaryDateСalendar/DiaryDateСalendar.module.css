@@ -12,7 +12,9 @@
     font-size: 34px;
     line-height: 42px;
     margin-bottom: 40px;
+    
   }
+  
 }
 .calendar div {
     border:none
@@ -24,4 +26,8 @@
 
     background: center/contain no-repeat
       url('../../images/calendarIcon.svg');
+  }
+
+  .react-datepicker__month-container {
+    background-color: red;
   }

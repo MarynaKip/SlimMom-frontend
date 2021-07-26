@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css'
+import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
 const DiaryAddProductForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -17,9 +17,9 @@ const DiaryAddProductForm = () => {
   });
   return (
     <div>
-          <form onSubmit={formik.handleSubmit} className = {styles.addProductForm}>
+      <form onSubmit={formik.handleSubmit} className={styles.addProductForm}>
         <input
-          className = {styles.inputAddProductFormName}
+          className={styles.inputAddProductFormName}
           id='productName'
           name='productName'
           type='productName'
@@ -36,15 +36,16 @@ const DiaryAddProductForm = () => {
           <option>gre4ka</option>
           <option value='jaico'></option>
           <option value='salo'></option>
-          <option value='moloko'></option>
+          <option value='moloko'></option> 
+          <option value='grechka'></option>
         </datalist>
- {/* <Field name="color" component="select">
+        {/* <Field name="color" component="select">
    <option value="red">Red</option>
    <option value="green">Green</option>
    <option value="blue">Blue</option>
  </Field> */}
         <input
-               className = {styles.inputAddProductFormAmount}
+          className={styles.inputAddProductFormAmount}
           id='grams'
           name='grams'
           type='grams'
@@ -55,7 +56,9 @@ const DiaryAddProductForm = () => {
           autocomplete='off'
         />
 
-        <button type='submit' className = {styles.buttonAddProduct}>+</button>
+        <button type='submit' className={styles.buttonAddProduct}>
+          +
+        </button>
       </form>
     </div>
   );
