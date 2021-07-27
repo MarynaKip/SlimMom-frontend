@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+  .react-calendar {
+    border: 1px solid #fc842d !important;
+    font-family: Verdana, sans-serif;
+
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    font-size: 12px;
+    color: black;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  .react-calendar__tile {
+    padding: 2px;
+  }
+  .react-calendar__navigation {
+    margin-bottom: 5px;
+    background-color: #e0e0e0;
+    max-height: 25px;
+  }
+  .react-calendar__navigation__label {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .react-calendar {
+    border: 1px solid #fc842d !important;
+    font-family: Verdana, sans-serif;
+
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    font-size: 16px;
+  }
+  .react-calendar__navigation {
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    max-height: 40px;
+  }
+  .react-calendar__tile {
+    padding: 3px;
+  }
+  .react-calendar__navigation__label {
+    font-size: 14px;
+  }
+}

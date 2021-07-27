@@ -1,0 +1,177 @@
+.registration {
+  padding-top: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .registration {
+    padding-top: 157px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .registration {
+    padding-top: 95px;
+  }
+}
+
+.registration__title {
+  margin: 0;
+  font-family: Gotham Pro, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.07;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fc842d;
+}
+
+@media screen and (min-width: 768px) {
+  .registration__title {
+    text-align: left;
+  }
+}
+
+.registration__form {
+  margin-top: 60px;
+}
+
+.input-wrapper {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .registration__form {
+    margin-top: 20px;
+    width: 239px;
+  }
+}
+
+.registration__labe-name,
+.registration__labe-email,
+.registration__labe-password {
+  display: block;
+  position: relative;
+}
+
+.registration__labe-name::after,
+.registration__labe-email::after,
+.registration__labe-password::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  left: -200%;
+  width: 320px;
+  height: 2px;
+  background-color: rgb(25, 138, 231);
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+}
+
+.registration__name-input,
+.registration__email-input,
+.registration__password-input {
+  display: block;
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #000000;
+
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+  outline: none;
+}
+
+.box {
+  position: relative;
+}
+
+.registration__error {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 14px;
+  color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .registration__name-input,
+  .registration__email-input,
+  .registration__password-input {
+    width: 239px;
+  }
+}
+
+.registration__name-input:hover + .registration__labe-name::after,
+.registration__email-input:hover + .registration__labe-email::after,
+.registration__password-input:hover + .registration__labe-password::after,
+.registration__name-input:focus + .registration__labe-name::after,
+.registration__email-input:focus + .registration__labe-email::after,
+.registration__password-input:focus + .registration__labe-password::after {
+  left: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+}
+
+.registration__name-input:not(:placeholder-shown)
+  + .registration__labe-name::after,
+.registration__email-input:not(:placeholder-shown)
+  + .registration__labe-email::after,
+.registration__password-input:not(:placeholder-shown)
+  + .registration__labe-password::after {
+  left: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+}
+
+.registration__button-submit {
+  display: block;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 176px;
+  height: 44px;
+
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #fc842d;
+
+  background: #fff;
+  border: 2px solid #fc842d;
+  box-sizing: border-box;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .registration__button-submit {
+    margin: 38px 0 0 0;
+  }
+}
+
+.registration__button-submit:hover,
+.registration__button-submit:focus {
+  color: #fff;
+  background: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff !important; /* Цвет фона */
+  -webkit-text-fill-color: rgb(0, 0, 0) !important; /* цвет текста */
+  /* color: rgb(0, 0, 0) !important; цвет текста */
+}
