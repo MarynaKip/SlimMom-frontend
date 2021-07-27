@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
-const screenWidth = window.screen.width
 const isMobile =  window.screen.width < 768
 console.log(isMobile)
 
