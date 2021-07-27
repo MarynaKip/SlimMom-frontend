@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './styles.css';
 const AuthNavigation = () => {
-  
   return (
     <div className='navigation_container'>
       <NavLink
