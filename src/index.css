@@ -22,3 +22,7 @@ code {
   font-family: 'Verdana';
   src: local('Verdana'), url(./fonts/Verdana.ttf) format('ttf');
 }
+p {
+  margin: 0;
+  padding: 0;
+}

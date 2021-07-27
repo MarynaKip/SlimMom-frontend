@@ -1,0 +1,56 @@
+.wrapper {
+  max-width: 320px;
+  padding: 0 15px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .wrapper {
+    max-width: 768px;
+    height: calc(100vh - 80px); /* change after combining with header*/
+    padding: 0 87px;
+    background-image: url("../../images/regLoginPage/tablet-Strawbery.png"),
+      url("../../images/regLoginPage/tablet-Layer-9.png"),
+      url("../../images/regLoginPage/tablet-Layer-421.png"),
+      url("../../images/regLoginPage/tablet-Vector3.png");
+    background-size: 305px 384px, 491px 431px, 745px 654px, 521px 563px;
+    background-position: right 200px, right bottom, -10px -40px, right bottom;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .wrapper {
+      background-image: url("../../images/regLoginPage/tablet-Strawbery@2x.png"),
+        url("../../images/regLoginPage/tablet-Layer-9@2x.png"),
+        url("../../images/regLoginPage/tablet-Layer-421@2x.png"),
+        url("../../images/regLoginPage/tablet-Vector3@2x.png");
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    height: calc(100vh - 150px); /* change after combining with header*/
+    max-width: 1280px;
+    padding: 0 115px;
+    background-image: url("../../images/regLoginPage/desktop-Strawberry.png"),
+      url("../../images/regLoginPage/desktop-Layer-9.png"),
+      url("../../images/regLoginPage/desktop-Layer-4.png"),
+      url("../../images/regLoginPage/desktop-Vector.png");
+    background-size: 386px 379px, 491px 431px, 756px 831px, 715px 849px;
+    background-position: right 100px, right bottom, 450px -60px, right bottom;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .wrapper {
+      background-image: url("../../images/regLoginPage/desktop-Strawberry@2x.png"),
+        url("../../images/regLoginPage/desktop-Layer-9@2x.png"),
+        url("../../images/regLoginPage/desktop-Layer-4@2x.png"),
+        url("../../images/regLoginPage/desktop-Vector@2x.png");
+    }
+  }
+}

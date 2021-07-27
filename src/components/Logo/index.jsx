@@ -3,14 +3,15 @@ import './styles.css';
 // import desctopLogo from '../../images/logo-desctop-mini.png';
 // import tabletLogo from '../../images/logo-tablet-mini.png';
 // import mobileLogo from '../../images/logo-mobile-mini.png';
-const Logo = () => {
+const Logo = ({ isAuthenticated }) => {
+  const logoImageStyle = isAuthenticated ? 'auth_logo_image' : 'logo_image';
    return (
        <div className='logo'>
-           <NavLink to='/'
+           <NavLink to='/mydiary'
                exact
                className='link'
-               activeClassName="altiveLink">
-               <div className='logo-image'></div>
+               activeClassName="altive_link">
+               <div className={logoImageStyle}></div>
                {/* <img
                srcSet={`${mobileLogo} 320w,
                  ${tabletLogo} 768w,
