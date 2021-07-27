@@ -5,17 +5,29 @@
   } */
 @media screen and (max-width: 768px) {
   .addProductForm {
-    display: none;
+    text-align: center;
+  }
+  .inputAddProductFormName,
+  .inputAddProductFormAmount {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #212121;
+    width: 290px;
+    padding: 30px 0 10px 0;
+    text-align: left;
+  }
+  .buttonAddProductMobile{
+    background-color: red;
   }
 }
+
 @media screen and (min-width: 768px) {
-    .addProductForm {
-      display: flex;
-      align-items:center;
-      margin-bottom: 60px;
-    }
+  .addProductForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
   }
-@media screen and (min-width: 768px) {
   .inputAddProductFormName,
   .inputAddProductFormAmount {
     width: 240px;
@@ -25,7 +37,6 @@
     display: inline-block;
     margin-right: 30px;
     font-size: 16px;
-    color: #212121;
     outline: none;
     padding: 9px 10px;
     vertical-align: top;

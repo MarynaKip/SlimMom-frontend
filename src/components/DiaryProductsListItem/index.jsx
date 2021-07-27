@@ -6,8 +6,8 @@ const DiaryProductsListItem = () => {
     <li>
       <span className = {styles.diaryListItemName}>Баклажан</span>
       <input className = {styles.diaryListItemGrams} value={amount} />
-      <span className = {styles.diaryListItemCalories} >2850 <span className = {styles.diaryListItemCaloriesValue}>ккал</span></span>
-      <button className = {styles.diaryListItemButton}type= "button">&#10006;</button>
+      <span className = {styles.diaryListItemCalories} >285 <span className = {styles.diaryListItemCaloriesValue}>ккал</span></span>
+      <button className = {styles.diaryListItemButton}type= "submit">&#10006;</button>
     </li>
   );
 };

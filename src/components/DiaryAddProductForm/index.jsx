@@ -1,6 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
+const screenWidth = window.screen.width
+const isMobile =  window.screen.width < 768
+console.log(isMobile)
 
 const DiaryAddProductForm = () => {
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -28,11 +31,10 @@ const DiaryAddProductForm = () => {
           placeholder='Введите название продукта'
           required
           list='products-for-add'
-          autocomplete='off'
+          autoComplete='off'
         />
 
         <datalist id='products-for-add'>
-          <option value=''></option>
           <option>gre4ka</option>
           <option value='jaico'></option>
           <option value='salo'></option>
@@ -53,12 +55,14 @@ const DiaryAddProductForm = () => {
           value={formik.values.grams}
           placeholder='Граммы'
           required
-          autocomplete='off'
+          autoComplete='off'
         />
-
-        <button type='submit' className={styles.buttonAddProduct}>
+{isMobile ? (<button type='submit' className={styles.buttonAddProductMobile}>
+          Добавить
+                  </button>) : <button type='submit' className={styles.buttonAddProduct}>
           +
-        </button>
+                  </button>}
+        
       </form>
     </div>
   );
