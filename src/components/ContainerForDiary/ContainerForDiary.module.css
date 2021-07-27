@@ -1,0 +1,20 @@
+.diaryContainer {
+  max-width: 320px;
+  padding: 40px 0 60px 15px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .diaryContainer {
+    max-width: 768px;
+    padding: 100px 87px 61px 92px;
+    outline: 1px solid green;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .diaryContainer {
+    max-width: 745px;
+    padding:137px 30px 96px 115px;
+    margin-left: 0;
+    outline: 1px solid green;
+  }
+}
