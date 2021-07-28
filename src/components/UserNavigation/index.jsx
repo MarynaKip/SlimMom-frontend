@@ -1,21 +1,24 @@
 import {NavLink} from 'react-router-dom';
 import './styles.css';
-const UserNavigation = () => {
+const UserNavigation = ({burgerMenu}) => {
+  const container = burgerMenu ? 'burger_menu' : 'user_navigation_container';
+  const link = burgerMenu ? 'burger_link' : 'link';
+  const activeLink = burgerMenu ? 'burger_active_link' : 'active_link';
   return (
-    <div className='user_navigation_container'>
+    <div className={container}>
       <NavLink
         to="/mydiary"
         exact
-        className='link'
-        activeClassName='active_link'
+        className={link}
+        activeClassName={activeLink}
       >
        ДНЕВНИК
       </NavLink>
       <NavLink
         to="/calculator"
         exact
-        className='link'
-        activeClassName='active_link'
+        className={link}
+        activeClassName={activeLink}
       >
         КАЛЬКУЛЯТОР
       </NavLink>
