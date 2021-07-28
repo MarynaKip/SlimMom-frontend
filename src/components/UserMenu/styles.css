@@ -39,9 +39,11 @@
   color: #212121;
 }
 .burger_menu_button {
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: none;
-  background: transparent;
+  background-color: transparent;
 }
 @media screen and (max-width: 767px) {
   .user_auth_sub_container {
