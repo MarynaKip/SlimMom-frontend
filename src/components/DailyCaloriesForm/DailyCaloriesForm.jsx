@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // import React from 'react';
 // import { Formik } from 'formik';
  
@@ -205,3 +206,112 @@ const handleChange = (e) => {
 
 export default DailyCaloriesForm;
 
+=======
+import React from 'react';
+import { useFormik } from 'formik';
+ 
+ const DailyCaloriesForm = () => {
+   const formik = useFormik({
+     initialValues: {
+      height: '', //рост
+      age: '', //возвраст
+      currentWeight: '', //текущий вес
+      desiredWeight: '', //желаемый вес
+      bloodType: '', // группа крови
+     },
+
+     onSubmit: values => {
+       //alert(JSON.stringify(values, null, 2));
+       console.log('Form data', values)
+     },
+   });
+   
+   return (
+     
+     <form onSubmit={formik.handleSubmit}>
+       <h1>Просчитай свою суточную норму калорий</h1>
+       <label htmlFor="height">Рост * </label>
+       <input
+         id="height"
+         name="height"
+         type="number"
+         onChange={formik.handleChange}
+         value={formik.values.height}
+       />
+       <label htmlFor="age">Возраст * </label>
+       <input
+         id="age"
+         name="age"
+         type="number"
+         onChange={formik.handleChange}
+         value={formik.values.age}
+       />
+       <label htmlFor="currentWeight">Текущий вес * </label>
+       <input
+         id="currentWeight"
+         name="currentWeight"
+         type="number"
+         onChange={formik.handleChange}
+         value={formik.values.currentWeight}
+       />
+      <label htmlFor="desiredWeight">Желаемый вес * </label>
+       <input
+         id="desiredWeight"
+         name="desiredWeight"
+         type="number"
+         onChange={formik.handleChange}
+         value={formik.values.desiredWeight}
+       />
+      <label>
+           <span>Группа крови * </span>
+          <input
+            id = "bloodType"
+            name="bloodType"
+            type="radio"
+            value="1"
+            checked ={"bloodType" === '1'}
+            onChange={formik.handleChange}
+           />
+           <span>1</span>
+           
+           <input
+            id = "bloodType"
+            name="bloodType"
+            type="radio"
+            value="2"
+            checked={"bloodType" === '2'}
+            onChange={formik.handleChange}
+           />
+           <span>2</span>
+
+           <input
+            id = "bloodType"
+            name="bloodType"
+            type="radio"
+            value="3"
+            checked={"bloodType" === '3'}
+            onChange={formik.handleChange}
+           />
+           <span>3</span>
+
+           <input
+            id = "bloodType"
+            name="bloodType"
+            type="radio"
+            value="4"
+            checked={"bloodType" === '4'}
+            onChange={formik.handleChange}
+           />
+           <span>4</span>
+</label>
+       <button type="submit">Похудеть</button>
+     </form>
+     
+   );
+   
+ };
+
+ //10 * вес + 6.25 * рост - 5 * возраст - 161 - 10 * (вес - желаемый вес)
+ 
+ export default DailyCaloriesForm;
+>>>>>>> Stashed changes
