@@ -11,9 +11,6 @@ const App = () => {
   return (
     <div>
       <HeaderView />
-      {/* <ContainerForView>
-        <RegLoginView />
-      </ContainerForView> */}
       <DiaryPageView/>
     </div>
   );

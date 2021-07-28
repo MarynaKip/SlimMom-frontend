@@ -7,11 +7,13 @@ import '../DiaryDateСalendar/calendarCustonStyles.css';
 
 import '../../index.css';
 // const dateValue = Date.now()
+// const maxDate = new Date();
 
-console.log(useState);
+// console.log(useState);
 const DiaryDateСalendar = function() {
   const [value, onChange] = useState(new Date());
-
+  const date = value.toLocaleDateString().split('.').reverse().join('-');
+  console.log(date);
   return (
     <>
       <DatePicker
@@ -21,6 +23,8 @@ const DiaryDateСalendar = function() {
         onChange={onChange}
         clearIcon={null}
         calendarIcon={<CalendarIcon />}
+        maxDate = {new Date()}
+
       />
     </>
   );
