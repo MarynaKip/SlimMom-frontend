@@ -130,44 +130,44 @@
   transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
 
-.registration__button-submit {
-  display: block;
-  margin-top: 60px;
+.registration__button-reg,
+.registration__button-login {
+  width: 176px;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 20px;
-  padding: 0;
-  width: 176px;
-  height: 44px;
+}
 
-  font-family: Verdana;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
-  color: #fc842d;
+.registration__button-reg {
+  margin-top: 60px;
+}
 
-  background: #fff;
-  border: 2px solid #fc842d;
-  box-sizing: border-box;
-  border-radius: 30px;
-  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
-  cursor: pointer;
+.registration__button-login {
+  margin-top: 20px;
+}
+
+.registration__button-login > a {
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
-  .registration__button-submit {
+  .registration__button-reg,
+  .registration__button-login {
+    display: inline-block;
     margin: 38px 0 0 0;
+  }
+
+  .registration__button-login {
+    margin-left: 30px;
   }
 }
 
-.registration__button-submit:hover,
-.registration__button-submit:focus {
-  color: #fff;
-  background: #fc842d;
-  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
-  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+@media screen and (min-width: 1280px) {
+  .registration__button-reg,
+  .registration__button-login {
+    display: inline-block;
+    margin-top: 60px;
+  }
 }
 
 input:-webkit-autofill {

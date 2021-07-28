@@ -1,6 +1,8 @@
+import {Switch, Route} from 'react-router-dom';
+
 import './App.css';
 // import Header from './components/Header';
-import ContainerForView from './components/ContainerForLogin';
+
 import HeaderView from './pages/HeaderView';
 
 // import DiaryPageView from './pages/DiaryPageView'
@@ -11,9 +13,10 @@ const App = () => {
   return (
     <div>
       <HeaderView />
-      <ContainerForView>
-        <RegLoginView />
-      </ContainerForView>
+      <Switch>
+        <Route path="/register" component={RegLoginView} />
+        <Route path="/login" component={RegLoginView} />
+      </Switch>
     </div>
   );
 };

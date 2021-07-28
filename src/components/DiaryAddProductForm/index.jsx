@@ -1,11 +1,12 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import {useFormik} from 'formik';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
-const isMobile =  window.screen.width < 768
-console.log(isMobile)
+const isMobile = window.screen.width < 768;
+console.log(isMobile);
 
 const DiaryAddProductForm = () => {
-  // Pass the useFormik() hook initial form values and a submit function that will
+  // Pass the useFormik() hook initial form values
+  // and a submit function that will
   // be called when the form is submitted
   const formik = useFormik({
     initialValues: {
@@ -13,7 +14,7 @@ const DiaryAddProductForm = () => {
       grams: Number,
     },
     onSubmit: (values) => {
-      //понять что значит эта строка
+      // понять что значит эта строка
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -37,7 +38,7 @@ const DiaryAddProductForm = () => {
           <option>gre4ka</option>
           <option value='jaico'></option>
           <option value='salo'></option>
-          <option value='moloko'></option> 
+          <option value='moloko'></option>
           <option value='grechka'></option>
         </datalist>
         {/* <Field name="color" component="select">
@@ -56,12 +57,14 @@ const DiaryAddProductForm = () => {
           required
           autoComplete='off'
         />
-{isMobile ? (<button type='submit' className={styles.buttonAddProductMobile}>
+        {isMobile ?
+          (<button type='submit' className={styles.buttonAddProductMobile}>
           Добавить
-                  </button>) : <button type='submit' className={styles.buttonAddProduct}>
+          </button>) :
+          <button type='submit' className={styles.buttonAddProduct}>
           +
-                  </button>}
-        
+          </button>}
+
       </form>
     </div>
   );
