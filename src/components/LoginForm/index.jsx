@@ -1,5 +1,7 @@
 import {Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
+import {Link} from 'react-router-dom';
+import Button from '../Button';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
@@ -28,55 +30,65 @@ const Login = () => {
         }}
       >
         {({errors, touched}) => (
-          <Form className="login__form" autoComplete="off">
-            <div className="input-wrapper">
-              <div className="box">
-                <Field
-                  className="login__email-input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Ел. адрес *"
-                  autoComplete="off"
-                />
-                { errors.email && touched.email ? (
+          <>
+            <Form id="login" className="login__form" autoComplete="off">
+              <div className="input-wrapper">
+                <div className="box">
+                  <Field
+                    className="login__email-input"
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Ел. адрес *"
+                    autoComplete="off"
+                  />
+                  { errors.email && touched.email ? (
                   <div className="login__error">{errors.email}</div>
                 ) : null}
-                <label
-                  htmlFor="email"
-                  className="login__labe-email"
-                >
-                </label>
-              </div>
+                  <label
+                    htmlFor="email"
+                    className="login__labe-email"
+                  >
+                  </label>
+                </div>
 
-              <div className="box">
-                <Field
-                  className="login__password-input"
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Пароль *"
-                  autoComplete="off"
-                />
-                { errors.password && touched.password ? (
+                <div className="box">
+                  <Field
+                    className="login__password-input"
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Пароль *"
+                    autoComplete="off"
+                  />
+                  { errors.password && touched.password ? (
                   <div className="login__error">{errors.password}</div>
                 ) : null}
-                <label
-                  htmlFor="password"
-                  className="login__labe-password"
-                >
-                </label>
+                  <label
+                    htmlFor="password"
+                    className="login__labe-password"
+                  >
+                  </label>
+                </div>
+
               </div>
-
+            </Form>
+            <div className="registration__button-reg">
+              <Button
+                type={'submit'}
+                title={'Вход'}
+                form={'login'}
+              />
             </div>
-
-            <button
-              type="submit"
-              className="login__button-submit"
-            >
-            Вход
-            </button>
-          </Form>
+            <div className="registration__button-login">
+              <Link to="/register">
+                <Button
+                  type={'button'}
+                  title={'Регистрация'}
+                />
+              </Link>
+            </div>
+          </>
         )}
       </Formik>
     </div>
