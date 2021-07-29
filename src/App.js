@@ -1,21 +1,29 @@
+import { Switch, Route } from 'react-router-dom';
+import routes from './routes';
 import './App.css';
-// import Header from './components/Header';
-import ContainerForView from './components/ContainerForLogin';
-import HeaderView from './pages/HeaderView';
-
-// import DiaryPageView from './pages/DiaryPageView'
-
-import RegLoginView from './pages/RegLoginView';
+import Header from './components/Header';
+import Login from './components/LoginForm';
+import Register from './components/RegistrationForm';
+import PromoView from './pages/PromoView';
+import DiaryPageView from './pages/DiaryPageView';
 
 const App = () => {
-  return (
-    <div>
-      <HeaderView />
-      <ContainerForView>
-        <RegLoginView />
-      </ContainerForView>
-    </div>
-  );
+
+    return (
+        <>
+            <Header />
+            <main className="bg-wrapper">
+                <Switch>
+                    <Route exact path={routes.home} render={PromoView} />
+                    <Route path={routes.register} render={Register} />
+                    <Route path={routes.login} render={Login} />
+                    <Route path={routes.diary} render={DiaryPageView} />
+                    {/* <Route path={routes.calculator} render={Calculator}/> */}
+                </Switch>
+            </main>
+        </>
+    );
+
 };
 
 export default App;

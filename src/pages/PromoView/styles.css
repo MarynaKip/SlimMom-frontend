@@ -1,0 +1,22 @@
+@media screen and (min-width: 1280px) {
+    .bg-wrapper__promo {
+        overflow-x: hidden;
+        display: block;
+        /* max-width: 1280px; */
+        height: 800px;
+        padding: 120px 115px 0;
+        margin-left: auto;
+        margin-right: auto;
+        /* display: flex;
+        justify-content: space-between; */
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 1) 59%,
+            rgba(240, 241, 243, 1) 59%
+        );
+        background-image: url(../../images/bg-promo-desktop.jpg);
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
