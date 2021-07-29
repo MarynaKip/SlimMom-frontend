@@ -1,4 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
+import PublicRoute from './components/PublicRoute';
+import PrivateRoute from './components/PrivateRoute';
 import routes from './routes';
 import './App.css';
 import Header from './components/Header';
@@ -8,22 +10,37 @@ import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 
 const App = () => {
-
     return (
         <>
             <Header />
             <main className="bg-wrapper">
                 <Switch>
-                    <Route exact path={routes.home} render={PromoView} />
-                    <Route path={routes.register} render={Register} />
-                    <Route path={routes.login} render={Login} />
-                    <Route path={routes.diary} render={DiaryPageView} />
+                    <PublicRoute
+                        exact
+                        path={routes.home}
+                        component={PromoView}
+                    />
+                    <PublicRoute
+                        path={routes.register}
+                        restricted
+                        redirectTo={routes.diary}
+                        component={Register}
+                    />
+                    <PublicRoute
+                        path={routes.login}
+                        restricted
+                        redirectTo={routes.diary}
+                        component={Login}
+                    />
+                    <PrivateRoute
+                        path={routes.diary}
+                        component={DiaryPageView}
+                    />
                     {/* <Route path={routes.calculator} render={Calculator}/> */}
                 </Switch>
             </main>
         </>
     );
-
 };
 
 export default App;
