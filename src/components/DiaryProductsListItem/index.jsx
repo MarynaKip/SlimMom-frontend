@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import styles from '../DiaryProductsListItem/DiaryProductsListItem.module.css';
 const amount = 1000;
 

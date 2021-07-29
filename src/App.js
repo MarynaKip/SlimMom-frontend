@@ -2,13 +2,13 @@ import { Switch, Route } from 'react-router-dom';
 import routes from './routes';
 import './App.css';
 import Header from './components/Header';
-
 import Login from './components/LoginForm';
 import Register from './components/RegistrationForm';
 import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 
 const App = () => {
+
     return (
         <>
             <Header />
@@ -23,6 +23,7 @@ const App = () => {
             </main>
         </>
     );
+
 };
 
 export default App;

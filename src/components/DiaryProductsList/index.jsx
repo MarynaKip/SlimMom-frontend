@@ -1,4 +1,4 @@
-import DiaryProductsListItem from '../DiaryProductsListItem'; 
+import DiaryProductsListItem from '../DiaryProductsListItem';
 import styles from '../DiaryProductsList/DiaryProductsList.module.css';
 // const products = [{"prod": grechka,
 // data: 21/21/21,
@@ -14,7 +14,7 @@ import styles from '../DiaryProductsList/DiaryProductsList.module.css';
 // gramm: 154,
 // kkal: 400
 // },
-//{"prod": cake,
+// {"prod": cake,
 // data: 21/21/21,
 // userID:12345,
 // id: 147,
@@ -23,12 +23,12 @@ import styles from '../DiaryProductsList/DiaryProductsList.module.css';
 // }]
 
 const DiaryProductsList = () => {
-    return (<ul className = {styles.productsListDiary}>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-    </ul>
-    );
+  return (<ul className = {styles.productsListDiary}>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+  </ul>
+  );
 };
 export default DiaryProductsList;
