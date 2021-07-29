@@ -14,9 +14,11 @@ const App = () => {
             <Header />
             <main className="bg-wrapper">
                 <Switch>
+                    <Route exact path={routes.home} render={PromoView} />
                     <Route path={routes.register} render={Register} />
                     <Route path={routes.login} render={Login} />
                     <Route path={routes.diary} render={DiaryPageView} />
+                    {/* <Route path={routes.calculator} render={Calculator}/> */}
                 </Switch>
             </main>
         </>
