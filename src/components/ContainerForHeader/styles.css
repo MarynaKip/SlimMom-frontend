@@ -1,18 +1,18 @@
 .container {
-  max-width: 320px;
-  padding: 18px 15px 0 15px;
-  margin: 0 auto;
-  z-index: 60;
+    max-width: 320px;
+    padding: 18px 15px 0 15px;
+    margin: 0 auto;
+    z-index: 60;
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .container {
-    max-width: 768px;
-    padding: 23px 87px 0 87px;
-  }
+    .container {
+        max-width: 768px;
+        padding: 23px 87px 0 87px;
+    }
 }
 @media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-    padding: 134px 115px 0 115px;
-  }
+    .container {
+        max-width: 1280px;
+        padding: 134px 115px 0 115px;
+    }
 }

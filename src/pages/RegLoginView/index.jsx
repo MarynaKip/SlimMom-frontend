@@ -3,15 +3,15 @@ import Registration from '../../components/RegistrationForm';
 import './styles.css';
 
 const RegLoginView = ({path}) => {
-  return (
-    <div className="login-page">
-      {/* {path && <Registration />}
+    return (
+        <div className="login-page">
+            {/* {path && <Registration />}
       {path && <Login />} */}
 
-      {/* <Login /> */}
-      <Registration />
-    </div>
-  );
+            {/* <Login /> */}
+            <Registration />
+        </div>
+    );
 };
 
 export default RegLoginView;

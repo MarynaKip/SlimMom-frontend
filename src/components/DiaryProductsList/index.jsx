@@ -1,5 +1,5 @@
-import DiaryProductsListItem from '../DiaryProductsListItem' 
-import styles from '../DiaryProductsList/DiaryProductsList.module.css'
+import DiaryProductsListItem from '../DiaryProductsListItem'; 
+import styles from '../DiaryProductsList/DiaryProductsList.module.css';
 // const products = [{"prod": grechka,
 // data: 21/21/21,
 // userID:12345,
@@ -28,7 +28,7 @@ const DiaryProductsList = () => {
         <DiaryProductsListItem/>
         <DiaryProductsListItem/>
         <DiaryProductsListItem/>
-        </ul>
-    )
-}
-export default DiaryProductsList
+    </ul>
+    );
+};
+export default DiaryProductsList;
