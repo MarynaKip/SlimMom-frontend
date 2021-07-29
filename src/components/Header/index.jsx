@@ -9,7 +9,7 @@ import { useState } from 'react';
 const isAuthenticated = true;
 const name = 'Zinoviy';
 const onLogout = () => {
-    console.log('onLogout key pressed');
+  console.log('onLogout key pressed');
 };
 
 const Header = (/* { isAuthenticated }*/) => {

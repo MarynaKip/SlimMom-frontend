@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-const Button = ({title, cb, type, form}) => {
+const Button = ({ title, cb, type, form }) => {
   return (
     <button
       type={type}

@@ -5,15 +5,15 @@ import DiaryProductsList from '../../components/DiaryProductsList';
 import Sidebar from '../../components/Sidebar';
 import './styles.css';
 const DiaryPageView = () => {
-    return (
-        <div className="diary-view">
-            <ContainerForDiary>
-                <DiaryDateСalendar />
-                <DiaryAddProductForm />
-                <DiaryProductsList />
-            </ContainerForDiary>
-            <Sidebar />
-        </div>
-    );
+  return (
+    <div className="diary-view">
+      <ContainerForDiary>
+        <DiaryDateСalendar />
+        <DiaryAddProductForm />
+        <DiaryProductsList />
+      </ContainerForDiary>
+      <Sidebar />
+    </div>
+  );
 };
 export default DiaryPageView;

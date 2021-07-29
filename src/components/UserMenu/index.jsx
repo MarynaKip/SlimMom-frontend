@@ -5,7 +5,7 @@ import UserNavigation from '../UserNavigation';
 // заглушки
 const name = 'Zinoviy';
 const onLogout = () => {
-    console.log('onLogout key pressed');
+  console.log('onLogout key pressed');
 };
 // let burgerOpen = false;
 // const togleMenu = () => {

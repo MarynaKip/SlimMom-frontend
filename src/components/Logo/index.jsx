@@ -24,8 +24,8 @@ const Logo = ({ isAuthenticated }) => {
                    src={desctopLogo}
                    className='logo_image'
                    alt='logo' /> */}
-            </NavLink>
-        </div>
-    );
+      </NavLink>
+    </div>
+  );
 };
 export default Logo;

@@ -1,20 +1,20 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+      .min(2, 'Too Short!')
+      .max(50, 'Too Long!')
+      .required('Required'),
 });
 
 const initialValues = {
-    email: '',
-    password: '',
+  email: '',
+  password: '',
 };
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        {({errors, touched}) => (
+        {({ errors, touched }) => (
           <>
             <Form id="login" className="login__form" autoComplete="off">
               <div className="input-wrapper">
