@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import {useFormik} from 'formik';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 const isMobile = window.screen.width < 768;
 

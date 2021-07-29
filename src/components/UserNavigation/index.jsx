@@ -21,9 +21,9 @@ const UserNavigation = ({ burgerMenu }) => {
         activeClassName={activeLink}
       >
         КАЛЬКУЛЯТОР
-      </NavLink>
-    </div>
-  );
+            </NavLink>
+        </div>
+    );
 };
 
 export default UserNavigation;

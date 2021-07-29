@@ -1,3 +1,5 @@
+import { Switch, Route } from 'react-router-dom';
+import routes from './routes';
 import './App.css';
 // import Header from './components/Header';
 // import ContainerForView from './components/ContainerForLogin';

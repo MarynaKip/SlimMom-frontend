@@ -1,10 +1,10 @@
+/* eslint-disable require-jsdoc */
 import DatePicker from 'react-date-picker';
 import styles from '../DiaryDateСalendar/DiaryDateСalendar.module.css';
 import CalendarIcon from '../DiaryDateСalendar/CalendarIcon.jsx';
 // import {useState} from "react-redux";
 import React, { useState } from 'react';
 import '../DiaryDateСalendar/calendarCustonStyles.css';
-
 import '../../index.css';
 // const dateValue = Date.now()
 // const maxDate = new Date();
