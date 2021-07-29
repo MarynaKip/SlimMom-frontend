@@ -3,15 +3,14 @@ import DatePicker from 'react-date-picker';
 import styles from '../DiaryDateСalendar/DiaryDateСalendar.module.css';
 import CalendarIcon from '../DiaryDateСalendar/CalendarIcon.jsx';
 // import {useState} from "react-redux";
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../DiaryDateСalendar/calendarCustonStyles.css';
-
-
 import '../../index.css';
 // const dateValue = Date.now()
 
 console.log(useState);
 export default function DiaryDateСalendar() {
+
   const [value, onChange] = useState(new Date());
   return (
     <>
@@ -25,4 +24,3 @@ export default function DiaryDateСalendar() {
       />
     </>);
 };
-
