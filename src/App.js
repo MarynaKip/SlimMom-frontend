@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
 // import PrivateRoute from './components/PrivateRoute';
 // import Modal from './components/Modal';
@@ -28,6 +28,7 @@ const App = () => {
                 <PublicRoute path={routes.mydiary} component={DiaryPageView} />
                 {/* <PrivateRoute path={routes.calculator} render={Calculator}/> */}
                 {/* {modal && <Modal />} */}
+                <Redirect to="/" />
             </Switch>
         </>
     );
