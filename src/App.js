@@ -1,4 +1,4 @@
-  
+
 import { Switch, Route } from 'react-router-dom';
 import routes from './routes';
 import './App.css';
@@ -9,7 +9,6 @@ import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 
 const App = () => {
-
     return (
         <>
             <Header />
@@ -24,7 +23,6 @@ const App = () => {
             </main>
         </>
     );
-
 };
 
 export default App;

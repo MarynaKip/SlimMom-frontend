@@ -1,72 +1,89 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import { useState, useCallback, useEffect } from 'react';
+import axios from 'axios';
+import { DebounceInput } from 'react-debounce-input';
+
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
+
+axios.defaults.headers.common['Authorization'] =
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0Mzg4NjBkOTA4YzRmNjgxMGEyOWUiLCJlbWFpbCI6ImxhaW1hQGdtYWlsLmNvbSIsImlhdCI6MTYyNzY2NjU2Nn0.3k27p65QbnNWnR7sKCY0pwbrchORmXx6S-FqpBZZRvc';
+
 const isMobile = window.screen.width < 768;
 
-const DiaryAddProductForm = () => {
-  // Pass the useFormik() hook initial form values and a submit
-  // function that will be called when the form is submitted
-  const formik = useFormik({
-    initialValues: {
-      productName: '',
-      grams: Number,
-    },
-    onSubmit: (values) => {
-      // понять что значит эта строка
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-  return (
-    <div>
-      <form onSubmit={formik.handleSubmit} className={styles.addProductForm}>
-        <input
-          className={styles.inputAddProductFormName}
-          id='productName'
-          name='productName'
-          type='productName'
-          onChange={formik.handleChange}
-          value={formik.values.productName}
-          placeholder='Введите название продукта'
-          required
-          list='products-for-add'
-          autoComplete='off'
-        />
 
-        <datalist id='products-for-add'>
-          <option>gre4ka</option>
-          <option value='jaico'></option>
-          <option value='salo'></option>
-          <option value='moloko'></option>
-          <option value='grechka'></option>
-        </datalist>
-        {/* <Field name="color" component="select">
-   <option value="red">Red</option>
-   <option value="green">Green</option>
-   <option value="blue">Blue</option>
- </Field> */}
-        <input
-          className={styles.inputAddProductFormAmount}
-          id='grams'
-          name='grams'
-          type='grams'
-          onChange={formik.handleChange}
-          value={formik.values.grams}
-          placeholder='Граммы'
-          required
-          autoComplete='off'
-        />
-        {isMobile ? (
-          <button type='submit' className={styles.buttonAddProductMobile}>
-            Добавить
-          </button>
-        ) : (
-          <button type='submit' className={styles.buttonAddProduct}>
-            +
-          </button>
-        )}
-      </form>
-    </div>
+export default function DiaryAddProductForm() {
+  const [productQuery, setProductQuery] = useState('');
+  const [recipes, setRecipes] = useState([])
+
+    const getRecipes = async () => {
+  const response = await axios.get (
+    'localhost:8080/api/products?input=кру'
   );
-};
+  const data = await response.json()
+  setRecipes(data)
+  console.log(data)
+}
+   
+  useEffect(() => {
+    console.log("useEffect has been run");
+     getRecipes()
+    }, [productQuery]);
 
-export default DiaryAddProductForm;
+    const changeInput = useCallback(event => {
+        setProductQuery(event.target.value);
+    }, []);
+
+    return (
+        <div>
+            <form
+                // onSubmit={handleSubmit}
+                className={styles.addProductForm}
+            >
+                <DebounceInput
+                    minLength={2}
+                    debounceTimeout={500}
+                    className={styles.inputAddProductFormName}
+                    id="productName"
+                    name="productName"
+                    type="productName"
+                    onChange={changeInput}
+                    placeholder="Введите название продукта"
+                    required
+                    list="products-for-add"
+                    autoComplete="off"
+                />
+
+                <datalist id="products-for-add">
+                    <option>gre4ka</option>
+                    <option value="jaico"></option>
+                    <option value="salo"></option>
+                    <option value="moloko"></option>
+                    <option value="grechka"></option>
+                </datalist>
+
+                <input
+                    className={styles.inputAddProductFormAmount}
+                    id="grams"
+                    name="grams"
+                    type="grams"
+                    // onChange={formik.handleChange}
+                    // value={formik.values.grams}
+                    placeholder="Граммы"
+                    required
+                    autoComplete="off"
+                />
+                {isMobile ? (
+                    <button
+                        type="submit"
+                        className={styles.buttonAddProductMobile}
+                    >
+                        Добавить
+                    </button>
+                ) : (
+                    <button type="submit" className={styles.buttonAddProduct}>
+                        +
+                    </button>
+                )}
+            </form>
+        </div>
+    );
+}
