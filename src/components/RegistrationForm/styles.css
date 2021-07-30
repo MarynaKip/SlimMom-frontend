@@ -12,7 +12,7 @@
 @media screen and (min-width: 1280px) {
     .registration {
         padding-top: 95px;
-        padding-left: ;
+        padding-left: 25px;
     }
 }
 
@@ -135,42 +135,42 @@
 
 .registration__button-reg,
 .registration__button-login {
-  width: 176px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 20px;
+    width: 176px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
 }
 
 .registration__button-reg {
-  margin-top: 60px;
+    margin-top: 60px;
 }
 
 .registration__button-login {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .registration__button-login > a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
-  .registration__button-reg,
-  .registration__button-login {
-    display: inline-block;
-    margin: 38px 0 0 0;
-  }
+    .registration__button-reg,
+    .registration__button-login {
+        display: inline-block;
+        margin: 38px 0 0 0;
+    }
 
-  .registration__button-login {
-    margin-left: 30px;
-  }
+    .registration__button-login {
+        margin-left: 30px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
-  .registration__button-reg,
-  .registration__button-login {
-    display: inline-block;
-    margin-top: 60px;
-  }
+    .registration__button-reg,
+    .registration__button-login {
+        display: inline-block;
+        margin-top: 60px;
+    }
 }
 
 input:-webkit-autofill {

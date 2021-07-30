@@ -1,5 +1,19 @@
 @media screen and (min-width: 1280px) {
-    .diary-view {
+    .diarypage-container {
         display: flex;
+        margin: 0 auto;
+        width: 1280px;
+    }
+    .bg-wrapper__diary {
+        margin: 0 auto;
+        width: 1280px;
+        background: url(../../images/bg-diary-desktop.png),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 1) 746px,
+                rgba(240, 241, 243, 1) 0
+            );
+        background-position: right bottom;
+        background-repeat: no-repeat;
     }
 }

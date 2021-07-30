@@ -16,9 +16,9 @@ const Header = (/* { isAuthenticated }*/) => {
     const [menuActive, setMenuActive] = useState(false);
     return (
         <>
-            <header className="header-container">
+            <header className="header-containe">
                 {/* <Container> */}
-                <div className="header">
+                <div className="header header-container">
                     <Logo isAuthenticated={isAuthenticated} />
                     <div className="separator"></div>
                     {isAuthenticated ? (
