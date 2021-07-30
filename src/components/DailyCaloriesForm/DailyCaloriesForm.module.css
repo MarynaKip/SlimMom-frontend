@@ -1,0 +1,77 @@
+.dailyForm {
+    position: absolute;
+    width: 605px;
+    height: 447px;
+    left: 115px;
+    top: 292px;
+}
+
+.dailyForm_title{
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 41px;
+    
+    color: #212121;
+}
+
+.dailyLabel {
+font-family: Verdana;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.04em;
+
+color: #9B9FAA;
+  }
+
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+.daily_input{
+  display: block;
+  width: 239px;
+  height: 20px;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #000000;
+
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+  outline: none;
+}
+
+.dailyButton{
+  display: block;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 176px;
+  height: 44px;
+
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+
+  background:#FC842D;
+  border: 2px solid #fc842d;
+  box-sizing: border-box;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  cursor: pointer;
+}
