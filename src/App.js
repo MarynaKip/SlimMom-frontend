@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
 // import PrivateRoute from './components/PrivateRoute';
+// import Modal from './components/Modal';
 import routes from './routes';
 import './App.css';
 import PromoView from './pages/PromoView';
@@ -26,6 +27,7 @@ const App = () => {
                 />
                 <PublicRoute path={routes.mydiary} component={DiaryPageView} />
                 {/* <PrivateRoute path={routes.calculator} render={Calculator}/> */}
+                {/* {modal && <Modal />} */}
             </Switch>
         </>
     );
