@@ -16,8 +16,8 @@ const DailyCaloriesForm = () => {
   const [data, setData] = useState('');
 
   const modalHandler = (values) => {
-    initialValues=values,
-    setData('');
+    console.log(values);
+    setData(2+10/5+100);
     setShow(true);
   };
   return (
@@ -25,25 +25,27 @@ const DailyCaloriesForm = () => {
       <h1 className ={styles.dailyForm_title}>
           Просчитай свою суточную <br/> норму калорий</h1>
       <Formik
-        initialValues={{initialValues}}
+        initialValues={initialValues}
         // validationSchema={Yup.object({
         //   height: Yup.string()
-        //       .positive().integer()
+        //       .max(2)
         //       .required('Required'),
         //   age: Yup.string()
-        //       .positive().integer()
+        //       .max(2)
         //       .required('Required'),
-        //   bloodType: Yup.boolean()
-        //       .required('Required')
-        //       .oneOf([true], 'You must accept the terms and conditions.'),
+        //   // bloodType: Yup.boolean()
+        //   //     .required('Required')
+        //   //     .oneOf([true], 'You must accept the terms and conditions.'),
         // })}
         onSubmit = {modalHandler}
       >
-        <Form className={styles.dailyForm}>
+        {({values, handleChange}) => <Form className={styles.dailyForm}>
           <div className=" ">
             <label htmlFor="height"
               className = {styles.dailyLabel}>Рост * </label>
             <input
+              value={values.height}
+              onChange = {handleChange}
               id="height"
               name="height"
               type="number"
@@ -52,6 +54,8 @@ const DailyCaloriesForm = () => {
             <label htmlFor="age"
               className = {styles.dailyLabel}>Возраст * </label>
             <input
+              value={values.age}
+              onChange = {handleChange}
               id="age"
               name="age"
               type="number"
@@ -60,6 +64,8 @@ const DailyCaloriesForm = () => {
             <label htmlFor="currentWeight" className = {styles.dailyLabel}>
           Текущий вес * </label>
             <input
+              value={values.currentWeight}
+              onChange = {handleChange}
               id="currentWeight"
               name="currentWeight"
               type="number"
@@ -68,6 +74,8 @@ const DailyCaloriesForm = () => {
             <label htmlFor="desiredWeight" className = {styles.dailyLabel}>
           Желаемый вес * </label>
             <input
+              value={values.desiredWeight}
+              onChange = {handleChange}
               id="desiredWeight"
               name="desiredWeight"
               type="number"
@@ -77,47 +85,53 @@ const DailyCaloriesForm = () => {
               <span>Группа крови * </span>
               <br/>
               <input
+                value={values.bloodType}
+                onChange = {handleChange}
                 id = "bloodType"
                 name="bloodType"
                 type="radio"
-                value="1"
                 checked ={'bloodType' === '1'}
               />
               <span>1</span>
               <input
+                value={values.bloodType}
+                onChange = {handleChange}
                 id = "bloodType"
                 name="bloodType"
                 type="radio"
-                value="2"
               />
               <span>2</span>
               <input
+                value={values.bloodType}
+                onChange = {handleChange}
                 id = "bloodType"
                 name="bloodType"
                 type="radio"
-                value="3"
                 checked={'bloodType' === '3'}
               />
               <span>3</span>
               <input
+                value={values.bloodType}
+                onChange = {handleChange}
                 id = "bloodType"
                 name="bloodType"
                 type="radio"
-                value="4"
                 checked={'bloodType' === '4'}
               />
               <span>4</span>
             </label>
             <div>
-              {show}
-              <button type="submit" className = {styles.dailyButton}
-                onSubmit = {modalHandler}
-                tittle = {data}>
+              <button type="submit" className = {styles.dailyButton}>
                 Похудеть
               </button>
+              {show &&
+              <button type="submit" className = {styles.dailyButton}
+              >
+                Похудеть-{data}
+              </button>}
             </div>
           </div>
-        </Form>
+        </Form>}
       </Formik>
     </>
   );
