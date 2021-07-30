@@ -18,5 +18,7 @@ module.exports = {
     'react/prop-types': 0,
     'object-curly-spacing': ['error', 'always'],
     'max-len': ['error', { 'code': 300 }],
+    'indent': 'off',
+      'no-unused-vars':'off'
   },
 };
