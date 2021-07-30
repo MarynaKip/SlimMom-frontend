@@ -24,7 +24,7 @@
         "semi": [2, "always"],
         "indent": ["warn", 4],
         "react/react-in-jsx-scope": 0,
-        "react/prop-types": "warn",
-        "no-unused-vars": "warn"
+        "react/prop-types": 0,
+        "no-unused-vars": 0
     }
 }
