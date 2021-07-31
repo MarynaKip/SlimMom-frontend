@@ -7,22 +7,28 @@ const {
     addProductError,
     deleteProductRequest,
     deleteProductSuccess,
-    deleteProductError,
+  deleteProductError,
+        productSearchRequest,
+    productSearchSuccess,
+    productSearchError
 } = actions;
 
 const initialDiaryState = {
-    items:[]
+  items: [],
+  // searchQuery:''
 };
 
 const items = createReducer(initialDiaryState.items, {
-  // [fetchContactsSuccess]: (_, { payload }) => payload,
-  [actions.addProductSuccess]: (state, { payload }) => [payload, ...state],
-  // [deleteContactSuccess]: (state, { payload }) =>
-  //   state.filter(({ id }) => id !== payload),
+    // [fetchContactsSuccess]: (_, { payload }) => payload,
+    [actions.addProductSuccess]: (state, { payload }) => [payload, ...state],
+  [deleteProductSuccess]: (state, { payload }) => {
+    console.log('state', state);
+    console.log('payload', payload);
+    state.filter(({ data }) => data.productName !== payload.productName)
+  },});
 
-}); 
 
 export default combineReducers({
-  items
+  items,
+  // searchQuery,
 });
-

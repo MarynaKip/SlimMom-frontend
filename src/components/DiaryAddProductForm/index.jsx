@@ -1,76 +1,67 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { diaryOperations } from "../../redux/diary";
+import { diaryOperations } from '../../redux/diary';
+import { v4 as uuidv4 } from 'uuid';
 
-
-// import axios from 'axios';
+import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
 
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
-// axios.defaults.headers.common['Authorization'] =
-//     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0ZjRiNjJiODVmYTAwMWMyMmFlZDYiLCJlbWFpbCI6ImxhaW1hdkBnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTQ3NDJ9.600zEwSXhkCYvV1Tzml5wZ7fmI22-pA_R7x9gwi5X3s';
-
-// const [query, setQuery] = useState(' ');
-// // from docs react-debounce-input
-
-// // const searchQuery = 'кру';
-// const fetchProducts = () => {
-//     return axios.get(
-//         `https://obscure-shelf-16384.herokuapp.com/api/products?input=gt`,
-//     ).then(response => console.log(response)),[]
-// };
-// useEffect(() => {fetchProducts()})
-//  const handleChange = useCallback(event => {
-//         setQuery(event.target.value);
-//  }, []);
+axios.defaults.headers.common['Authorization'] =
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0ZjRiNjJiODVmYTAwMWMyMmFlZDYiLCJlbWFpbCI6ImxhaW1hdkBnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTQ3NDJ9.600zEwSXhkCYvV1Tzml5wZ7fmI22-pA_R7x9gwi5X3s';
 
 const isMobile = window.screen.width < 768;
 
 export default function DiaryAddProductForm() {
     const [productName, setProductName] = useState('');
     const [productWeight, setProductWeight] = useState('');
-
-    const changeInput = useCallback(event => {
-        const { name, value } = event.target;
-        switch (name) {
-            case 'productName':
-                return setProductName(value);
-            case 'productWeight':
-                return setProductWeight(value);
-            default:
-                return null;
-        }
-    }, []);
+    const [query, setQuery] = useState('');
+    const [datalist, setDatalist] = useState([]);
     const dispatch = useDispatch();
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        dispatch(diaryOperations.addProduct({ productName, productWeight }));
-
-        resetInput();
+        setProductName(query);
+        dispatch(diaryOperations.addProduct({ query, productWeight }));
     };
 
-    const resetInput = () => {
-        setProductName('');
-        setProductWeight('');
+    const fetchProducts = async searchQuery => {
+        try {
+            const { data } = await axios.get(
+                `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
+            );
+            setDatalist(data.data);
+        } catch (error) {
+            console.log(error);
+        }
     };
+    const handleChange = useCallback(event => {
+        setQuery(event.target.value);
+    }, []);
+
+    const onChangeProductWeight = useCallback(event => {
+        setProductWeight(event.target.value);
+    }, []);
+
+    useEffect(() => {
+        if (query !== '') {
+            fetchProducts(query);
+        }
+    }, [query]);
 
     return (
         <div>
-            <form
-                className={styles.addProductForm}
-                onSubmit={handleFormSubmit}
-            >
+            <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
                 <DebounceInput
                     minLength={2}
-                    debounceTimeout={500}
+                    debounceTimeout={1000}
                     className={styles.inputAddProductFormName}
                     id="productName"
                     name="productName"
                     type="productName"
                     value={productName}
-                    onChange={changeInput}
+                    onChange={handleChange}
                     placeholder="Введите название продукта"
                     required
                     list="products-for-add"
@@ -78,9 +69,9 @@ export default function DiaryAddProductForm() {
                 />
 
                 <datalist id="products-for-add">
-                    <option value="Гречневая крупа (ядрица) зелёная"></option>
-                    <option value="Кускус Агро-Альянс"></option>
-                    <option value="Манная крупа Агро-Альянс"></option>
+                    {datalist.map(({ title }) => (
+                        <option value={title.ru} key={uuidv4()}></option>
+                    ))}
                 </datalist>
 
                 <input
@@ -89,7 +80,7 @@ export default function DiaryAddProductForm() {
                     name="productWeight"
                     type="grams"
                     value={productWeight}
-                    onChange={changeInput}
+                    onChange={onChangeProductWeight}
                     placeholder="Граммы"
                     required
                     autoComplete="off"
