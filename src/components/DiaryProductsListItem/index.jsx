@@ -27,7 +27,7 @@ export default function DiaryProductsListItem({
                 className={styles.diaryListItemButton}
                 type="submit"
                 onClick={() => {
-                  dispatch(diaryOperations.deleteProduct({ productName }));
+                    dispatch(diaryOperations.deleteProduct({ productName }));
                 }}
             >
                 &#10006;

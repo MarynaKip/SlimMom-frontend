@@ -11,11 +11,11 @@ export default function DiaryProductsList() {
     console.log(productsForList)
     return (
         <ul className={styles.productsListDiary}>
-            {productsForList.map(({data}) => (
+            {productsForList.map(({productName, productWeight, productKkal }) => (
                 <DiaryProductsListItem key={uuidv4()}
-                    productName={data.productName}
-                    productWeight={data.productWeight}
-                    productKkal={data.productKkal}
+                    productName={productName}
+                    productWeight={productWeight}
+                    productKkal={productKkal}
                 />
             ))}
         </ul>

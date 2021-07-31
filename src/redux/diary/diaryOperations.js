@@ -30,7 +30,7 @@ const addProduct =
         }
         };
 
-const deleteProduct = ({ productName }) => async dispatch => {
+const deleteProduct = ({ productName } ) => async dispatch => {
             const productForDelete = {
             date: new Date()
                 .toLocaleDateString()
@@ -41,10 +41,19 @@ const deleteProduct = ({ productName }) => async dispatch => {
         };
 
     dispatch(actions.deleteProductRequest());
-    console.log(productForDelete)
+
   try {
-   const { data } =  await axios.delete('https://obscure-shelf-16384.herokuapp.com/api/eaten_products', productForDelete);
-    dispatch(actions.deleteProductSuccess(data));
+   const { data } =  await axios.delete('https://obscure-shelf-16384.herokuapp.com/api/eaten_products', {
+  data: {
+    date: new Date()
+                .toLocaleDateString()
+                .split('.')
+                .reverse()
+                .join('-'),
+            productName,
+   }
+ });
+    dispatch(actions.deleteProductSuccess(productName));
   } catch (error) {
     dispatch(actions.deleteProductError(error.message));
   }
