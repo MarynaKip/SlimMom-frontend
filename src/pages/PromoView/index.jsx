@@ -1,13 +1,13 @@
 import './styles.css';
 import Login from '../../components/LoginForm';
-import Register from '../../components/RegistrationForm';
+import Header from '../../components/Header';
 
 const PromoView = () => {
     return (
-        <div>
-            {/* <Register/> */}
+        <main className="bg-wrapper__promo">
+            <Header />
             <Login />
-        </div>
+        </main>
     );
 };
 export default PromoView;
