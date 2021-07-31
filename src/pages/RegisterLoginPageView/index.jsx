@@ -2,11 +2,13 @@ import './styles.css';
 import RegLoginView from '../RegLoginView';
 import Header from '../../components/Header';
 
-const RegisterLoginPageView = (props) => {
+const RegisterLoginPageView = () => {
   return (
     <main className="bg-wrapper__reg">
       <Header />
-      <RegLoginView />
+      <div className="login-page">
+        <RegLoginView />
+      </div>
     </main>
   );
 };

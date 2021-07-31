@@ -1,8 +1,10 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import process from 'process';
+
+// import process from 'process';
 import logger from 'redux-logger';
 import contactsReducer from '../redux/diaryData/contacts-reducer';
 import { authReducer } from './auth';
+
 import {
   persistStore,
   persistReducer,
@@ -14,6 +16,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import registration from './auth/auth-reducers';
+import currentDateData from './sidebar/sidebar-reducers';
 
 const devtols =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -35,6 +39,7 @@ const authPersistConfig = {
 
 const store = configureStore({
   reducer: {
+    //   userCurrentDate: currentDateData,
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
   },

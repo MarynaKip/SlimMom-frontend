@@ -7,7 +7,8 @@ import './App.css';
 import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 import RegisterLoginPageView from './pages/RegisterLoginPageView';
-import Header from './components/Header';
+// import Header from './components/Header';
+import CalculatorPageView from './pages/CalculatorPageView';
 import { connect } from 'react-redux';
 import { authOperations, authSelectors } from './redux/auth';
 import { useEffect, Suspense, lazy } from 'react';
@@ -38,12 +39,17 @@ const App = ({ onGetCurrentUser }) => {
           redirectTo={routes.mydiary}
           component={RegisterLoginPageView}
         />
+        <PublicRoute path={routes.calculator} component={CalculatorPageView} />
         <PrivateRoute
           path={routes.mydiary}
           redirectTo={routes.home}
           component={DiaryPageView}
         />
-
+        <PrivateRoute
+          path={routes.calculator}
+          redirectTo={routes.calculator}
+          component={CalculatorPageView}
+        />
         {/* {modal && <Modal />} */}
         <Redirect to={routes.home} />
       </Switch>
