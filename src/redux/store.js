@@ -33,6 +33,7 @@ const authPersistConfig = {
 const store = configureStore({
     reducer: {
         userCurrentDate: currentDateData,
+        // userChosenDate: chosenDateData,
         auth: persistReducer(authPersistConfig, registration),
     },
     middleware,

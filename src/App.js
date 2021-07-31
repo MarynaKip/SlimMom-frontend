@@ -8,7 +8,7 @@ import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 import RegisterLoginPageView from './pages/RegisterLoginPageView';
 import DailyCaloriesForm from './components/DiaryAddProductForm';
-import CalculatorForm from './pages/CalculatorPage';
+import CalculatorPageView from './pages/CalculatorPageView';
 
 const App = () => {
     return (
@@ -28,14 +28,15 @@ const App = () => {
                     component={RegisterLoginPageView}
                 />
                 <PublicRoute path={routes.mydiary} component={DiaryPageView} />
-                <DailyCaloriesForm/>
-                <PrivateRoute path={routes.calculator} render={CalculatorForm}/>
+                <PublicRoute
+                    path={routes.calculator}
+                    component={CalculatorPageView}
+                />
                 {/* {modal && <Modal />} */}
-                <Redirect to="/" />
+                {/* <Redirect to="/" /> */}
             </Switch>
         </>
     );
 };
 
 export default App;
-
