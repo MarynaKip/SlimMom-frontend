@@ -1,12 +1,14 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 // import Modal from './components/Modal';
 import routes from './routes';
 import './App.css';
 import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 import RegisterLoginPageView from './pages/RegisterLoginPageView';
+import DailyCaloriesForm from './components/DiaryAddProductForm';
+import CalculatorForm from './pages/CalculatorPage';
 
 const App = () => {
     return (
@@ -26,7 +28,8 @@ const App = () => {
                     component={RegisterLoginPageView}
                 />
                 <PublicRoute path={routes.mydiary} component={DiaryPageView} />
-                {/* <PrivateRoute path={routes.calculator} render={Calculator}/> */}
+                <DailyCaloriesForm/>
+                <PrivateRoute path={routes.calculator} render={CalculatorForm}/>
                 {/* {modal && <Modal />} */}
                 <Redirect to="/" />
             </Switch>

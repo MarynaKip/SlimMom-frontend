@@ -1,12 +1,14 @@
 import DailyCalories from '../../components/DailyCaloriesForm';
-import './styles.css';
+import Header from '../../components/Header';
+// import './styles.css';
 
-const DailyCaloriesForm = ({path}) => {
-  return (
-    <div className=" ">
-      <DailyCalories />
-    </div>
-  );
+const CalculatorForm = () => {
+    return (
+        <div className=" ">
+            <Header goBack={false} />
+            <DailyCalories />
+        </div>
+    );
 };
 
-export default DailyCaloriesForm;
+export default CalculatorForm;
