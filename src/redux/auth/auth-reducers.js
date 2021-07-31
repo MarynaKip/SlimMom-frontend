@@ -24,10 +24,10 @@ const initialUserState = {
     email: null,
     password: null,
     name: null,
-    __v: null
+    __v: null,
 };
 
-const user = createReducer(initialUserState, {
+const user = createReducer([initialUserState], {
     [signUpSuccess]: (_, { payload }) => payload.user,
     [signInSuccess]: (_, { payload }) => payload.user,
     [signOutSuccess]: () => initialUserState,

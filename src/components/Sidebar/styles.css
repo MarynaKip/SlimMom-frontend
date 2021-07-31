@@ -7,6 +7,9 @@ p {
     margin: 0;
 }
 
+.sidebar-container {
+    background-color: #f0f1f3;
+}
 .main-font {
     font-family: Verdana;
     font-weight: 400;
@@ -45,15 +48,14 @@ p {
         width: 290px;
         display: block;
         padding: 40px 15px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
         background-color: #f0f1f3;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
     .sidebar {
-        width: 588px;
+        /* width: 588px; */
         padding: 90px 90px;
         margin: 0 auto;
         display: flex;
@@ -74,14 +76,13 @@ p {
 }
 
 @media screen and (min-width: 1280px) {
+    .sidebar-container {
+        background-color: transparent;
+    }
     .sidebar {
         width: 270px;
         display: block;
-        padding-top: 135px;
-        padding-bottom: 175px;
-        padding-right: 60px;
-        padding-left: 90px;
-        margin-right: 25px;
+        margin: 135px 85px 175px 90px;
         background-color: transparent;
     }
 

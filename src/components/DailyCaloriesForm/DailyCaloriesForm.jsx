@@ -1,5 +1,5 @@
-import {useState, useEffect } from 'react';
-import {Formik, Field, Form, ErrorMessage} from 'formik';
+import { useState, useEffect } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './DailyCaloriesForm.module.css';
 import Modal from '../Modal/Modal';
@@ -46,7 +46,7 @@ const SignupSchema = Yup.object().shape({
 const DailyCaloriesForm = () => {
     const [show, setShow] = useState(false);
     const toggleModal = () => setShow(prevSetShow => !prevSetShow);
-    
+
     // useEffect(() => {
     //     const handleKeyDown = event => {
     //         if (event.code === 'Escape') {
@@ -59,13 +59,14 @@ const DailyCaloriesForm = () => {
     //     };
     // }, []);
 
-    const modalHandler = (values) => {
+    const modalHandler = values => {
         setShow(true);
     };
     return (
-        <>
-            <h1 className ={styles.dailyForm_title}>
-          Просчитай свою суточную <br/> норму калорий</h1>
+        <div>
+            <h1 className={styles.dailyForm_title}>
+                Просчитай свою суточную <br /> норму калорий
+            </h1>
             <Formik
                 initialValues={{
                     height: '', // рост
@@ -78,137 +79,156 @@ const DailyCaloriesForm = () => {
                 // onSubmit = {modalHandler}
                 onSubmit={values => {
                     modalHandler,
-                    localStorage.setItem('user', JSON.stringify(values));
+                        localStorage.setItem('user', JSON.stringify(values));
                 }}
             >
-                {({values, handleChange,isValid, dirty, handleSubmit}) => 
+                {({ values, handleChange, isValid, dirty, handleSubmit }) => (
                     <Form className={styles.dailyForm} onSubmit={handleSubmit}>
-                        <div className=''>
-                            <label htmlFor="age"
-                                className = {styles.dailyLabel}>Рост *
+                        <div className="">
+                            <label htmlFor="age" className={styles.dailyLabel}>
+                                Рост *
                                 <Field
                                     value={values.height}
-                                    onChange = {handleChange}
+                                    onChange={handleChange}
                                     id="height"
                                     name="height"
                                     type="text"
                                     className={styles.daily_input}
                                 />
                                 <ErrorMessage name="height">
-                                    {err => <p className={styles.errorMessage}>{err}</p>}
+                                    {err => (
+                                        <p className={styles.errorMessage}>
+                                            {err}
+                                        </p>
+                                    )}
                                 </ErrorMessage>
                             </label>
 
-                            <label htmlFor="age"
-                                className = {styles.dailyLabel}>Возраст * 
+                            <label htmlFor="age" className={styles.dailyLabel}>
+                                Возраст *
                                 <Field
                                     value={values.age}
-                                    onChange = {handleChange}
+                                    onChange={handleChange}
                                     id="age"
                                     name="age"
                                     type="text"
-                                    className ={styles.daily_input}
+                                    className={styles.daily_input}
                                 />
                                 <ErrorMessage name="age">
-                                    {err => <p className={styles.errorMessage}>{err}</p>}
+                                    {err => (
+                                        <p className={styles.errorMessage}>
+                                            {err}
+                                        </p>
+                                    )}
                                 </ErrorMessage>
                             </label>
 
-                            <label htmlFor="currentWeight" className = {styles.dailyLabel}>
-          Текущий вес * 
+                            <label
+                                htmlFor="currentWeight"
+                                className={styles.dailyLabel}
+                            >
+                                Текущий вес *
                                 <Field
                                     value={values.currentWeight}
-                                    onChange = {handleChange}
+                                    onChange={handleChange}
                                     id="currentWeight"
                                     name="currentWeight"
                                     type="text"
-                                    className ={styles.daily_input}
+                                    className={styles.daily_input}
                                 />
                                 <ErrorMessage name="currentWeight">
-                                    {err => <p className={styles.errorMessage}>{err}</p>}
+                                    {err => (
+                                        <p className={styles.errorMessage}>
+                                            {err}
+                                        </p>
+                                    )}
                                 </ErrorMessage>
                             </label>
 
-                            <label htmlFor="desiredWeight" className = {styles.dailyLabel}>
-          Желаемый вес * 
+                            <label
+                                htmlFor="desiredWeight"
+                                className={styles.dailyLabel}
+                            >
+                                Желаемый вес *
                                 <Field
                                     value={values.desiredWeight}
-                                    onChange = {handleChange}
+                                    onChange={handleChange}
                                     id="desiredWeight"
                                     name="desiredWeight"
                                     type="text"
-                                    className ={styles.daily_input}
+                                    className={styles.daily_input}
                                 />
                                 <ErrorMessage name="desiredWeight">
-                                    {err => <p className={styles.errorMessage}>{err}</p>}
+                                    {err => (
+                                        <p className={styles.errorMessage}>
+                                            {err}
+                                        </p>
+                                    )}
                                 </ErrorMessage>
                             </label>
 
-
-
                             <div id="bloodType" className={styles.check_label}>
-                        
-                                <label className = {styles.dailyLabel}>
-                                Группа крови *
-                                    <br/>
+                                <label className={styles.dailyLabel}>
+                                    Группа крови *
+                                    <br />
                                     <Field
-                                        value='1'
-                                        onChange = {handleChange}
+                                        value="1"
+                                        onChange={handleChange}
                                         className={styles.radio}
                                         name="bloodType"
                                         type="radio"
-                                        checked ={true}
-                                    />1
-                                
+                                        checked={true}
+                                    />
+                                    1
                                     <Field
-                                    // value={values.bloodType}
-                                        value='2' 
-                                        onChange = {handleChange}
+                                        // value={values.bloodType}
+                                        value="2"
+                                        onChange={handleChange}
                                         className={styles.radio}
                                         name="bloodType"
                                         type="radio"
-                                    
-                                    />2
-                               
+                                    />
+                                    2
                                     <Field
-                                    //value={values.bloodType}
-                                        value='3'
-                                        onChange = {handleChange}
+                                        //value={values.bloodType}
+                                        value="3"
+                                        onChange={handleChange}
                                         className={styles.radio}
                                         name="bloodType"
                                         type="radio"
-                                    
-                                    />3
-                                
+                                    />
+                                    3
                                     <Field
-                                    //value={values.bloodType}
-                                        value='4'
-                                        onChange = {handleChange}
+                                        //value={values.bloodType}
+                                        value="4"
+                                        onChange={handleChange}
                                         className={styles.radio}
                                         name="bloodType"
                                         type="radio"
-                                    
-                                    />4
-                                
+                                    />
+                                    4
                                 </label>
                             </div>
 
                             <div>
-                                <button type="submit"
+                                <button
+                                    type="submit"
                                     //disabled={!isValid || !dirty}
-                                    className = {styles.dailyButton}
+                                    className={styles.dailyButton}
                                     onClick={() => setShow(true)}
                                 >
-                Похудеть
+                                    Похудеть
                                 </button>
-                                {show && <Modal active={show} setActive={setShow} />}
+                                {show && (
+                                    <Modal active={show} setActive={setShow} />
+                                )}
                             </div>
                         </div>
-                    </Form>}
+                    </Form>
+                )}
             </Formik>
-        </>
+        </div>
     );
 };
-
 
 export default DailyCaloriesForm;
