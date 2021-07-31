@@ -17,11 +17,11 @@
         padding: 0 115px 0;
         margin-left: auto;
         margin-right: auto;
-        background: linear-gradient(
+        /* background: linear-gradient(
             90deg,
             rgba(255, 255, 255, 1) 800px,
             rgba(240, 241, 243, 1) 800px
-        );
+        ); */
         background-image: url(../../images/bg-promo-desktop.jpg);
         background-position: right bottom;
         background-repeat: no-repeat;

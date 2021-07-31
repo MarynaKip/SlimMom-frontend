@@ -6,7 +6,9 @@ const RegisterLoginPageView = () => {
     return (
         <main className="bg-wrapper__reg">
             <Header />
-            <RegLoginView />
+            <div className="login-page">
+                <RegLoginView />
+            </div>
         </main>
     );
 };
