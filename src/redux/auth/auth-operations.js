@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authActions from './auth-actions';
-const path = 'https://obscure-shelf-16384.herokuapp.com/api/';
+const path = 'https://obscure-shelf-16384.herokuapp.com/api';
 
 axios.defaults.baseURL = path;
 
@@ -31,9 +31,9 @@ const register = credentials => async dispatch => {
 const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
-    const response = await axios.post('/users/login', credentials);
-
-    token.set(response.data.token);
+    const response = await axios.post('/user/login', credentials);
+    // console.log('response.data', response.data.user.token);
+    token.set(response.data.user.token);
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
@@ -44,7 +44,7 @@ const logIn = credentials => async dispatch => {
 const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
-    await axios.post('/users/logOut');
+    await axios.post('/user/logout');
 
     token.unset();
     dispatch(authActions.logoutSuccess());
@@ -68,8 +68,8 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
 
   try {
-    const response = await axios.get('/users/current');
-    dispatch(authActions.getCurrentUserSuccess(response.data));
+    const response = await axios.get('/user/current');
+    dispatch(authActions.getCurrentUserSuccess(response.data.currentUser));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
   }
