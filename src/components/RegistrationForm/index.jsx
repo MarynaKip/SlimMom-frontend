@@ -1,38 +1,40 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from '../../redux/auth/auth-operations';
 import Button from '../Button';
 import './styles.css';
 
-const SignupSchema = Yup.object().shape({
-    name: Yup.string()
-        .min(2, 'Too Short!')
-        .max(25, 'Too Long!')
-        .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-});
-
-const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-};
-
 const Registration = () => {
+    const dispatch = useDispatch();
+
+    const SignupSchema = Yup.object().shape({
+        name: Yup.string()
+            .min(2, 'Too Short!')
+            .max(25, 'Too Long!')
+            .required('Required'),
+        email: Yup.string().email('Invalid email').required('Required'),
+        password: Yup.string()
+            .min(2, 'Too Short!')
+            .max(50, 'Too Long!')
+            .required('Required'),
+    });
+
+    const initialValues = {
+        name: '',
+        email: '',
+        password: '',
+    };
+
     return (
         <div className="registration">
             <h1 className="registration__title">Регистрация</h1>
             <Formik
                 initialValues={initialValues}
                 validationSchema={SignupSchema}
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
-                }}
+                onSubmit={( values ) => 
+                    dispatch(authOperations.signUpUser( values ))}
             >
                 {({errors, touched}) => (
                     <>
