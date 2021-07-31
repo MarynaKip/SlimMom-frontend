@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import registration from './auth/auth-reducers';
+import currentDateData from './sidebar/sidebar-reducers';
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -31,7 +32,7 @@ const authPersistConfig = {
 
 const store = configureStore({
     reducer: {
-        user: null,
+        userCurrentDate: currentDateData,
         auth: persistReducer(authPersistConfig, registration),
     },
     middleware,

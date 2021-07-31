@@ -4,3 +4,5 @@ import sidebarActions from './sidebar-actions';
 const currentDateData = createReducer([], {
     [sidebarActions.getUserCurrentDataSuccess]: (state, { payload }) => {},
 });
+
+export default currentDateData;
