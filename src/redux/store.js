@@ -1,5 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import process from 'process';
+import {diaryReducer} from './diary';
+
 // import logger from 'redux-logger';
 import {
   persistStore,
@@ -32,6 +34,7 @@ const store = configureStore({
   reducer: {
     user: null,
     auth: persistReducer(authPersistConfig, null),
+    diary:diaryReducer
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

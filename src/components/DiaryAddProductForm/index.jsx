@@ -1,42 +1,66 @@
 import { useState, useCallback, useEffect } from 'react';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { diaryOperations } from "../../redux/diary";
+
+
+// import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
 
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
-axios.defaults.headers.common['Authorization'] =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0Mzg4NjBkOTA4YzRmNjgxMGEyOWUiLCJlbWFpbCI6ImxhaW1hQGdtYWlsLmNvbSIsImlhdCI6MTYyNzY2NjU2Nn0.3k27p65QbnNWnR7sKCY0pwbrchORmXx6S-FqpBZZRvc';
+// axios.defaults.headers.common['Authorization'] =
+//     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0ZjRiNjJiODVmYTAwMWMyMmFlZDYiLCJlbWFpbCI6ImxhaW1hdkBnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTQ3NDJ9.600zEwSXhkCYvV1Tzml5wZ7fmI22-pA_R7x9gwi5X3s';
+
+// const [query, setQuery] = useState(' ');
+// // from docs react-debounce-input
+
+// // const searchQuery = 'кру';
+// const fetchProducts = () => {
+//     return axios.get(
+//         `https://obscure-shelf-16384.herokuapp.com/api/products?input=gt`,
+//     ).then(response => console.log(response)),[]
+// };
+// useEffect(() => {fetchProducts()})
+//  const handleChange = useCallback(event => {
+//         setQuery(event.target.value);
+//  }, []);
 
 const isMobile = window.screen.width < 768;
 
-
 export default function DiaryAddProductForm() {
-  const [productQuery, setProductQuery] = useState('');
-  const [recipes, setRecipes] = useState([])
-
-    const getRecipes = async () => {
-  const response = await axios.get (
-    'localhost:8080/api/products?input=кру'
-  );
-  const data = await response.json()
-  setRecipes(data)
-  console.log(data)
-}
-   
-  useEffect(() => {
-    console.log("useEffect has been run");
-     getRecipes()
-    }, [productQuery]);
+    const [productName, setProductName] = useState('');
+    const [productWeight, setProductWeight] = useState('');
 
     const changeInput = useCallback(event => {
-        setProductQuery(event.target.value);
+        const { name, value } = event.target;
+        switch (name) {
+            case 'productName':
+                return setProductName(value);
+            case 'productWeight':
+                return setProductWeight(value);
+            default:
+                return null;
+        }
     }, []);
+    const dispatch = useDispatch();
+
+    const handleFormSubmit = event => {
+        event.preventDefault();
+        dispatch(diaryOperations.addProduct({ productName, productWeight }));
+
+        resetInput();
+    };
+
+    const resetInput = () => {
+        setProductName('');
+        setProductWeight('');
+    };
 
     return (
         <div>
             <form
-                // onSubmit={handleSubmit}
                 className={styles.addProductForm}
+                onSubmit={handleFormSubmit}
             >
                 <DebounceInput
                     minLength={2}
@@ -45,6 +69,7 @@ export default function DiaryAddProductForm() {
                     id="productName"
                     name="productName"
                     type="productName"
+                    value={productName}
                     onChange={changeInput}
                     placeholder="Введите название продукта"
                     required
@@ -53,20 +78,18 @@ export default function DiaryAddProductForm() {
                 />
 
                 <datalist id="products-for-add">
-                    <option>gre4ka</option>
-                    <option value="jaico"></option>
-                    <option value="salo"></option>
-                    <option value="moloko"></option>
-                    <option value="grechka"></option>
+                    <option value="Гречневая крупа (ядрица) зелёная"></option>
+                    <option value="Амарантовые отруби DiDi с гречей"></option>
+                    <option value="Манная крупа Агро-Альянс"></option>
                 </datalist>
 
                 <input
                     className={styles.inputAddProductFormAmount}
                     id="grams"
-                    name="grams"
+                    name="productWeight"
                     type="grams"
-                    // onChange={formik.handleChange}
-                    // value={formik.values.grams}
+                    value={productWeight}
+                    onChange={changeInput}
                     placeholder="Граммы"
                     required
                     autoComplete="off"
