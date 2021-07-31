@@ -3,75 +3,75 @@ import { combineReducers } from '@reduxjs/toolkit';
 import actions from './auth-actions';
 
 const {
-    signUpRequest,
-    signUpSuccess,
-    signUpError,
-    signInRequest,
-    signInSuccess,
-    signInError,
-    signOutRequest,
-    signOutSuccess,
-    signOutError,
-    // getCurrentUserRequest,
-    getCurrentUserSuccess,
-    getCurrentUserError,
+  signUpRequest,
+  signUpSuccess,
+  signUpError,
+  signInRequest,
+  signInSuccess,
+  signInError,
+  signOutRequest,
+  signOutSuccess,
+  signOutError,
+  // getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 } = actions;
 
 const initialUserState = {
-    token: null,
-    verify: null,
-    _id: null,
-    email: null,
-    password: null,
-    name: null,
-    __v: null,
+  token: null,
+  verify: null,
+  _id: null,
+  email: null,
+  password: null,
+  name: null,
+  __v: null,
 };
 
 const user = createReducer([initialUserState], {
-    [signUpSuccess]: (_, { payload }) => payload.user,
-    [signInSuccess]: (_, { payload }) => payload.user,
-    [signOutSuccess]: () => initialUserState,
-    [getCurrentUserSuccess]: (_, { payload }) => payload,
+  [signUpSuccess]: (_, { payload }) => payload.user,
+  [signInSuccess]: (_, { payload }) => payload.user,
+  [signOutSuccess]: () => initialUserState,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const token = createReducer(null, {
-    [signUpSuccess]: (_, { payload }) => payload.user.token,
-    [signInSuccess]: (_, { payload }) => payload.user.token,
-    [signOutSuccess]: () => null,
+  [signUpSuccess]: (_, { payload }) => payload.user.token,
+  [signInSuccess]: (_, { payload }) => payload.user.token,
+  [signOutSuccess]: () => null,
 });
 
 const error = createReducer('', {
-    [signUpError]: (_, { payload }) => payload,
-    [signUpSuccess]: () => '',
-    [signInError]: (_, { payload }) => payload,
-    [signInSuccess]: () => '',
-    [signOutError]: (_, { payload }) => payload,
-    [signOutSuccess]: () => '',
-    [getCurrentUserError]: (_, { payload }) => payload,
-    [getCurrentUserSuccess]: () => '',
+  [signUpError]: (_, { payload }) => payload,
+  [signUpSuccess]: () => '',
+  [signInError]: (_, { payload }) => payload,
+  [signInSuccess]: () => '',
+  [signOutError]: (_, { payload }) => payload,
+  [signOutSuccess]: () => '',
+  [getCurrentUserError]: (_, { payload }) => payload,
+  [getCurrentUserSuccess]: () => '',
 });
 
 const isAuthorized = createReducer(false, {
-    [signUpSuccess]: () => true,
-    [signInSuccess]: () => true,
-    [getCurrentUserSuccess]: () => true,
-    [signUpError]: () => false,
-    [signInError]: () => false,
-    [signOutError]: () => false,
-    [getCurrentUserError]: () => false,
-    [signOutSuccess]: () => false,
+  [signUpSuccess]: () => true,
+  [signInSuccess]: () => true,
+  [getCurrentUserSuccess]: () => true,
+  [signUpError]: () => false,
+  [signInError]: () => false,
+  [signOutError]: () => false,
+  [getCurrentUserError]: () => false,
+  [signOutSuccess]: () => false,
 });
 
 const loading = createReducer(false, {
-    [signUpRequest]: () => true,
-    [signUpSuccess]: () => false,
-    [signUpError]: () => false,
-    [signInRequest]: () => true,
-    [signInSuccess]: () => false,
-    [signInError]: () => false,
-    [signOutRequest]: () => true,
-    [signOutSuccess]: () => false,
-    [signOutError]: () => false,
+  [signUpRequest]: () => true,
+  [signUpSuccess]: () => false,
+  [signUpError]: () => false,
+  [signInRequest]: () => true,
+  [signInSuccess]: () => false,
+  [signInError]: () => false,
+  [signOutRequest]: () => true,
+  [signOutSuccess]: () => false,
+  [signOutError]: () => false,
 });
 
 export default combineReducers({ user, token, error, isAuthorized, loading });
