@@ -20,7 +20,10 @@ const addProduct =
         dispatch(actions.addProductRequest());
 
         try {
-            const { data } = await axios.post('https://obscure-shelf-16384.herokuapp.com/api/eaten_products');
+            const { data } = await axios.post(
+                'https://obscure-shelf-16384.herokuapp.com/api/eaten_products',
+                product,
+            );
             dispatch(actions.addProductSuccess(data));
         } catch (error) {
             dispatch(actions.addProductError(error.message));

@@ -6,7 +6,10 @@ import './styles.css';
 const RegLoginView = () => {
     return (
         <ContainerForView>
+            {/* eslint-disable-next-line */}
             {location.pathname === '/register' && <Registration />}
+
+            {/* eslint-disable-next-line */}
             {location.pathname === '/login' && <Login />}
         </ContainerForView>
     );

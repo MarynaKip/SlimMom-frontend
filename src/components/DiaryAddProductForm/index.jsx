@@ -79,7 +79,7 @@ export default function DiaryAddProductForm() {
 
                 <datalist id="products-for-add">
                     <option value="Гречневая крупа (ядрица) зелёная"></option>
-                    <option value="Амарантовые отруби DiDi с гречей"></option>
+                    <option value="Кускус Агро-Альянс"></option>
                     <option value="Манная крупа Агро-Альянс"></option>
                 </datalist>
 

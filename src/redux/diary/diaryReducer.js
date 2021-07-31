@@ -10,13 +10,13 @@ const {
     deleteProductError,
 } = actions;
 
-const products = {
+const initialDiaryState = {
     items:[]
 };
 
-const items = createReducer(products.items, {
+const items = createReducer(initialDiaryState.items, {
   // [fetchContactsSuccess]: (_, { payload }) => payload,
-  [addProductSuccess]: (state, { payload }) => [payload, ...state],
+  [actions.addProductSuccess]: (state, { payload }) => [payload, ...state],
   // [deleteContactSuccess]: (state, { payload }) =>
   //   state.filter(({ id }) => id !== payload),
 
@@ -25,3 +25,4 @@ const items = createReducer(products.items, {
 export default combineReducers({
   items
 });
+
