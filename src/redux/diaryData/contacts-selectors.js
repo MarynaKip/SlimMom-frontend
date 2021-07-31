@@ -18,13 +18,13 @@ const getFilter = (state) => state.contacts.filter;
 // };
 
 const getVisibleContacts = createSelector(
-    [getContactsItems, getFilter],
-    (items, filter) => {
-      const normalizedfilter = filter.toLowerCase();
-      return items.filter(({name}) => {
-        return name.toLowerCase().includes(normalizedfilter);
-      });
-    },
+  [getContactsItems, getFilter],
+  (items, filter) => {
+    const normalizedfilter = filter.toLowerCase();
+    return items.filter(({name}) => {
+      return name.toLowerCase().includes(normalizedfilter);
+    });
+  },
 );
 
 export default {
