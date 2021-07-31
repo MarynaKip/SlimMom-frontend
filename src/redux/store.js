@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import process from 'process';
+// import process from 'process';
 // import logger from 'redux-logger';
 import {
     persistStore,
@@ -12,6 +12,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import registration from './auth/auth-reducers';
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -31,10 +32,10 @@ const authPersistConfig = {
 const store = configureStore({
     reducer: {
         user: null,
-        auth: persistReducer(authPersistConfig, null),
+        auth: persistReducer(authPersistConfig, registration),
     },
     middleware,
-    devTools: process.env.NODE_ENV === 'development',
+    // devTools: process.env.NODE_ENV === 'development',
 });
 
 const persistor = persistStore(store);
