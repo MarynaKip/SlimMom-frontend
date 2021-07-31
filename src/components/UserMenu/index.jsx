@@ -37,7 +37,7 @@ const UserMenu = ({userName,onLogOut,
           type="button"
           onClick={() => menuHandler(!active)}
         >
-          {active ? (
+          {!active ? (
             <svg
               width="24"
               height="24"
