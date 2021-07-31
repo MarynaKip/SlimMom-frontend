@@ -3,6 +3,8 @@ import Login from '../../components/LoginForm';
 import ContainerForView from '../../components/ContainerForLogin';
 import './styles.css';
 
+
+
 const RegLoginView = () => {
     return (
         <ContainerForView>
