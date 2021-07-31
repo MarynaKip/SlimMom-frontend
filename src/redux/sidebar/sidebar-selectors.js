@@ -1,9 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getDailyAmount = state => state.user.dailyAmount;
-const getConsumedCal = state => state.user.consumedCal; //нужно узнать место хранения данных в редаксе
+const getDailyAmount = state => state.currentDateData.dailyAmount;
+const getConsumedCal = state => state.currentDateData.consumedCal; //нужно узнать место хранения данных в редаксе
 const getNotRecommendedProducts = state => state.user.notRecommendedProducts;
-const getCurrentDate = state => state.currentDate.date; //нужно узнать место хранения данных в редаксе
+const getCurrentDate = state => state.currentDateData.date; //нужно узнать место хранения данных в редаксе
 
 const getLeftCal = createSelector(
     [getDailyAmount, getConsumedCal],
@@ -15,11 +15,11 @@ const getPercentage = createSelector(
     (dailyAmount, consumedCal) => Math.round((consumedCal * 100) / dailyAmount),
 );
 
-const sidebarSelector = {
+const sidebarSelectors = {
     getNotRecommendedProducts,
     getCurrentDate,
     getLeftCal,
     getPercentage,
 };
 
-export default sidebarSelector;
+export default sidebarSelectors;
