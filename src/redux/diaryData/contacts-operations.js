@@ -20,9 +20,9 @@ const addContact = ({name, number}) => (dispatch) => {
   dispatch(addContactRequest());
 
   axios
-      .post('/contacts', contact)
-      .then(({data}) => dispatch(addContactSuccess(data)))
-      .catch((error) => dispatch(addContactError(error.message)));
+    .post('/contacts', contact)
+    .then(({data}) => dispatch(addContactSuccess(data)))
+    .catch((error) => dispatch(addContactError(error.message)));
 };
 
 const deleteContact = (id) => async (dispatch) => {
