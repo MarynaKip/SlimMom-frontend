@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authActions from './auth-actions';
-const path = 'http://localhost:8080/api';
+const path = 'https://obscure-shelf-16384.herokuapp.com/api/';
 
 axios.defaults.baseURL = path;
 
@@ -14,7 +14,7 @@ const token = {
 };
 
 // add token to header after success user register
-const register = (credentials) => async (dispatch) => {
+const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
@@ -28,7 +28,7 @@ const register = (credentials) => async (dispatch) => {
 };
 
 // add token to header after success user login
-const logIn = (credentials) => async (dispatch) => {
+const logIn = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
@@ -41,7 +41,7 @@ const logIn = (credentials) => async (dispatch) => {
 };
 
 // delete token after success user logOut
-const logOut = () => async (dispatch) => {
+const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
     await axios.post('/users/logOut');
