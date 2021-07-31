@@ -3,6 +3,9 @@ import './styles.css';
 // import desctopLogo from '../../images/logo-desctop-mini.png';
 // import tabletLogo from '../../images/logo-tablet-mini.png';
 // import mobileLogo from '../../images/logo-mobile-mini.png';
+import { connect } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
+
 const Logo = ({isAuthenticated}) => {
   const logoImageStyle = isAuthenticated ? 'auth_logo_image' : 'logo_image';
   return (
@@ -26,4 +29,10 @@ const Logo = ({isAuthenticated}) => {
     </div>
   );
 };
-export default Logo;
+
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+
+});
+
+export default connect(mapStateToProps,null)(Logo);
