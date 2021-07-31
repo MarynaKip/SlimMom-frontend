@@ -6,12 +6,12 @@ import './styles.css';
 
 
 const RegLoginView = () => {
-    return (
-        <ContainerForView>
-            {location.pathname === '/register' && <Registration />}
-            {location.pathname === '/login' && <Login />}
-        </ContainerForView>
-    );
+  return (
+    <ContainerForView>
+      {location.pathname === '/register' && <Registration />}
+      {location.pathname === '/login' && <Login />}
+    </ContainerForView>
+  );
 };
 
 export default RegLoginView;

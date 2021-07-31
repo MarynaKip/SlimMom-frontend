@@ -7,36 +7,61 @@ import './App.css';
 import PromoView from './pages/PromoView';
 import DiaryPageView from './pages/DiaryPageView';
 import RegisterLoginPageView from './pages/RegisterLoginPageView';
-import DailyCaloriesForm from './components/DiaryAddProductForm';
+// import Header from './components/Header';
 import CalculatorPageView from './pages/CalculatorPageView';
+import { connect } from 'react-redux';
+import { authOperations, authSelectors } from './redux/auth';
+import { useEffect, Suspense, lazy } from 'react';
 
-const App = () => {
-    return (
-        <>
-            <Switch>
-                <PublicRoute exact path={routes.home} component={PromoView} />
-                <PublicRoute
-                    path={routes.register}
-                    restricted
-                    redirectTo={routes.mydiary}
-                    component={RegisterLoginPageView}
-                />
-                <PublicRoute
-                    path={routes.login}
-                    restricted
-                    redirectTo={routes.mydiary}
-                    component={RegisterLoginPageView}
-                />
-                <PublicRoute path={routes.mydiary} component={DiaryPageView} />
-                <PublicRoute
-                    path={routes.calculator}
-                    component={CalculatorPageView}
-                />
-                {/* {modal && <Modal />} */}
-                {/* <Redirect to="/" /> */}
-            </Switch>
-        </>
-    );
+const App = ({ onGetCurrentUser }) => {
+  useEffect(() => {
+    onGetCurrentUser();
+  }, []);
+  return (
+    <div>
+      <Switch>
+        <PublicRoute
+          exact
+          path={routes.home}
+          restricted
+          redirectTo={routes.mydiary}
+          component={PromoView}
+        />
+        <PublicRoute
+          path={routes.register}
+          restricted
+          redirectTo={routes.mydiary}
+          component={RegisterLoginPageView}
+        />
+        <PublicRoute
+          path={routes.login}
+          restricted
+          redirectTo={routes.mydiary}
+          component={RegisterLoginPageView}
+        />
+        <PublicRoute path={routes.calculator} component={CalculatorPageView} />
+        <PrivateRoute
+          path={routes.mydiary}
+          redirectTo={routes.home}
+          component={DiaryPageView}
+        />
+        <PrivateRoute
+          path={routes.calculator}
+          redirectTo={routes.calculator}
+          component={CalculatorPageView}
+        />
+        {/* {modal && <Modal />} */}
+        <Redirect to={routes.home} />
+      </Switch>
+    </div>
+  );
 };
 
-export default App;
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

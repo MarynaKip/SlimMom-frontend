@@ -1,83 +1,78 @@
 import axios from 'axios';
 import authActions from './auth-actions';
+const path = 'https://obscure-shelf-16384.herokuapp.com';
 
-axios.defaults.baseURL = 'https://obscure-shelf-16384.herokuapp.com';
+axios.defaults.baseURL = path;
 
 const token = {
-    set(JWT) {
-        axios.defaults.headers.common.Authorization = `Bearer ${JWT}`;
-    },
-    unset() {
-        axios.defaults.headers.common.Authorization = '';
-    },
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
 };
 
-//registration reducer
-const signUpUser = personalData => async dispatch => {
-    dispatch(authActions.signUpRequest());
+// add token to header after success user register
+const register = credentials => async dispatch => {
+  dispatch(authActions.registerRequest());
 
-    try {
-        const response = await axios.post('/api/user/registration', personalData);
-
-        token.set(response.data.user.token);
-        dispatch(authActions.signUpSuccess(response.data));
-    } catch (error) {
-        dispatch(authActions.signUpError(error.message));
-    }
+  try {
+    const response = await axios.post('/api/user/registration', credentials);
+    console.log(response.data);
+    token.set(response.data.token);
+    dispatch(authActions.registerSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.registerError(error.message));
+  }
 };
 
-//login reducer
-const signInUser = personalData => async dispatch => {
-    dispatch(authActions.signInRequest());
-
-    try {
-        const response = await axios.post('/api/user/login', personalData);
-
-        token.set(response.data.user.token);
-        dispatch(authActions.signInSuccess(response.data));
-    } catch (error) {
-        dispatch(authActions.signInError(error.message));
-    }
+// add token to header after success user login
+const logIn = credentials => async dispatch => {
+  dispatch(authActions.loginRequest());
+  try {
+    const response = await axios.post('/api/user/login', credentials);
+    // console.log('response.data', response.data.user.token);
+    token.set(response.data.user.token);
+    dispatch(authActions.loginSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
 };
 
-//logout reducer
-const signOutUser = () => async dispatch => {
-    dispatch(authActions.signOutRequest());
+// delete token after success user logOut
+const logOut = () => async dispatch => {
+  dispatch(authActions.logoutRequest());
+  try {
+    await axios.post('/api/user/logout');
 
-    try {
-        await axios.post('/api/user/logout');
-
-        token.unset();
-        dispatch(authActions.signOutSuccess());
-    } catch (error) {
-        dispatch(authActions.signOutError(error.message));
-    }
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error.message));
+  }
 };
 
-//about user reducer
+// get token from cerrent user state if it exist or do nothing if not exist
 const getCurrentUser = () => async (dispatch, getState) => {
-    const {
-        persistedReducer: { token: persistedToken },
-    } = getState();
+  const {
+    auth: { token: persistedToken },
+  } = getState();
 
-    if (!persistedToken) return;
+  if (!persistedToken) {
+    return;
+  }
 
-    token.set(persistedToken);
+  token.set(persistedToken);
 
-    dispatch(authActions.getCurrentUserRequest());
+  dispatch(authActions.getCurrentUserRequest());
 
-    try {
-        const response = await axios.get('users/current');
-        dispatch(authActions.getCurrentUserSuccess(response.data));
-    } catch (error) {
-        dispatch(authActions.getCurrentUserError(error.message));
-    }
+  try {
+    const response = await axios.get('/api/user/current');
+    dispatch(authActions.getCurrentUserSuccess(response.data.currentUser));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error.message));
+  }
 };
 
-// eslint-disable-next-line
-export default {
-    signUpUser,
-    signInUser,
-    signOutUser,
-    getCurrentUser
-};
+export default { register, logOut, logIn, getCurrentUser };
