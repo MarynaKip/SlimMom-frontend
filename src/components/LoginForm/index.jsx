@@ -29,7 +29,7 @@ const Login = ({onLogin}) => {
         onSubmit={async (values) => {
           const payload = { ...values };
           onLogin(payload);
-          console / log('payload', payload);
+          console.log('payload', payload);
           await new Promise((r) => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}
