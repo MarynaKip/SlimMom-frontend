@@ -28,10 +28,11 @@ const Login = ({onLogin}) => {
         validationSchema={SignupSchema}
         onSubmit={async (values) => {
           const payload = { ...values };
-          onLogin(payload);
           console.log('payload', payload);
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+          onLogin(payload);
+         
+        //   await new Promise((r) => setTimeout(r, 500));
+        //   alert(JSON.stringify(values, null, 2));
         }}
       >
         {({errors, touched}) => (
