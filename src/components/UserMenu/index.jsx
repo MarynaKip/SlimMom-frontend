@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import './styles.css';
 import UserNavigation from '../UserNavigation';
+import { connect } from 'react-redux';
+import { authSelectors,authOperations } from '../../redux/auth';
 
 // заглушки
 const name = 'Zinoviy';
@@ -11,21 +13,21 @@ const onLogout = () => {
 // const togleMenu = () => {
 //   burgerOpen = burgerOpen ? false : true;
 // };
-const UserMenu = ({
+const UserMenu = ({userName,onLogOut,
   menuHandler,
-  active /* name, onLogout, burgerOpened */,
+  active /* burgerOpened */,
 }) => {
   return (
     <div className="user_menu_container">
       <UserNavigation />
       <div className="user_auth_container">
         <div className="user_auth_sub_container">
-          <p className="user_name">{name}</p>
+          <p className="user_name">{userName}</p>
           <div className="user_menu_separator"></div>
           <button
             className="logout_button"
             type="button"
-            onClick={onLogout}
+            onClick={onLogOut}
           >
                         Выйти
           </button>
@@ -73,5 +75,11 @@ const UserMenu = ({
     </div>
   );
 };
-
-export default UserMenu;
+const mapDispatchToProps = {
+  onLogOut: authOperations.logOut,
+};
+const mapStateToProps = state => ({
+//   isAuthenticated: authSelectors.getIsAuthenticated(state),
+  userName: authSelectors.getUserName(state) 
+});
+export default connect(mapStateToProps,mapDispatchToProps)(UserMenu);
