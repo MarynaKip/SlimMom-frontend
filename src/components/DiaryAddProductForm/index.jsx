@@ -18,22 +18,17 @@ export default function DiaryAddProductForm() {
   const [productWeight, setProductWeight] = useState('');
   const [query, setQuery] = useState('');
   const [datalist, setDatalist] = useState([]);
-  const [isActive, setActive] = useState(true);
 
   const dispatch = useDispatch();
 
   const ifProductAccess = datalist.find(elem => elem.title.ru === query);
-  
-  const ToggleClass = () => {
-    setActive(!isActive);
-  };
 
   const handleFormSubmit = event => {
     event.preventDefault();
     setProductName(query);
     if (ifProductAccess) {
       dispatch(diaryOperations.addProduct({ query, productWeight }));
-      // resetInput();
+      resetInput();
       // setActive(!isActive);
     } else alert('Пожалуйста, введите название продукта из списка');
   };
@@ -71,14 +66,7 @@ export default function DiaryAddProductForm() {
 
   return (
     <div>
-      <form
-        className={
-         ( !isMobile && isActive)
-            ? `${styles.addProductForm}`
-            : `${styles.addProductFormSleep}`
-        }
-        onSubmit={handleFormSubmit}
-      >
+      <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
         <DebounceInput
           minLength={2}
           debounceTimeout={1000}

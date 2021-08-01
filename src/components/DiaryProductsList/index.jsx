@@ -1,15 +1,20 @@
 import styles from '../DiaryProductsList/DiaryProductsList.module.css';
-import { useSelector } from 'react-redux';
-import { diarySelectors } from '../../redux/diary';
+import { useDispatch, useSelector,connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
+import { diarySelectors } from '../../redux/diary';
+
+
 
 import DiaryProductsListItem from '../DiaryProductsListItem';
 
-export default function DiaryProductsList() {
+const DiaryProductsList = ({ historyProductsArray, historyDate }) => {
+
   const today = new Date().toLocaleDateString().split('.').reverse().join('-');
-  const historyProductsArray = useSelector(diarySelectors.getHistoryProducts);
-  const historyDate = useSelector(diarySelectors.getHistoryDate);
+
+
   return (
+  
     <>
       {historyProductsArray.length !== 0 ? (
         <ul className={styles.productsListDiary}>
@@ -31,3 +36,12 @@ export default function DiaryProductsList() {
     </>
   );
 }
+;
+
+
+const mapStateToProps = state => ({
+  currentProductsArray: diarySelectors.getProducts(state),
+  historyProductsArray: diarySelectors.getHistoryProducts(state),
+  historyDate: diarySelectors.getHistoryDate(state)
+});
+export default connect(mapStateToProps)(DiaryProductsList);

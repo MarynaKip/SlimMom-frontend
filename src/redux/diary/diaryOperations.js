@@ -1,8 +1,6 @@
 import actions from './diaryActions';
 import axios from 'axios';
 
-axios.defaults.headers.common['Authorization'] =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
 
 const addProduct =
   ({ query, productWeight }) =>
