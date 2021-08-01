@@ -72,8 +72,9 @@ const fetchProducts =
   };
 
 const fetchHistory =
-  ({ date }) =>
+  ({ value }) =>
   async dispatch => {
+    const date = value.toLocaleDateString().split('.').reverse().join('-');
     dispatch(actions.fetchHistoryRequest());
 
     try {

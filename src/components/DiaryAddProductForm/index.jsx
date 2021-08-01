@@ -18,9 +18,14 @@ export default function DiaryAddProductForm() {
   const [productWeight, setProductWeight] = useState('');
   const [query, setQuery] = useState('');
   const [datalist, setDatalist] = useState([]);
+  const [isActive, setActive] = useState(false);
+
   const dispatch = useDispatch();
 
   const ifProductAccess = datalist.find(elem => elem.title.ru === query);
+  const ToggleClass = () => {
+    setActive(!isActive);
+  };
 
   const handleFormSubmit = event => {
     event.preventDefault();
@@ -64,7 +69,14 @@ export default function DiaryAddProductForm() {
 
   return (
     <div>
-      <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
+      <form
+        className={
+          isActive
+            ? `${styles.addProductForm}`
+            : `${styles.addProductFormSleep}`
+        }
+        onSubmit={handleFormSubmit}
+      >
         <DebounceInput
           minLength={2}
           debounceTimeout={1000}
@@ -107,6 +119,16 @@ export default function DiaryAddProductForm() {
           </button>
         )}
       </form>
-         </div>
+
+      {isMobile ? (
+        <button
+          className={styles.buttonToForm}
+          type="button"
+          onClick={ToggleClass}
+        >
+          +
+        </button>
+      ) : null}
+    </div>
   );
 }
