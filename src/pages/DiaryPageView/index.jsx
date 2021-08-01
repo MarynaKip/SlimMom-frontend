@@ -6,18 +6,18 @@ import Sidebar from '../../components/Sidebar';
 import './styles.css';
 import Header from '../../components/Header';
 const DiaryPageView = () => {
-    return (
-        <div className="bg-wrapper__diary">
-            <Header />
-            <div className="diarypage-container">
-                <ContainerForDiary>
-                    <DiaryDateСalendar />
-                    <DiaryAddProductForm />
-                    <DiaryProductsList />
-                </ContainerForDiary>
-                <Sidebar />
-            </div>
-        </div>
-    );
+  return (
+    <div className="bg-wrapper__diary">
+      <Header />
+      <div className="diarypage-container">
+        <ContainerForDiary>
+          <DiaryDateСalendar />
+          <DiaryAddProductForm />
+          <DiaryProductsList />
+        </ContainerForDiary>
+        <Sidebar />
+      </div>
+    </div>
+  );
 };
 export default DiaryPageView;

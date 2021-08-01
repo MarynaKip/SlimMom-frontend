@@ -23,12 +23,12 @@ import styles from '../DiaryProductsList/DiaryProductsList.module.css';
 // }]
 
 const DiaryProductsList = () => {
-    return (<ul className = {styles.productsListDiary}>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-        <DiaryProductsListItem/>
-    </ul>
-    );
+  return (<ul className = {styles.productsListDiary}>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+    <DiaryProductsListItem/>
+  </ul>
+  );
 };
 export default DiaryProductsList;
