@@ -9,95 +9,95 @@ import { DebounceInput } from 'react-debounce-input';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
 axios.defaults.headers.common['Authorization'] =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA0ZjRiNjJiODVmYTAwMWMyMmFlZDYiLCJlbWFpbCI6ImxhaW1hdkBnbWFpbC5jb20iLCJpYXQiOjE2Mjc3MTQ3NDJ9.600zEwSXhkCYvV1Tzml5wZ7fmI22-pA_R7x9gwi5X3s';
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
 
 const isMobile = window.screen.width < 768;
 
 export default function DiaryAddProductForm() {
-    const [productName, setProductName] = useState('');
-    const [productWeight, setProductWeight] = useState('');
-    const [query, setQuery] = useState('');
-    const [datalist, setDatalist] = useState([]);
-    const dispatch = useDispatch();
+  const [productName, setProductName] = useState('');
+  const [productWeight, setProductWeight] = useState('');
+  const [query, setQuery] = useState('');
+  const [datalist, setDatalist] = useState([]);
+  const dispatch = useDispatch();
 
-    const handleFormSubmit = event => {
-        event.preventDefault();
-        setProductName(query);
-        dispatch(diaryOperations.addProduct({ query, productWeight }));
-    };
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    setProductName(query);
+    dispatch(diaryOperations.addProduct({ query, productWeight }));
+  };
 
-    const fetchProducts = async searchQuery => {
-        try {
-            const { data } = await axios.get(
-                `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
-            );
-            setDatalist(data.data);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-    const handleChange = useCallback(event => {
-        setQuery(event.target.value);
-    }, []);
+  const fetchProducts = async searchQuery => {
+    try {
+      const { data } = await axios.get(
+        `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
+      );
+      setDatalist(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleChange = useCallback(event => {
+    setQuery(event.target.value);
+  }, []);
 
-    const onChangeProductWeight = useCallback(event => {
-        setProductWeight(event.target.value);
-    }, []);
+  const onChangeProductWeight = useCallback(event => {
+    setProductWeight(event.target.value);
+  }, []);
 
-    useEffect(() => {
-        if (query !== '') {
-            fetchProducts(query);
-        }
-    }, [query]);
+  useEffect(() => {
+    if (query !== '') {
+      fetchProducts(query);
+    }
+  }, [query]);
 
-    return (
-        <div>
-            <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
-                <DebounceInput
-                    minLength={2}
-                    debounceTimeout={1000}
-                    className={styles.inputAddProductFormName}
-                    id="productName"
-                    name="productName"
-                    type="productName"
-                    value={productName}
-                    onChange={handleChange}
-                    placeholder="Введите название продукта"
-                    required
-                    list="products-for-add"
-                    autoComplete="off"
-                />
+  return (
+    <div>
+      <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={1000}
+          className={styles.inputAddProductFormName}
+          id="productName"
+          name="productName"
+          type="productName"
+          value={productName}
+          onChange={handleChange}
+          placeholder="Введите название продукта"
+          required
+          list="products-for-add"
+          autoComplete="off"
+        />
 
-                <datalist id="products-for-add">
-                    {datalist.map(({ title }) => (
-                        <option value={title.ru} key={uuidv4()}></option>
-                    ))}
-                </datalist>
+        <datalist id="products-for-add">
+          {datalist.map(({ title }) => (
+            <option value={title.ru} key={uuidv4()}></option>
+          ))}
+        </datalist>
 
-                <input
-                    className={styles.inputAddProductFormAmount}
-                    id="grams"
-                    name="productWeight"
-                    type="grams"
-                    value={productWeight}
-                    onChange={onChangeProductWeight}
-                    placeholder="Граммы"
-                    required
-                    autoComplete="off"
-                />
-                {isMobile ? (
-                    <button
-                        type="submit"
-                        className={styles.buttonAddProductMobile}
-                    >
+        <input
+          className={styles.inputAddProductFormAmount}
+          id="grams"
+          name="productWeight"
+          type="grams"
+          value={productWeight}
+          onChange={onChangeProductWeight}
+          placeholder="Граммы"
+          required
+          autoComplete="off"
+        />
+        {isMobile ? (
+          <button
+            type="submit"
+            className={styles.buttonAddProductMobile}
+          >
                         Добавить
-                    </button>
-                ) : (
-                    <button type="submit" className={styles.buttonAddProduct}>
+          </button>
+        ) : (
+          <button type="submit" className={styles.buttonAddProduct}>
                         +
-                    </button>
-                )}
-            </form>
-        </div>
-    );
+          </button>
+        )}
+      </form>
+    </div>
+  );
 }

@@ -23,9 +23,9 @@ import currentDateData from './sidebar/sidebar-reducers';
 const devtols =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const devtols =
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__();
+// const devtols =
+//     window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//     window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const middleware = [
   ...getDefaultMiddleware({

@@ -17,15 +17,15 @@ const productSearchError = createAction('diary/productSearchError');
 
 //eslint-disable-next-line
 export default {
-    addProductRequest,
-    addProductSuccess,
-    addProductError,
-    deleteProductRequest,
-    deleteProductSuccess,
-    deleteProductError,
-    productSearchRequest,
-    productSearchSuccess,
-    productSearchError
+  addProductRequest,
+  addProductSuccess,
+  addProductError,
+  deleteProductRequest,
+  deleteProductSuccess,
+  deleteProductError,
+  productSearchRequest,
+  productSearchSuccess,
+  productSearchError
 
 
 };
