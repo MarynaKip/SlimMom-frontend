@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getProducts = state => state.diary.items;
-const getDate = state => state.diary.history.date;
+const getProducts = state => state.diary.currentProducts;
+const getHistoryDate = state => state.diary.history.date;
+const getHistoryProducts = state => state.diary.history.itemsHistory;
 //eslint-disable-next-line
-export default { getProducts, getDate };
+export default { getProducts, getHistoryDate, getHistoryProducts };

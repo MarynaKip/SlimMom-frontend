@@ -9,7 +9,7 @@ import { DebounceInput } from 'react-debounce-input';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
 axios.defaults.headers.common['Authorization'] =
-    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
 
 const isMobile = window.screen.width < 768;
 
@@ -86,15 +86,12 @@ export default function DiaryAddProductForm() {
           autoComplete="off"
         />
         {isMobile ? (
-          <button
-            type="submit"
-            className={styles.buttonAddProductMobile}
-          >
-                        Добавить
+          <button type="submit" className={styles.buttonAddProductMobile}>
+            Добавить
           </button>
         ) : (
           <button type="submit" className={styles.buttonAddProduct}>
-                        +
+            +
           </button>
         )}
       </form>

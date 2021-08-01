@@ -9,6 +9,7 @@ export default function DiaryProductsListItem({
   productName,
   productWeight,
   productKkal,
+  buttonRender
 }) {
   const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ export default function DiaryProductsListItem({
         {productKkal}{' '}
         <span className={styles.diaryListItemCaloriesValue}>ккал</span>
       </span>
-      <button
+      {buttonRender?(<button
         className={styles.diaryListItemButton}
         type="submit"
         onClick={() => {
@@ -31,7 +32,8 @@ export default function DiaryProductsListItem({
         }}
       >
                 &#10006;
-      </button>
+      </button>):null }
+      
     </li>
   );
 }
