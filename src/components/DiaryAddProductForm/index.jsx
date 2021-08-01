@@ -8,8 +8,8 @@ import { DebounceInput } from 'react-debounce-input';
 
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
-axios.defaults.headers.common['Authorization'] =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
+// axios.defaults.headers.common['Authorization'] =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
 
 const isMobile = window.screen.width < 768;
 
@@ -18,11 +18,12 @@ export default function DiaryAddProductForm() {
   const [productWeight, setProductWeight] = useState('');
   const [query, setQuery] = useState('');
   const [datalist, setDatalist] = useState([]);
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(true);
 
   const dispatch = useDispatch();
 
   const ifProductAccess = datalist.find(elem => elem.title.ru === query);
+  
   const ToggleClass = () => {
     setActive(!isActive);
   };
@@ -32,7 +33,8 @@ export default function DiaryAddProductForm() {
     setProductName(query);
     if (ifProductAccess) {
       dispatch(diaryOperations.addProduct({ query, productWeight }));
-      resetInput();
+      // resetInput();
+      // setActive(!isActive);
     } else alert('Пожалуйста, введите название продукта из списка');
   };
 
@@ -71,7 +73,7 @@ export default function DiaryAddProductForm() {
     <div>
       <form
         className={
-          isActive
+         ( !isMobile && isActive)
             ? `${styles.addProductForm}`
             : `${styles.addProductFormSleep}`
         }
