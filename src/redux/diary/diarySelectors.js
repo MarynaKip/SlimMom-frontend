@@ -1,5 +1,3 @@
-import { createSelector } from '@reduxjs/toolkit';
-
 const getProducts = state => state.diary.currentProducts;
 const getHistoryDate = state => state.diary.history.date;
 const getHistoryProducts = state => state.diary.history.itemsHistory;

@@ -12,7 +12,10 @@ import '../../index.css';
 
 export default function DiaryDateСalendar() {
   const [value, onChange] = useState(new Date());
+  
   const [date, setDate] = useState(new Date().toLocaleDateString().split('.').reverse().join('-'));
+    const dispatch = useDispatch();
+
 
   const changeDate = () => {
     setDate(value.toLocaleDateString().split('.').reverse().join('-'));
@@ -21,14 +24,10 @@ export default function DiaryDateСalendar() {
     changeDate();
   }, [value]);
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(diaryOperations.fetchHistory({ date}));
-  }, [0,date]);
-
-    // const dateFromStore = useSelector(diarySelectors.date);
-
+  }, [date]);
 
   return (
     <>
