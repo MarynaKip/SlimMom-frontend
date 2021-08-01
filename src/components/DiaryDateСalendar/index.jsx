@@ -7,12 +7,12 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { diaryOperations, diarySelectors } from '../../redux/diary';
 
 
-import '../DiaryDateСalendar/calendarCustonStyles.css';
+import '../DiaryDateСalendar/calendarCustomStyles.css';
 import '../../index.css';
 
 export default function DiaryDateСalendar() {
   const [value, onChange] = useState(new Date());
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date().toLocaleDateString().split('.').reverse().join('-'));
 
   const changeDate = () => {
     setDate(value.toLocaleDateString().split('.').reverse().join('-'));
@@ -25,7 +25,7 @@ export default function DiaryDateСalendar() {
 
   useEffect(() => {
     dispatch(diaryOperations.fetchHistory({ date}));
-  }, [date]);
+  }, [0,date]);
 
     // const dateFromStore = useSelector(diarySelectors.date);
 

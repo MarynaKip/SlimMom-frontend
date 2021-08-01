@@ -21,10 +21,7 @@ export default function DiaryProductsList() {
   }    
 }
   
-  
-  // const productsToday =  useSelector(diarySelectors.getProducts);
-  // const productsForList = useSelector(diarySelectors.getHistoryProducts);
-  // console.log(productsForList);
+
   return (
     <ul className={styles.productsListDiary}>
       {productsForList().map(({productName, productWeight, productKkal }) => (
