@@ -50,10 +50,17 @@ const currentProducts = createReducer(initialDiaryState.currentProducts, {
 const history = createReducer(initialHistoryState, {
   [actions.fetchHistorySuccess]: (state, { payload }) => {
     const date = payload.date;
-    if (today !== date) {
-      const itemsHistory = payload.data.data;
-      return { date, itemsHistory };
-    }
+    // Калькулятор работает от хистори даты - календарь записывает свое значение в хистори
+    // значит и мепать список надо по хистори - выбирать карент список не надо
+    // карент только для сайдбара - чтобы не менялся при смене истории а дату сайдбар может брать текущую
+    // из Date() (now) - по логике первый фетч идет на сервер за текущей датой
+    // а значит в карент дату с первого раза попадут текущие продукты
+    // if (today !== date) {
+    //   const itemsHistory = payload.data.data;
+    //   return { date, itemsHistory };
+    // }
+    const itemsHistory = payload.data.data;
+    return { date, itemsHistory };
   },
 });
 
