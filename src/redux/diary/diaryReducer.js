@@ -27,7 +27,7 @@ const initialDiaryState = {
 };
 
 const initialHistoryState = {
-  date: '',
+  date: '1970-01-01',
   itemsHistory: [],
 };
 
@@ -57,7 +57,6 @@ const history = createReducer(initialHistoryState, {
   },
 });
 
-// const date = createReducer(initialDateState, {});
 
 export default combineReducers({
   // date,
