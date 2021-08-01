@@ -11,28 +11,42 @@ const {
   productSearchRequest,
   productSearchSuccess,
   productSearchError,
+  fetchHistoryRequest,
+  fetchHistorySuccess,
+  fetchHistoryError,
 } = actions;
 
 const initialDiaryState = {
   items: [],
-  // searchQuery:''
+
 };
 
-const items = createReducer(initialDiaryState.items, {
-  // [fetchContactsSuccess]: (_, { payload }) => payload,
-  [actions.addProductSuccess]: (state, { payload }) => [
-    payload.data,
-    ...state,
-  ],
+const initialHistoryState = {
+    date: '',
+    itemsHistory:[]
+  }  
 
+const items = createReducer(initialDiaryState.items, {
+  [actions.addProductSuccess]: (state, { payload }) =>
+    [ ...state, payload.data],
   [actions.deleteProductSuccess]: (state, { payload }) => {
-    // console.log('state', state);
-    // console.log('payload', payload);
-    state.filter(({ productName }) => productName !== payload);
+    const newState = state.filter(({ productName }) => productName !== payload);
+    return [...newState]
   },
 });
 
+const history = createReducer(initialHistoryState, {
+  [actions.fetchHistorySuccess]: (state, { payload }) => {
+  
+const date = payload.date;
+    const itemsHistory = payload.data.data;
+    return {date,itemsHistory }
+    // state.itemsHistory = 
+ }
+})
+
+
 export default combineReducers({
   items,
-  // searchQuery,
+  history
 });

@@ -13,6 +13,10 @@ const productSearchRequest = createAction('diary/productSearchRequest');
 const productSearchSuccess = createAction('diary/productSearchSuccess');
 const productSearchError = createAction('diary/productSearchError');
 
+const fetchHistoryRequest = createAction('diary/fetchHistoryRequest');
+const fetchHistorySuccess = createAction('diary/fetchHistorySuccess');
+const fetchHistoryError = createAction('diary/fetchHistoryError')
+
 // const changeFilter = createAction('contacts/changeFilter');
 
 //eslint-disable-next-line
@@ -25,7 +29,8 @@ export default {
   deleteProductError,
   productSearchRequest,
   productSearchSuccess,
-  productSearchError
-
-
+  productSearchError,
+  fetchHistoryRequest,
+  fetchHistorySuccess,
+  fetchHistoryError
 };

@@ -67,11 +67,26 @@ const fetchProducts = ({searchQuery})=> async dispatch => {
     const { data } = await axios.get(`https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`);
     dispatch(actions.productSearchSuccess(data));
   } catch (error) {
-
     dispatch(actions.productSearchError(error.message));
   }
 };
+
+const fetchHistory = ({ date }) => async dispatch => {
+  dispatch(actions.fetchHistoryRequest());
+
+  try {
+    const { data } = await axios.get(`https://obscure-shelf-16384.herokuapp.com/api/eaten_products/${date}`);
+    const payload = {
+      date, data
+    }
+        dispatch(actions.fetchHistorySuccess(payload));
+  }
+  catch (error) {
+    dispatch(actions.fetchHistoryError(error.message));
+  }
+
+}
     
 //eslint-disable-next-line
-export default { addProduct, deleteProduct, fetchProducts};
+export default { addProduct, deleteProduct, fetchProducts, fetchHistory};
 // https://obscure-shelf-16384.herokuapp.com/api/products?input=Хлебцы
