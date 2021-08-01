@@ -2,17 +2,22 @@ import { NavLink } from 'react-router-dom';
 import './styles.css';
 const AuthNavigation = () => {
   return (
-    <div className='navigation_container'>
-      <NavLink to='/login' exact className='link' activeClassName='active_link'>
-        ВХОД
+    <div className="navigation_container">
+      <NavLink
+        to="/login"
+        exact
+        className="link"
+        activeClassName="active_link"
+      >
+                ВХОД
       </NavLink>
       <NavLink
-        to='/register'
+        to="/register"
         exact
-        className='link'
-        activeClassName='active_link'
+        className="link"
+        activeClassName="active_link"
       >
-        РЕГИСТРАЦИЯ
+                РЕГИСТРАЦИЯ
       </NavLink>
     </div>
   );

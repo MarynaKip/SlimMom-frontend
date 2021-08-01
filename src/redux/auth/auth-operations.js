@@ -1,6 +1,10 @@
 import axios from 'axios';
 import authActions from './auth-actions';
+<<<<<<< HEAD
 const path = 'http://localhost:8080/api';
+=======
+const path = 'https://obscure-shelf-16384.herokuapp.com';
+>>>>>>> dev
 
 axios.defaults.baseURL = path;
 
@@ -14,11 +18,19 @@ const token = {
 };
 
 // add token to header after success user register
+<<<<<<< HEAD
 const register = (credentials) => async (dispatch) => {
   dispatch(authActions.registerRequest());
 
   try {
     const response = await axios.post('/user/registration', credentials);
+=======
+const register = credentials => async dispatch => {
+  dispatch(authActions.registerRequest());
+
+  try {
+    const response = await axios.post('/api/user/registration', credentials);
+>>>>>>> dev
     console.log(response.data);
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
@@ -28,12 +40,21 @@ const register = (credentials) => async (dispatch) => {
 };
 
 // add token to header after success user login
+<<<<<<< HEAD
 const logIn = (credentials) => async (dispatch) => {
   dispatch(authActions.loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
 
     token.set(response.data.token);
+=======
+const logIn = credentials => async dispatch => {
+  dispatch(authActions.loginRequest());
+  try {
+    const response = await axios.post('/api/user/login', credentials);
+    // console.log('response.data', response.data.user.token);
+    token.set(response.data.user.token);
+>>>>>>> dev
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
@@ -41,10 +62,17 @@ const logIn = (credentials) => async (dispatch) => {
 };
 
 // delete token after success user logOut
+<<<<<<< HEAD
 const logOut = () => async (dispatch) => {
   dispatch(authActions.logoutRequest());
   try {
     await axios.post('/users/logOut');
+=======
+const logOut = () => async dispatch => {
+  dispatch(authActions.logoutRequest());
+  try {
+    await axios.post('/api/user/logout');
+>>>>>>> dev
 
     token.unset();
     dispatch(authActions.logoutSuccess());
@@ -68,11 +96,20 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
 
   try {
+<<<<<<< HEAD
     const response = await axios.get('/users/current');
     dispatch(authActions.getCurrentUserSuccess(response.data));
+=======
+    const response = await axios.get('/api/user/current');
+    dispatch(authActions.getCurrentUserSuccess(response.data.currentUser));
+>>>>>>> dev
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
 
+<<<<<<< HEAD
 export default { register, logOut, logIn, getCurrentUser };
+=======
+export default { register, logOut, logIn, getCurrentUser };
+>>>>>>> dev

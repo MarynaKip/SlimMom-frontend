@@ -3,16 +3,15 @@ import Login from '../../components/LoginForm';
 import ContainerForView from '../../components/ContainerForLogin';
 import './styles.css';
 
-const RegLoginView = () => {
-    return (
-        <ContainerForView>
-            {/* eslint-disable-next-line */}
-            {location.pathname === '/register' && <Registration />}
 
-            {/* eslint-disable-next-line */}
-            {location.pathname === '/login' && <Login />}
-        </ContainerForView>
-    );
+
+const RegLoginView = () => {
+  return (
+    <ContainerForView>
+      {location.pathname === '/register' && <Registration />}
+      {location.pathname === '/login' && <Login />}
+    </ContainerForView>
+  );
 };
 
 export default RegLoginView;

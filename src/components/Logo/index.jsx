@@ -3,16 +3,17 @@ import './styles.css';
 // import desctopLogo from '../../images/logo-desctop-mini.png';
 // import tabletLogo from '../../images/logo-tablet-mini.png';
 // import mobileLogo from '../../images/logo-mobile-mini.png';
-const Logo = ({ isAuthenticated }) => {
+import { connect } from 'react-redux';
+import { authSelectors } from '../../redux/auth';
+
+const Logo = ({isAuthenticated}) => {
   const logoImageStyle = isAuthenticated ? 'auth_logo_image' : 'logo_image';
   return (
     <div className='logo'>
-      <NavLink
-        to='/mydiary'
+      <NavLink to='/mydiary'
         exact
         className='link'
-        activeClassName='altive_link'
-      >
+        activeClassName="altive_link">
         <div className={logoImageStyle}></div>
         {/* <img
                srcSet={`${mobileLogo} 320w,
@@ -28,4 +29,10 @@ const Logo = ({ isAuthenticated }) => {
     </div>
   );
 };
-export default Logo;
+
+const mapStateToProps = state => ({
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+
+});
+
+export default connect(mapStateToProps,null)(Logo);
