@@ -1,8 +1,7 @@
 .wrapper {
-    min-width: 320px;
-    padding: 0 15px;
-    margin: 0 auto;
-    background-repeat: no-repeat;
+  min-width: 320px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
 }
 /*
 @media screen and (min-width: 768px) and (max-width: 1279px) {
