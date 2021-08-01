@@ -18,7 +18,7 @@ const App = ({ onGetCurrentUser }) => {
     onGetCurrentUser();
   }, []);
   return (
-    <div>
+    <>
       <Switch>
         <PublicRoute
           exact
@@ -39,7 +39,7 @@ const App = ({ onGetCurrentUser }) => {
           redirectTo={routes.mydiary}
           component={RegisterLoginPageView}
         />
-        <PublicRoute path={routes.calculator} component={CalculatorPageView} />
+
         <PrivateRoute
           path={routes.mydiary}
           redirectTo={routes.home}
@@ -47,21 +47,21 @@ const App = ({ onGetCurrentUser }) => {
         />
         <PrivateRoute
           path={routes.calculator}
-          redirectTo={routes.calculator}
+          redirectTo={routes.home}
           component={CalculatorPageView}
         />
         {/* {modal && <Modal />} */}
         <Redirect to={routes.home} />
       </Switch>
-    </div>
+    </>
   );
 };
 
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
 };
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
+// const mapStateToProps = state => ({
+//   isAuthenticated: authSelectors.getIsAuthenticated(state),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
