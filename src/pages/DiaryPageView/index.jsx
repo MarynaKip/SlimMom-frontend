@@ -1,6 +1,6 @@
-import React, { useEffect, useSelector } from 'react';
-import { diaryOperations, diarySelectors } from '../../redux/diary';
-import { useDispatch } from 'react-redux';
+import { diarySelectors } from '../../redux/diary';
+import { useSelector } from "react-redux";
+
 
 import ContainerForDiary from '../../components/ContainerForDiary';
 import DiaryDateСalendar from '../../components/DiaryDateСalendar';
@@ -11,6 +11,11 @@ import './styles.css';
 import Header from '../../components/Header';
 
 export default function DiaryPageView() {
+
+  const historyDate = useSelector(diarySelectors.getHistoryDate);
+  const today = new Date().toLocaleDateString().split('.').reverse().join('-');
+  const isToday = historyDate === today;
+ 
   // const dispatch = useDispatch();
 
   // const date = new Date().toLocaleDateString().split('.').reverse().join('-');
@@ -24,7 +29,7 @@ export default function DiaryPageView() {
       <div className="diarypage-container">
         <ContainerForDiary>
           <DiaryDateСalendar />
-          <DiaryAddProductForm />
+          {isToday? ( <DiaryAddProductForm />):null}         
           <DiaryProductsList />
         </ContainerForDiary>
         <Sidebar />

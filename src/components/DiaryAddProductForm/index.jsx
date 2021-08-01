@@ -107,6 +107,6 @@ export default function DiaryAddProductForm() {
           </button>
         )}
       </form>
-    </div>
+         </div>
   );
 }
