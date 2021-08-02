@@ -1,5 +1,12 @@
 .productsListDiary {
-    list-style: none;
-    min-width: 320px;
-    padding: 0;
+  list-style: none;
+
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .productsListDiary {
+    max-width: 287px;
+    margin: 0 auto;
+  }
 }

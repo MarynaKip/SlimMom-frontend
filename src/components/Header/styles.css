@@ -1,10 +1,16 @@
 .header-container {
-  min-width: 320px;
+  min-width: 290px;
   display: flex;
-  padding: 18px 15px 0 15px;
-  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 15px 15px;
+  /* margin: 0 auto; */
   z-index: 60;
 }
+
+/* .header-wrapper {
+  padding: 18px 15px 15px;
+} */
 
 .mobile_background {
   display: flex;
@@ -26,6 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
   }
   .header-wrapper {
     display: flex;
@@ -105,6 +112,10 @@
     }
   }
   @media screen and (min-width: 1280px) {
+    /* .header-container {
+      display: flex;
+      justify-content: space-between;
+    } */
     .header {
       /* display: flex;
     flex-wrap: nowrap; */

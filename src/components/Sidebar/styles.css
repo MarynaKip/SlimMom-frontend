@@ -45,7 +45,7 @@ p {
 
 @media screen and (max-width: 767px) {
   .sidebar {
-    min-width: 320px;
+    width: 320px;
     display: block;
     padding: 40px 15px;
     margin: 0 auto;
@@ -55,12 +55,12 @@ p {
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .sidebar {
-    /* width: 588px; */
+    /* width: 594px; */
     padding: 90px 90px;
     margin: 0 auto;
     display: flex;
     flex-basis: 50%;
-    justify-content: space-between;
+    justify-content: center;
     background: url(../../images/bg-diary-tablet.png) no-repeat right bottom,
       #f0f1f3;
   }

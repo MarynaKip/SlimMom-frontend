@@ -17,7 +17,7 @@
     padding: 30px 0 10px 0;
     text-align: left;
   }
-  .buttonAddProductMobile{
+  .buttonAddProductMobile {
     background-color: red;
   }
 }
@@ -77,4 +77,12 @@
   font-size: 32px;
   color: white;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .buttonAddProduct {
+    position: absolute;
+    top: 310px;
+    left: 140px;
+  }
 }

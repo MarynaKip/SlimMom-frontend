@@ -1,23 +1,23 @@
 @media screen and (max-width: 767px) {
-    .diaryContainer {
-        width: 287px;
-        margin: 40px auto 60px;
-        /* padding: 0 auto; */
-    }
+  .diaryContainer {
+    width: 320px;
+    margin: 40px auto 60px;
+    /* padding: 0 auto; */
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .diaryContainer {
-        width: 589px;
-        margin: 100px auto 61px;
-        /* padding: 0 0; */
-        /* outline: 1px solid green; */
-    }
+  .diaryContainer {
+    width: 589px;
+    margin: 100px auto 61px;
+    /* padding: 0 0; */
+    /* outline: 1px solid green; */
+  }
 }
 @media screen and (min-width: 1280px) {
-    .diaryContainer {
-        width: 600px;
-        margin: 137px 31px 74px 115px;
-        padding: 0 0;
-        /* outline: 1px solid green; */
-    }
+  .diaryContainer {
+    width: 600px;
+    margin: 137px 0 0 0;
+    padding: 0 0;
+    /* outline: 1px solid green; */
+  }
 }

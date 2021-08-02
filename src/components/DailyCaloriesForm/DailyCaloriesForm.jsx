@@ -190,7 +190,7 @@ const DailyCaloriesForm = () => {
                   </div>
                 </label>
               </div>
-              <div>
+              <div className={styles.buttonWrapper}>
                 <button
                   type="submit"
                   //disabled={!isValid || !dirty}

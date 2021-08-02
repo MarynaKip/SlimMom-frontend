@@ -11,7 +11,9 @@ const DiaryPageView = () => {
       <Header />
       <div className="diarypage-container">
         <ContainerForDiary>
-          <DiaryDateСalendar />
+          <div className="data-picker">
+            <DiaryDateСalendar />
+          </div>
           <DiaryAddProductForm />
           <DiaryProductsList />
         </ContainerForDiary>

@@ -12,22 +12,19 @@
     font-size: 34px;
     line-height: 42px;
     margin-bottom: 40px;
-    
   }
-  
 }
 .calendar div {
-    border:none
+  border: none;
 }
 
 .calendarIconCustom {
-    /* width: 170px;
+  /* width: 170px;
     height: 67px; */
 
-    background: center/contain no-repeat
-      url('../../images/calendarIcon.svg');
-  }
+  background: center/contain no-repeat url('../../images/calendarIcon.svg');
+}
 
-  .react-datepicker__month-container {
-    background-color: red;
-  }
+.react-datepicker__month-container {
+  background-color: red;
+}

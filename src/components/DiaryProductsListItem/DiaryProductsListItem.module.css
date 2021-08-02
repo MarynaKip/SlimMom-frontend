@@ -45,7 +45,7 @@
   font-family: Verdana, sans-serif;
   font-weight: 400;
   line-height: 17px;
-  letter-spacing: 0.04em;
+  /* letter-spacing: 0.04em; */
 
   display: inline-block;
   padding: 8.5px 0;
@@ -56,20 +56,21 @@
   margin-right: 10px;
   /* отличие */
   text-align: center;
-  width: 65px;
+  width: 60px;
 }
 .diaryListItemCaloriesValue {
   font-size: 10px;
 }
 .diaryListItemButton {
-  font-size: 14px;
+  font-size: 12px;
+  padding: 0;
   border: none;
   background-color: transparent;
   color: #9b9faa;
   cursor: pointer;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
   .diaryListItemName {
     padding: 16px 0 19px 0;
     margin-right: 31px;
@@ -84,7 +85,6 @@
   .diaryListItemCalories {
     padding: 16px 0 19px 0;
 
-   
     margin-right: 31px;
     /* отличие */
     text-align: center;
@@ -95,6 +95,5 @@
   }
   .diaryListItemButton {
     font-size: 16px;
-  
   }
 }

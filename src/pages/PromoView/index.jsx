@@ -7,7 +7,9 @@ const PromoView = () => {
   return (
     <main className="bg-wrapper__promo">
       <Header />
-      <DailyCaloriesForm />
+      <div className="calories-promo-wrapper">
+        <DailyCaloriesForm />
+      </div>
     </main>
   );
 };

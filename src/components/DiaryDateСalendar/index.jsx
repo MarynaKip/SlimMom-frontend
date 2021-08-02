@@ -10,17 +10,17 @@ import '../../index.css';
 
 console.log(useState);
 export default function DiaryDateСalendar() {
-
   const [value, onChange] = useState(new Date());
   return (
     <>
       <DatePicker
-        className = {styles.calendar}
-        value={ value}
-        format = "dd.MM.yyyy"
-        onChange = {onChange}
-        clearIcon = {null}
-        calendarIcon = {<CalendarIcon/>}
+        className={styles.calendar}
+        value={value}
+        format="dd.MM.yyyy"
+        onChange={onChange}
+        clearIcon={null}
+        calendarIcon={<CalendarIcon />}
       />
-    </>);
+    </>
+  );
 }

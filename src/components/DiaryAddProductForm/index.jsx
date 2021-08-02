@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFormik} from 'formik';
+import { useFormik } from 'formik';
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 const isMobile = window.screen.width < 768;
 console.log(isMobile);
@@ -13,7 +13,7 @@ const DiaryAddProductForm = () => {
       productName: '',
       grams: Number,
     },
-    onSubmit: (values) => {
+    onSubmit: values => {
       // понять что значит эта строка
       alert(JSON.stringify(values, null, 2));
     },
@@ -23,23 +23,23 @@ const DiaryAddProductForm = () => {
       <form onSubmit={formik.handleSubmit} className={styles.addProductForm}>
         <input
           className={styles.inputAddProductFormName}
-          id='productName'
-          name='productName'
-          type='productName'
+          id="productName"
+          name="productName"
+          type="productName"
           onChange={formik.handleChange}
           value={formik.values.productName}
-          placeholder='Введите название продукта'
+          placeholder="Введите название продукта"
           required
-          list='products-for-add'
-          autoComplete='off'
+          list="products-for-add"
+          autoComplete="off"
         />
 
-        <datalist id='products-for-add'>
+        <datalist id="products-for-add">
           <option>gre4ka</option>
-          <option value='jaico'></option>
-          <option value='salo'></option>
-          <option value='moloko'></option>
-          <option value='grechka'></option>
+          <option value="jaico"></option>
+          <option value="salo"></option>
+          <option value="moloko"></option>
+          <option value="grechka"></option>
         </datalist>
         {/* <Field name="color" component="select">
    <option value="red">Red</option>
@@ -48,23 +48,25 @@ const DiaryAddProductForm = () => {
  </Field> */}
         <input
           className={styles.inputAddProductFormAmount}
-          id='grams'
-          name='grams'
-          type='grams'
+          id="grams"
+          name="grams"
+          type="grams"
           onChange={formik.handleChange}
           value={formik.values.grams}
-          placeholder='Граммы'
+          placeholder="Граммы"
           required
-          autoComplete='off'
+          autoComplete="off"
         />
-        {isMobile ?
-          (<button type='submit' className={styles.buttonAddProductMobile}>
-          Добавить
-          </button>) :
-          <button type='submit' className={styles.buttonAddProduct}>
-          +
-          </button>}
 
+        {isMobile ? (
+          <button type="submit" className={styles.buttonAddProductMobile}>
+            Добавить
+          </button>
+        ) : (
+          <button type="submit" className={styles.buttonAddProduct}>
+            +
+          </button>
+        )}
       </form>
     </div>
   );

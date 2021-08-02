@@ -23,4 +23,8 @@
     background-size: auto 100%;
     outline: 1px solid tomato;
   }
+
+  .calories-promo-wrapper {
+    margin-left: 115px;
+  }
 }
