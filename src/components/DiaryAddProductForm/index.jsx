@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { diaryOperations } from '../../redux/diary';
+import {authSelectors} from '../../redux/auth';
 import { v4 as uuidv4 } from 'uuid';
 
 import axios from 'axios';
@@ -21,16 +22,12 @@ export default function DiaryAddProductForm() {
 
   const dispatch = useDispatch();
 
-  const ifProductAccess = datalist.find(elem => elem.title.ru === query);
+  // const ifProductAccess = datalist.find(elem => elem.title.ru === query);
 
   const handleFormSubmit = event => {
     event.preventDefault();
     setProductName(query);
-    if (ifProductAccess) {
-      dispatch(diaryOperations.addProduct({ query, productWeight }));
-      resetInput();
-      // setActive(!isActive);
-    } else alert('Пожалуйста, введите название продукта из списка');
+    dispatch(diaryOperations.addProduct({ query, productWeight }));
   };
 
   useEffect(() => {
@@ -39,11 +36,14 @@ export default function DiaryAddProductForm() {
     }
   }, [query]);
 
+  const token = useSelector(authSelectors.getToken);
+  const header = `Authorization: Bearer ${token}`;
+
   const fetchProducts = async searchQuery => {
     try {
       const { data } = await axios.get(
         `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
-      );
+        { headers: { header } });
       setDatalist(data.data);
     } catch (error) {
       console.log(error);
@@ -58,11 +58,11 @@ export default function DiaryAddProductForm() {
     setQuery(event.target.value);
   }, []);
 
-  const resetInput = () => {
-    setProductWeight('');
-    setQuery('');
-    setProductName('');
-  };
+  // const resetInput = () => {
+  //   setProductWeight('');
+  //   setQuery('');
+  //   setProductName('');
+  // };
 
   return (
     <div>
@@ -114,7 +114,7 @@ export default function DiaryAddProductForm() {
         <button
           className={styles.buttonToForm}
           type="button"
-          onClick={ToggleClass}
+          onClick={null}
         >
           +
         </button>

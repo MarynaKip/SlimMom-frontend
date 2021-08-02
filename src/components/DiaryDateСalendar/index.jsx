@@ -14,7 +14,7 @@ export default function DiaryDateСalendar() {
   const [value, onChange] = useState(new Date());
   
   // const [date, setDate] = useState(new Date().toLocaleDateString().split('.').reverse().join('-'));
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
 
   // const changeDate = () => {

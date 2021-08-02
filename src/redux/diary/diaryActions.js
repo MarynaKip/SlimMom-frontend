@@ -15,7 +15,7 @@ const productSearchError = createAction('diary/productSearchError');
 
 const fetchHistoryRequest = createAction('diary/fetchHistoryRequest');
 const fetchHistorySuccess = createAction('diary/fetchHistorySuccess');
-const fetchHistoryError = createAction('diary/fetchHistoryError')
+const fetchHistoryError = createAction('diary/fetchHistoryError');
 
 // const changeFilter = createAction('contacts/changeFilter');
 
