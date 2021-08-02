@@ -18,9 +18,19 @@ const initialDiaryState = {
 };
 
 const initialHistoryState = {
-  date: '1970-01-01',
+  date: new Date()
+  .toLocaleDateString()
+  .split('.')
+  .reverse()
+  .join('-'),
   itemsHistory: [],
 };
+
+const initialDateState = new Date()
+  .toLocaleDateString()
+  .split('.')
+  .reverse()
+  .join('-');
 
 const today = new Date().toLocaleDateString().split('.').reverse().join('-');
 
@@ -44,15 +54,13 @@ const history = createReducer(initialHistoryState, {
     const itemsHistory = payload.data.data;
     return { date, itemsHistory };
   },
-  [addProductSuccess]: (state, { payload }) => {
-  // const date = payload.date;
-  //   const itemsHistory = payload.data.data;
-  //   return { date, itemsHistory };
-  },
+  [addProductSuccess]: (state, { payload }) => {},
 });
 
+const currentDate = createReducer(initialDateState, {});
+
 export default combineReducers({
-  // date,
+  currentDate,
   currentProducts,
   history,
 });
