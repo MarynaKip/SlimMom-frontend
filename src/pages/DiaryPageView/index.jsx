@@ -13,7 +13,7 @@ export default function DiaryPageView() {
   const historyDate = useSelector(diarySelectors.getHistoryDate);
   const today = useSelector(diarySelectors.getToday);
   const renderForm = historyDate === today;
-  
+
   return (
     <div className="bg-wrapper__diary">
       <Header />
@@ -22,7 +22,6 @@ export default function DiaryPageView() {
           <DiaryDateСalendar />
           {renderForm ? <DiaryAddProductForm /> : null}
           <DiaryProductsList />
-         
         </ContainerForDiary>
         <Sidebar />
       </div>

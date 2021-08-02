@@ -18,6 +18,13 @@ export default function DiaryAddProductForm() {
   const [datalist, setDatalist] = useState([]);
   const [isActive, setActive] = useState(true);
 
+  
+    useEffect(() => {
+    if (query !== '') {
+      fetchProducts(query);
+    }
+  }, [0, query]);
+
   const ToggleClass = () => {
     setActive(false);
   };
@@ -26,17 +33,15 @@ export default function DiaryAddProductForm() {
     setActive(true);
   };
 
-  const dispatch = useDispatch();
+  const ifProductAccess = datalist.find(elem => elem.title.ru === query);
+
 
   const handleChange = useCallback(event => {
     setQuery(event.target.value);
   }, []);
 
-  useEffect(() => {
-    if (query !== '') {
-      fetchProducts(query);
-    }
-  }, [0, query]);
+
+  const dispatch = useDispatch();
 
 
 
@@ -62,10 +67,15 @@ export default function DiaryAddProductForm() {
   const handleFormSubmit = event => {
     event.preventDefault();
     setProductName(query);
-    dispatch(diaryOperations.addProduct({ query, productWeight }));
-    resetInput();
+    if (ifProductAccess) {
+      dispatch(diaryOperations.addProduct({ query, productWeight }));
+       resetInput();
     setActive(true);
+    }
+    else alert('Пожалуйста, введите название продукта из списка');
   };
+   
+
 
   const resetInput = () => {
     setProductWeight('');
