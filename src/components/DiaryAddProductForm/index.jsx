@@ -111,7 +111,7 @@ useEffect(() => {
         )}
       </form>
 
-      {isMobile ? (
+      {isMobile&& isActive? (
         <button
           className={styles.buttonToForm}
           type="button"
@@ -120,6 +120,17 @@ useEffect(() => {
           +
         </button>
       ) : null}
+
+ {isMobile && !isActive ? (
+        <button
+          className={styles.buttonComeBack}
+          type="button"
+          onClick={ToggleClass}
+        >
+          Назад
+        </button>
+      ) : null}
+
     </div>
   );
 }
