@@ -1,18 +1,18 @@
 import { createAction } from '@reduxjs/toolkit';
 
 export const getUserCurrentDataRequest = createAction(
-    'getUserCurrentDataRequest',
+  'getUserCurrentDataRequest',
 );
 export const getUserCurrentDataSuccess = createAction(
-    'getUserCurrentDataSuccess',
+  'getUserCurrentDataSuccess',
 );
 export const getUserCurrentDataRequestFail = createAction(
-    'getUserCurrentDataRequestFail',
+  'getUserCurrentDataRequestFail',
 );
 
 const sidebarActions = {
-    getUserCurrentDataRequest,
-    getUserCurrentDataSuccess,
-    getUserCurrentDataRequestFail,
+  getUserCurrentDataRequest,
+  getUserCurrentDataSuccess,
+  getUserCurrentDataRequestFail,
 };
 export default sidebarActions;
