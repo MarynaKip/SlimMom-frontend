@@ -19,10 +19,6 @@ const App = ({ onGetCurrentUser, onGetDailyRate }) => {
     onGetCurrentUser();
   }, []);
 
-  useEffect(() => {
-    onGetDailyRate();
-  }, []);
-
   return (
     <>
       <Switch>

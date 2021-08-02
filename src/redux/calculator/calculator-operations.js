@@ -10,6 +10,7 @@ const getDailyRate = dataFromCalculator => async dispatch => {
   dispatch(calculatorActions.getDailyRateRequest());
 
   try {
+    console.log(dataFromCalculator);
     const response = await axios.post('/api/daily/rate', dataFromCalculator);
     console.log(response.data);
     dispatch(calculatorActions.getDailyRateSuccess(response.data));
@@ -18,7 +19,10 @@ const getDailyRate = dataFromCalculator => async dispatch => {
   }
 };
 
-const getDailyRatePrivate = dataFromCalculator => async (dispatch, getState) => {
+const getDailyRatePrivate = dataFromCalculator => async (
+  dispatch,
+  getState,
+) => {
   if (!dataFromCalculator) {
     const {
       userInfo: {
@@ -26,11 +30,17 @@ const getDailyRatePrivate = dataFromCalculator => async (dispatch, getState) => 
         currentWeight: persistedCurrentWeight,
         desiredWeight: persistedDesiredWeight,
         bloodType: persistedBloodType,
-        age: persistedAge
+        age: persistedAge,
       },
     } = getState();
 
-    if (!persistedHeight || !persistedCurrentWeight || !persistedDesiredWeight || !persistedBloodType || !persistedAge) {
+    if (
+      !persistedHeight ||
+      !persistedCurrentWeight ||
+      !persistedDesiredWeight ||
+      !persistedBloodType ||
+      !persistedAge
+    ) {
       return;
     }
     const dataForRequest = {
@@ -39,7 +49,6 @@ const getDailyRatePrivate = dataFromCalculator => async (dispatch, getState) => 
       desiredWeight: persistedDesiredWeight,
       bloodType: persistedBloodType,
       age: persistedAge,
-
     };
   }
 
@@ -55,6 +64,5 @@ const getDailyRatePrivate = dataFromCalculator => async (dispatch, getState) => 
     dispatch(calculatorActions.getDailyRateError(error.message));
   }
 };
-
 
 export default { getDailyRate, getDailyRatePrivate };
