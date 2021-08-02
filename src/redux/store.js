@@ -16,6 +16,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import modalReducer from './modal/modal-reducers';
 import registration from './auth/auth-reducers';
 import currentDateData from './sidebar/sidebar-reducers';
 
@@ -42,6 +43,7 @@ const store = configureStore({
     //   userCurrentDate: currentDateData,
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
+    modal: modalReducer,
   },
   middleware,
   devtols,
