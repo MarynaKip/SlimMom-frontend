@@ -44,9 +44,9 @@ const authPersistConfig = {
 };
 
 const calculatorPersistConfig = {
-  key: 'userInfo',
+  key: 'calculator',
   storage,
-  whitelist: ['height', 'currentWeight', 'desiredWeight', 'bloodType', 'age'],
+  whitelist: ['userInfo'],
 };
 
 const store = configureStore({
