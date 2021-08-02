@@ -9,8 +9,6 @@ import { DebounceInput } from 'react-debounce-input';
 
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 
-// axios.defaults.headers.common['Authorization'] =
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
 
 const isMobile = window.screen.width < 768;
 
@@ -19,23 +17,23 @@ export default function DiaryAddProductForm() {
   const [productWeight, setProductWeight] = useState('');
   const [query, setQuery] = useState('');
   const [datalist, setDatalist] = useState([]);
+  const [isActive, setActive] = useState(true);
+
+  const ToggleClass = () => {
+    setActive(false);
+  };
 
   const dispatch = useDispatch();
 
-  // const ifProductAccess = datalist.find(elem => elem.title.ru === query);
-
-  const handleFormSubmit = event => {
-    event.preventDefault();
-    setProductName(query);
-    dispatch(diaryOperations.addProduct({ query, productWeight }));
-  };
-
-  useEffect(() => {
+    const handleChange = useCallback(event => {
+    setQuery(event.target.value);
+    }, []);
+  
+useEffect(() => {
     if (query !== '') {
-      fetchProducts(query);
-    }
-  }, [query]);
-
+      fetchProducts(query);    }
+}, [0, query]);
+  
   const token = useSelector(authSelectors.getToken);
   const header = `Authorization: Bearer ${token}`;
 
@@ -49,24 +47,27 @@ export default function DiaryAddProductForm() {
       console.log(error);
     }
   };
-
-  const onChangeProductWeight = useCallback(event => {
+  
+    const onChangeProductWeight = useCallback(event => {
     setProductWeight(event.target.value);
   }, []);
 
-  const handleChange = useCallback(event => {
-    setQuery(event.target.value);
-  }, []);
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    setProductName(query);
+    dispatch(diaryOperations.addProduct({ query, productWeight }));
+    resetInput();
+       setActive(true);
+  };
 
-  // const resetInput = () => {
-  //   setProductWeight('');
-  //   setQuery('');
-  //   setProductName('');
-  // };
+  const resetInput = () => {
+    setQuery('');
+    setProductWeight('');
+  };
 
   return (
     <div>
-      <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
+      <form className={isMobile && isActive  ?  `${styles.addProductFormSleep}`:`${styles.addProductForm}`} onSubmit={handleFormSubmit}>
         <DebounceInput
           minLength={2}
           debounceTimeout={1000}
@@ -114,7 +115,7 @@ export default function DiaryAddProductForm() {
         <button
           className={styles.buttonToForm}
           type="button"
-          onClick={null}
+          onClick={ToggleClass}
         >
           +
         </button>

@@ -11,19 +11,17 @@
   font-size: 32px;
   color: white;
   cursor: pointer;
-/* позиционирование */
-  position: absolute; 
-  bottom:60px;
-  right:50%;
-  left:50%;
-
-
+  /* позиционирование */
+  position: absolute;
+  bottom: 60px;
+  right: 50%;
+  left: 50%;
 }
 .addProductForm {
   text-align: center;
 }
 .addProductFormSleep {
-display: none;
+  display: none;
 }
 .inputAddProductFormName,
 .inputAddProductFormAmount {

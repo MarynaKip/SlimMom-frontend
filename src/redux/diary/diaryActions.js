@@ -9,9 +9,9 @@ const deleteProductRequest = createAction('diary/deleteProductRequest');
 const deleteProductSuccess = createAction('diary/deleteProductSuccess');
 const deleteProductError = createAction('diary/deleteProductError');
 
-const productSearchRequest = createAction('diary/productSearchRequest');
-const productSearchSuccess = createAction('diary/productSearchSuccess');
-const productSearchError = createAction('diary/productSearchError');
+// const productSearchRequest = createAction('diary/productSearchRequest');
+// const productSearchSuccess = createAction('diary/productSearchSuccess');
+// const productSearchError = createAction('diary/productSearchError');
 
 const fetchHistoryRequest = createAction('diary/fetchHistoryRequest');
 const fetchHistorySuccess = createAction('diary/fetchHistorySuccess');
@@ -27,9 +27,7 @@ export default {
   deleteProductRequest,
   deleteProductSuccess,
   deleteProductError,
-  productSearchRequest,
-  productSearchSuccess,
-  productSearchError,
+  
   fetchHistoryRequest,
   fetchHistorySuccess,
   fetchHistoryError
