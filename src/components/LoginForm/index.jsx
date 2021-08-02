@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';

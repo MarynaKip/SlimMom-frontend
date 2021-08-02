@@ -1,108 +1,140 @@
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(33, 33, 33, 0.12);
+  z-index: 1200;
 }
 
 .modal {
-    background-color: #fff;
-
-    position: relative;
-    max-width: 320px;
+  background-color: #fff;
+  position: relative;
+  padding: 15px;
+  padding-top: 30px;
+  max-width: 320px;
+  box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
 }
 
 .modal_close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-    border: none;
-    transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
-    border-radius: 100%;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  border-radius: 100%;
 }
 .modal_close:hover,
 .modal_close:focus {
-    transform: scale(1.2);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-        0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  transform: scale(1.2);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .modal_cross {
-    fill: black;
+  fill: black;
 }
 
 .modal_title {
-    font: normal 700 26px/1.22 Verdana;
-    text-align: center;
-    color: #212121;
-    letter-spacing: 0.04em;
+  font: normal 700 18px/1.22 Verdana;
+  text-align: center;
+  color: #212121;
+  letter-spacing: 0.04em;
 }
 
 .modal_text {
-    font: normal 700 16px/1.22 Verdana;
-    text-align: center;
-    color: #264061;
-    letter-spacing: 0.04em;
-    margin-top: 22px;
+  font: normal 700 16px/1.22 Verdana;
+  text-align: center;
+  color: #264061;
+  letter-spacing: 0.04em;
+  margin-top: 22px;
 }
 
 .modal_number {
-    font: normal 700 48px/1.22 Verdana;
-    letter-spacing: 0.04em;
+  font: normal 700 48px/1.22 Verdana;
+  letter-spacing: 0.04em;
 }
 
 .modal_underline {
-    flex-grow: 1;
-    border-bottom: 1px solid #e0e0e0;
-    margin-top: 30px;
+  flex-grow: 1;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: 30px;
 }
 
 .modal_products {
-    font: normal 700 14px/1.2 Verdana;
-    letter-spacing: 0.04em;
-    color: #212121;
-    margin-top: 12px;
+  font: normal 700 14px/1.2 Verdana;
+  letter-spacing: 0.04em;
+  color: #212121;
+  margin-top: 12px;
 }
 
 .modal_container {
-    width: 330px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 330px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .modal_categories {
-    margin-top: 22px;
+  margin-top: 22px;
 }
 
 .modal_categories-item {
-    color: #9b9faa;
-    font: normal 400 14px/1.21 Verdana;
+  color: #9b9faa;
+  font: normal 400 14px/1.21 Verdana;
 }
 
 .modal_categories-item:not(:last-child) {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.modal_button {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  border-radius: 30px;
+  padding: 14px;
+  width: 176px;
+  height: 44px;
+  color: #fff;
+  font: normal 700 14px/1.2 Verdana;
+  background-color: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border: none;
+  transition: transform 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.modal_button:hover,
+.modal_button:focus {
+  transform: scale(1.05);
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .modal {
-        max-width: 594px;
-        padding: 43px 64px;
-    }
+  .modal {
+    max-width: 594px;
+    padding: 43px 64px;
+  }
+  .modal_title {
+    font: normal 700 26px/1.22 Verdana;
+  }
 }
 @media screen and (min-width: 1280px) {
-    .modal {
-        max-width: 690px;
-        padding: 64px 90px;
-    }
+  .modal {
+    max-width: 690px;
+    padding: 64px 90px;
+  }
+  .modal_title {
+    font: normal 700 26px/1.22 Verdana;
+  }
 }

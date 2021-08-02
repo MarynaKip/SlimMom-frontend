@@ -2,15 +2,30 @@
 import DatePicker from 'react-date-picker';
 import styles from '../DiaryDateСalendar/DiaryDateСalendar.module.css';
 import CalendarIcon from '../DiaryDateСalendar/CalendarIcon.jsx';
-// import {useState} from "react-redux";
-import React, { useState } from 'react';
-import '../DiaryDateСalendar/calendarCustonStyles.css';
-import '../../index.css';
-// const dateValue = Date.now()
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { diaryOperations } from '../../redux/diary';
 
-console.log(useState);
+import '../DiaryDateСalendar/calendarCustomStyles.css';
+import '../../index.css';
+
 export default function DiaryDateСalendar() {
   const [value, onChange] = useState(new Date());
+
+  // const [date, setDate] = useState(new Date().toLocaleDateString().split('.').reverse().join('-'));
+  const dispatch = useDispatch();
+
+  // const changeDate = () => {
+  //   setDate(value.toLocaleDateString().split('.').reverse().join('-'));
+  // };
+  // useEffect(() => {
+  //   changeDate();
+  // }, [value]);
+
+  useEffect(() => {
+    dispatch(diaryOperations.fetchHistory({ value }));
+  }, [value]);
+
   return (
     <>
       <DatePicker
@@ -20,6 +35,7 @@ export default function DiaryDateСalendar() {
         onChange={onChange}
         clearIcon={null}
         calendarIcon={<CalendarIcon />}
+        maxDate={new Date()}
       />
     </>
   );
