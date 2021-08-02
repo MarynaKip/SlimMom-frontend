@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import Button from '../Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import { authSelectors } from '../../redux/auth';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
@@ -12,7 +13,9 @@ const SignupSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(25, 'Too Long!')
     .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
   password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -25,7 +28,7 @@ const initialValues = {
   password: '',
 };
 
-const Registration = ({onRegister}) => {
+const Registration = ({onRegister, error}) => {
   return (
     <div className="registration">
       <h1 className="registration__title">Регистрация</h1>
@@ -35,9 +38,6 @@ const Registration = ({onRegister}) => {
         onSubmit={async (values) => {
           const payload = { ...values };
           onRegister(payload);
-          console.log(payload);
-        //   await new Promise((r) => setTimeout(r, 500));
-        //   alert(JSON.stringify(values, null, 2));
         }}
       >
         {({errors, touched}) => (
@@ -101,6 +101,8 @@ const Registration = ({onRegister}) => {
                   </label>
                 </div>
               </div>
+              { error && (
+                <div className="error">Incorrect input data!</div>)}
             </Form>
             <div className="registration__button-reg">
               <Button
@@ -124,9 +126,13 @@ const Registration = ({onRegister}) => {
   );
 };
 
+const mapStateToProps = (state, props) => ({
+  error: authSelectors.getError(state),
+});
+
 const mapDispatchToProps = {
   onRegister: authOperations.register,
 //   onLogin: authOperations.logIn,
 };
 
-export default connect(null, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
