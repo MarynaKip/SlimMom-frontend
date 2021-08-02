@@ -15,7 +15,7 @@ export default function DiaryProductsListItem({
   return (
     <li>
       <span className={styles.diaryListItemName}>{productName}</span>
-      <input className={styles.diaryListItemGrams} value={productWeight} />
+      <span className={styles.diaryListItemGrams}>{productWeight} г</span>
       <span className={styles.diaryListItemCalories}>
         {productKkal}{' '}
         <span className={styles.diaryListItemCaloriesValue}>ккал</span>

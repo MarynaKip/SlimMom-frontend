@@ -13,8 +13,6 @@ const {
   fetchHistoryError,
 } = actions;
 
-
-
 const initialDiaryState = {
   currentProducts: [],
 };
@@ -33,7 +31,7 @@ const currentProducts = createReducer(initialDiaryState.currentProducts, {
       return [...payload.data.data];
     }
   },
-  [addProductSuccess]: (state, { payload }) => [...state, payload.data],
+  [addProductSuccess]: (state, { payload }) => [payload.data, ...state],
   [deleteProductSuccess]: (state, { payload }) => {
     const newState = state.filter(({ productName }) => productName !== payload);
     return [...newState];
@@ -43,17 +41,13 @@ const currentProducts = createReducer(initialDiaryState.currentProducts, {
 const history = createReducer(initialHistoryState, {
   [fetchHistorySuccess]: (state, { payload }) => {
     const date = payload.date;
-    // Калькулятор работает от хистори даты - календарь записывает свое значение в хистори
-    // значит и мепать список надо по хистори - выбирать карент список не надо
-    // карент только для сайдбара - чтобы не менялся при смене истории а дату сайдбар может брать текущую
-    // из Date() (now) - по логике первый фетч идет на сервер за текущей датой
-    // а значит в карент дату с первого раза попадут текущие продукты
-    // if (today !== date) {
-    //   const itemsHistory = payload.data.data;
-    //   return { date, itemsHistory };
-    // }
     const itemsHistory = payload.data.data;
     return { date, itemsHistory };
+  },
+  [addProductSuccess]: (state, { payload }) => {
+  // const date = payload.date;
+  //   const itemsHistory = payload.data.data;
+  //   return { date, itemsHistory };
   },
 });
 
