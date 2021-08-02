@@ -2,6 +2,8 @@
     .diaryContainer {
         width: 287px;
         margin: 40px auto 60px;
+        position: relative;
+        padding-bottom: 170px;
         /* padding: 0 auto; */
     }
 }
@@ -15,7 +17,7 @@
 }
 @media screen and (min-width: 1280px) {
     .diaryContainer {
-        width: 600px;
+        width: 745px;
         margin: 137px 31px 74px 115px;
         padding: 0 0;
         /* outline: 1px solid green; */

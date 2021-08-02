@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles.css';
 const UserNavigation = ({burgerMenu}) => {
   const container = burgerMenu ? 'burger_menu' : 'user_navigation_container';

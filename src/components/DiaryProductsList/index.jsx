@@ -1,34 +1,33 @@
-import DiaryProductsListItem from '../DiaryProductsListItem';
 import styles from '../DiaryProductsList/DiaryProductsList.module.css';
-// const products = [{"prod": grechka,
-// data: 21/21/21,
-// userID:12345,
-// id: 147,
-// gramm: 154,
-// kkal: 789
-// },
-// {"prod": egg,
-// data: 21/21/21,
-// userID:12345,
-// id: 147,
-// gramm: 154,
-// kkal: 400
-// },
-// {"prod": cake,
-// data: 21/21/21,
-// userID:12345,
-// id: 147,
-// gramm: 154,
-// kkal: 7089
-// }]
+import { useDispatch, useSelector, connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
+import { diarySelectors } from '../../redux/diary';
 
-const DiaryProductsList = () => {
-  return (<ul className = {styles.productsListDiary}>
-    <DiaryProductsListItem/>
-    <DiaryProductsListItem/>
-    <DiaryProductsListItem/>
-    <DiaryProductsListItem/>
-  </ul>
+import DiaryProductsListItem from '../DiaryProductsListItem';
+
+const DiaryProductsList = ({ historyProductsArray, historyDate }) => {
+  const today = new Date().toLocaleDateString().split('.').reverse().join('-');
+
+  return (
+    <ul className={styles.productsListDiary}>
+      {historyProductsArray.map(
+        ({ productName, productWeight, productKkal }) => (
+          <DiaryProductsListItem
+            key={uuidv4()}
+            productName={productName}
+            productWeight={productWeight}
+            productKkal={productKkal}
+            buttonRender={today === historyDate}
+          />
+        ),
+      )}
+    </ul>
   );
 };
-export default DiaryProductsList;
+const mapStateToProps = state => ({
+  currentProductsArray: diarySelectors.getProducts(state),
+  historyProductsArray: diarySelectors.getHistoryProducts(state),
+  historyDate: diarySelectors.getHistoryDate(state),
+});
+export default connect(mapStateToProps)(DiaryProductsList);

@@ -1,0 +1,14 @@
+.buttonToAddProductForm {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #fc842d;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 50%;
+    border: none;
+    text-align: bottom;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    margin: auto;
+  }

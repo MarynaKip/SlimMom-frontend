@@ -2,8 +2,9 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 // import process from 'process';
 import logger from 'redux-logger';
-import contactsReducer from '../redux/diaryData/contacts-reducer';
 import { authReducer } from './auth';
+import { diaryReducer } from './diary';
+
 
 import {
   persistStore,
@@ -23,6 +24,10 @@ import currentDateData from './sidebar/sidebar-reducers';
 const devtols =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
+// const devtols =
+//     window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//     window.__REDUX_DEVTOOLS_EXTENSION__();
+
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -40,9 +45,8 @@ const authPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    //   userCurrentDate: currentDateData,
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
+    diary: diaryReducer,
     modal: modalReducer,
   },
   middleware,
