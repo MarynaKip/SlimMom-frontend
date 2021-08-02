@@ -22,6 +22,10 @@ export default function DiaryAddProductForm() {
   const ToggleClass = () => {
     setActive(false);
   };
+ 
+  const ToggleClassBack = () => {
+    setActive(true);
+  };
 
   const dispatch = useDispatch();
 
@@ -70,7 +74,7 @@ useEffect(() => {
       <form className={isMobile && isActive  ?  `${styles.addProductFormSleep}`:`${styles.addProductForm}`} onSubmit={handleFormSubmit}>
         <DebounceInput
           minLength={2}
-          debounceTimeout={1000}
+          debounceTimeout={500}
           className={styles.inputAddProductFormName}
           id="productName"
           name="productName"
@@ -121,11 +125,11 @@ useEffect(() => {
         </button>
       ) : null}
 
- {isMobile && !isActive ? (
+ {!isActive ? (
         <button
           className={styles.buttonComeBack}
           type="button"
-          onClick={ToggleClass}
+          onClick={ToggleClassBack}
         >
           Назад
         </button>
