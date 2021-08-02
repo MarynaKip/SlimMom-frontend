@@ -1,56 +1,64 @@
-.dailyForm {
-    /* position: absolute; */
-    width: 605px;
-    height: 447px;
-    left: 115px;
-    top: 292px;
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
 }
 
-.dailyForm_title{
-    font-family: Verdana;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 34px;
-    line-height: 41px;
-    left: 115px;
-    text-align: left;
-    color: #212121;
-    margin-top: 114px;
-    margin-bottom: 65px;
+.dailyForm {
+  /* position: absolute; */
+  /* width: 605px; */
+  /* height: 447px; */
+  /* left: 115px;
+  top: 292px; */
+  outline: 1px solid teal;
+}
+
+.dailyForm_title {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 41px;
+  /* left: 115px; */
+  text-align: left;
+  color: #212121;
+  /* margin-top: 114px; */
+  /* margin-bottom: 65px; */
 }
 
 .dailyLabel {
-font-family: Verdana;
-font-style: normal;
-font-weight: bold;
-font-size: 14px;
-line-height: 17px;
-letter-spacing: 0.04em;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
 
-color: #9B9FAA;
-  }
+  color: #9b9faa;
+}
 
-*, *:before, *:after {
-    box-sizing: border-box;
-  }
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
-  .daily_input {
-    display: block;
-    width: 80%;
-    padding: 5px;
-    margin: 0 0 40px 0;
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    font-size: 14px;
-    line-height: 1.21;
-    background: transparent;
-    outline: transparent;
-  }
+.daily_input {
+  display: block;
+  width: 80%;
+  padding: 5px;
+  margin: 0 0 40px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  line-height: 1.21;
+  background: transparent;
+  outline: transparent;
+}
 
-
-
-
-.dailyButton{
+.dailyButton {
   display: block;
   margin-top: 60px;
   margin-right: auto;
@@ -66,9 +74,9 @@ color: #9B9FAA;
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
+  color: #ffffff;
 
-  background:#FC842D;
+  background: #fc842d;
   border: 2px solid #fc842d;
   box-sizing: border-box;
   border-radius: 30px;
@@ -80,34 +88,34 @@ color: #9B9FAA;
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   outline: none;
   border-radius: 50%;
   -webkit-appearance: none;
   vertical-align: text-top;
 }
-  .radio:checked {
-    outline: none;
-    -webkit-appearance: none;
-    border-radius: 50%;
-    border: 1px solid #E0E0E0;
-  }
+.radio:checked {
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+}
 
-  .radio:checked:after {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: relative;
-    background-color: #FC842D;;
-    content: '';
-    display: block;
-    visibility: visible;
-  }
+.radio:checked:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+  background-color: #fc842d;
+  content: '';
+  display: block;
+  visibility: visible;
+}
 
-.errorMessage{
+.errorMessage {
   position: relative;
   top: -20px;
   margin: 0;
@@ -115,4 +123,28 @@ color: #9B9FAA;
   font-size: 14px;
   line-height: 1.21;
   color: rgb(184, 0, 0);
+}
+
+@media screen and (min-width: 1280px) {
+  .caloriesWrapper {
+    width: 605px;
+    margin: 144px 0 0 112px;
+  }
+  .dailyForm {
+    display: flex;
+    flex-flow: row;
+    margin-left: 25px;
+    width: 605px;
+    outline: 1px solid teal;
+  }
+  .desiredWeightAndBloodType {
+    width: 240px;
+  }
+  .dailyForm_title {
+    margin-bottom: 68px;
+    margin-left: 25px;
+  }
+  .currentUserData {
+    width: 240px;
+  }
 }

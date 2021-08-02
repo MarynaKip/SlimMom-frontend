@@ -63,10 +63,11 @@ const DailyCaloriesForm = () => {
     setShow(true);
   };
   return (
-    <div>
+    <div className={styles.caloriesWrapper}>
       <h1 className={styles.dailyForm_title}>
-                Просчитай свою суточную <br /> норму калорий
+        Просчитай свою суточную <br /> норму калорий
       </h1>
+
       <Formik
         initialValues={{
           height: '', // рост
@@ -78,15 +79,14 @@ const DailyCaloriesForm = () => {
         validationSchema={SignupSchema}
         // onSubmit = {modalHandler}
         onSubmit={values => {
-          modalHandler,
-          localStorage.setItem('user', JSON.stringify(values));
+          modalHandler, localStorage.setItem('user', JSON.stringify(values));
         }}
       >
         {({ values, handleChange, isValid, dirty, handleSubmit }) => (
           <Form className={styles.dailyForm} onSubmit={handleSubmit}>
-            <div className="">
+            <div className={styles.currentUserData}>
               <label htmlFor="age" className={styles.dailyLabel}>
-                                Рост *
+                Рост *
                 <Field
                   value={values.height}
                   onChange={handleChange}
@@ -96,16 +96,12 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="height">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
               <label htmlFor="age" className={styles.dailyLabel}>
-                                Возраст *
+                Возраст *
                 <Field
                   value={values.age}
                   onChange={handleChange}
@@ -115,19 +111,12 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="age">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
-              <label
-                htmlFor="currentWeight"
-                className={styles.dailyLabel}
-              >
-                                Текущий вес *
+              <label htmlFor="currentWeight" className={styles.dailyLabel}>
+                Текущий вес *
                 <Field
                   value={values.currentWeight}
                   onChange={handleChange}
@@ -137,19 +126,13 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="currentWeight">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
-
-              <label
-                htmlFor="desiredWeight"
-                className={styles.dailyLabel}
-              >
-                                Желаемый вес *
+            </div>
+            <div className={styles.desiredWeightAndBloodType}>
+              <label htmlFor="desiredWeight" className={styles.dailyLabel}>
+                Желаемый вес *
                 <Field
                   value={values.desiredWeight}
                   onChange={handleChange}
@@ -159,17 +142,13 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="desiredWeight">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
               <div id="bloodType" className={styles.check_label}>
                 <label className={styles.dailyLabel}>
-                                    Группа крови *
+                  Группа крови *
                   <br />
                   <Field
                     value="1"
@@ -179,7 +158,7 @@ const DailyCaloriesForm = () => {
                     type="radio"
                     checked={true}
                   />
-                                    1
+                  1
                   <Field
                     // value={values.bloodType}
                     value="2"
@@ -188,7 +167,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    2
+                  2
                   <Field
                     //value={values.bloodType}
                     value="3"
@@ -197,7 +176,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    3
+                  3
                   <Field
                     //value={values.bloodType}
                     value="4"
@@ -206,10 +185,9 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    4
+                  4
                 </label>
               </div>
-
               <div>
                 <button
                   type="submit"
@@ -217,11 +195,9 @@ const DailyCaloriesForm = () => {
                   className={styles.dailyButton}
                   onClick={() => setShow(true)}
                 >
-                                    Похудеть
+                  Похудеть
                 </button>
-                {show && (
-                  <Modal active={show} setActive={setShow} />
-                )}
+                {show && <Modal active={show} setActive={setShow} />}
               </div>
             </div>
           </Form>

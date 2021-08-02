@@ -1,1 +1,1 @@
-export {default} from './DailyCaloriesForm';
+export { default } from './DailyCaloriesForm';
