@@ -2,25 +2,23 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import calculatorActions from './calculator-actions';
 
-// const initialValues = {
-//     height: '', // рост
-//     age: '', // возвраст
-//     currentWeight: '', // текущий вес
-//     desiredWeight: '', // желаемый вес
-//     bloodType: '', // группа крови}
-// };
+const initialUserState = {
+  height: '', // рост
+  age: '', // возвраст
+  currentWeight: '', // текущий вес
+  desiredWeight: '', // желаемый вес
+  bloodType: '', // группа крови}
+};
 
-// const userInfo = createReducer(initialValues, {
-//     [calculatorActions.registerSuccess]: (_, { payload }) => payload.user,
-//     [calculatorActions.loginSuccess]: (_, { payload }) => payload.user,
-//     [calculatorActions.logoutSuccess]: (_, __) => initialUserState,
-//     [calculatorActions.getCurrentUserSuccess]: (_, { payload }) => payload,
-// });
-
+const userInfo = createReducer(initialUserState, {
+  [calculatorActions.getDailyRateRequest]: (_, { payload }) => payload,
+});
 
 const dailyMeal = createReducer(null, {
-  [calculatorActions.getDailyRateSuccess]: (_, { payload }) => payload,
-  [calculatorActions.getDailyRatePrivateSuccess]: (_, { payload }) => payload,
+  [calculatorActions.getDailyRateSuccess]: (_, { payload }) =>
+    payload.dailyMeal,
+  [calculatorActions.getDailyRatePrivateSuccess]: (_, { payload }) =>
+    payload.currentUser,
 });
 
 const setError = (_, { payload }) => payload;
@@ -30,6 +28,7 @@ const error = createReducer(null, {
 });
 
 export default combineReducers({
+  userInfo,
   dailyMeal,
-  error
+  error,
 });
