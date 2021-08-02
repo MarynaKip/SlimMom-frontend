@@ -37,14 +37,6 @@ const SignupSchema = Yup.object().shape({
     .required('Заполните все поля'),
 });
 
-// const initialValues = {
-//     height: '', // рост
-//     age: '', // возвраст
-//     currentWeight: '', // текущий вес
-//     desiredWeight: '', // желаемый вес
-//     bloodType: '', // группа крови
-// };
-
 const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
   return (
     <div>
@@ -66,7 +58,7 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
       >
         {({ values, handleChange, isValid, dirty, handleSubmit }) => (
           <Form className={styles.dailyForm} onSubmit={handleSubmit}>
-            <div className="">
+            <div className = {styles.formСategory}>
               <label htmlFor="age" className={styles.dailyLabel}>
                 Рост *
                 <Field
@@ -111,7 +103,10 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
                   {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
+              </div>
 
+
+           <div className = {styles.formСategory}>
               <label htmlFor="desiredWeight" className={styles.dailyLabel}>
                 Желаемый вес *
                 <Field
@@ -168,12 +163,13 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
                   />
                   4
                 </label>
+                </div>
               </div>
-
+              
               <div>
                 <button
                   type="submit"
-                  //disabled={!isValid || !dirty}
+                  disabled={!isValid || !dirty}
                   className={styles.dailyButton}
                   onClick={modalOpen}
                 >
@@ -181,7 +177,7 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
                 </button>
                 {isModalOpen && <Modal />}
               </div>
-            </div>
+           
           </Form>
         )}
       </Formik>
