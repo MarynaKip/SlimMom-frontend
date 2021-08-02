@@ -29,13 +29,13 @@ p {
 }
 
 .dailyLabel {
+  /* outline: 1px solid tomato; */
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
-
   color: #9b9faa;
 }
 
@@ -47,7 +47,7 @@ p {
 
 .daily_input {
   display: block;
-  width: 80%;
+  width: 240px;
   padding: 5px;
   margin: 0 0 40px 0;
   border: none;
@@ -60,14 +60,11 @@ p {
 
 .dailyButton {
   display: block;
-  margin-top: 60px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 20px;
+  margin-top: 120px;
+  margin-left: 66px;
   padding: 0;
   width: 176px;
   height: 44px;
-
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
@@ -75,11 +72,11 @@ p {
   line-height: 1.21;
   letter-spacing: 0.04em;
   color: #ffffff;
-
   background: #fc842d;
   border: 2px solid #fc842d;
   box-sizing: border-box;
   border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
   cursor: pointer;
 }
@@ -124,6 +121,51 @@ p {
   line-height: 1.21;
   color: rgb(184, 0, 0);
 }
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .caloriesWrapper {
+    width: 605px;
+    height: 420px;
+    margin: 100px auto 0;
+  }
+  .dailyForm {
+    display: flex;
+    flex-flow: row;
+    margin-left: 25px;
+    max-width: 605px;
+    outline: 1px solid teal;
+  }
+  .desiredWeightAndBloodType {
+    width: 240px;
+  }
+  .dailyForm_title {
+    margin-bottom: 60px;
+    margin-left: 25px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .radioContainer {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    justify-content: space-between;
+  }
+  .currentUserData {
+    width: 240px;
+    margin-right: 30px;
+  }
+  .dailyButton {
+    display: block;
+    position: relative;
+    top: 150px;
+    right: 270px;
+
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 0;
+  }
+}
 
 @media screen and (min-width: 1280px) {
   .caloriesWrapper {
@@ -143,8 +185,41 @@ p {
   .dailyForm_title {
     margin-bottom: 68px;
     margin-left: 25px;
+    font-size: 34px;
+  }
+
+  .radioContainer {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    justify-content: space-between;
   }
   .currentUserData {
     width: 240px;
+    margin-right: 30px;
+  }
+
+  .dailyButton {
+    display: block;
+    margin-top: 120px;
+    margin-left: 66px;
+    padding: 0;
+    width: 176px;
+    height: 44px;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    background: #fc842d;
+    border: 2px solid #fc842d;
+    box-sizing: border-box;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+    cursor: pointer;
   }
 }
