@@ -6,20 +6,20 @@ const getNotRecommendedProducts = state => state.user.notRecommendedProducts;
 const getCurrentDate = state => state.currentDateData.date; //нужно узнать место хранения данных в редаксе
 
 const getLeftCal = createSelector(
-    [getDailyAmount, getConsumedCal],
-    (dailyAmount, consumedCal) => dailyAmount - consumedCal,
+  [getDailyAmount, getConsumedCal],
+  (dailyAmount, consumedCal) => dailyAmount - consumedCal,
 );
 
 const getPercentage = createSelector(
-    [getDailyAmount, getConsumedCal],
-    (dailyAmount, consumedCal) => Math.round((consumedCal * 100) / dailyAmount),
+  [getDailyAmount, getConsumedCal],
+  (dailyAmount, consumedCal) => Math.round((consumedCal * 100) / dailyAmount),
 );
 
 const sidebarSelectors = {
-    getNotRecommendedProducts,
-    getCurrentDate,
-    getLeftCal,
-    getPercentage,
+  getNotRecommendedProducts,
+  getCurrentDate,
+  getLeftCal,
+  getPercentage,
 };
 
 export default sidebarSelectors;

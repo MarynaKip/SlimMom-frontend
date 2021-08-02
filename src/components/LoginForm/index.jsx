@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Button from '../Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import { authSelectors } from '../../redux/auth';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
@@ -19,7 +20,7 @@ const initialValues = {
   password: '',
 };
 
-const Login = ({onLogin}) => {
+const Login = ({onLogin, error}) => {
   return (
     <div className="login">
       <h1 className="login__title">Вход</h1>
@@ -30,9 +31,6 @@ const Login = ({onLogin}) => {
           const payload = { ...values };
           console.log('payload', payload);
           onLogin(payload);
-         
-        //   await new Promise((r) => setTimeout(r, 500));
-        //   alert(JSON.stringify(values, null, 2));
         }}
       >
         {({errors, touched}) => (
@@ -78,6 +76,8 @@ const Login = ({onLogin}) => {
                 </div>
 
               </div>
+              { error && (
+                <div className="error-login">Incorrect input data!</div>)}
             </Form>
             <div className="registration__button-reg">
               <Button
@@ -101,9 +101,13 @@ const Login = ({onLogin}) => {
   );
 };
 
+const mapStateToProps = (state, props) => ({
+  error: authSelectors.getError(state),
+});
+
 const mapDispatchToProps = {
 //   onRegister: authOperations.register,
   onLogin: authOperations.logIn,
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
