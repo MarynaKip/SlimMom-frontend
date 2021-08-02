@@ -11,12 +11,18 @@ import RegisterLoginPageView from './pages/RegisterLoginPageView';
 import CalculatorPageView from './pages/CalculatorPageView';
 import { connect } from 'react-redux';
 import { authOperations, authSelectors } from './redux/auth';
+import { calculatorOperations, calculatorSelectors } from './redux/calculator';
 import { useEffect, Suspense, lazy } from 'react';
 
-const App = ({ onGetCurrentUser }) => {
+const App = ({ onGetCurrentUser, onGetDailyRate }) => {
   useEffect(() => {
     onGetCurrentUser();
   }, []);
+
+  useEffect(() => {
+    onGetDailyRate();
+  }, []);
+
   return (
     <>
       <Switch>
@@ -59,6 +65,7 @@ const App = ({ onGetCurrentUser }) => {
 
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
+  onGetDailyRate: calculatorOperations.getDailyRate,
 };
 // const mapStateToProps = state => ({
 //   isAuthenticated: authSelectors.getIsAuthenticated(state),

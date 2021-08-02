@@ -5,11 +5,13 @@ import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 
 const PromoView = () => {
   return (
-    <main className="bg-wrapper__promo">
+    <div className="bg-wrapper__promo">
       <Header />
       {/* <Login /> */}
-      <DailyCaloriesForm/>
-    </main>
+      <div className="promopage-container">
+        <DailyCaloriesForm />
+      </div>
+    </div>
   );
 };
 export default PromoView;

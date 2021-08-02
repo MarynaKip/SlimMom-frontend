@@ -4,6 +4,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import contactsReducer from '../redux/diaryData/contacts-reducer';
 import { authReducer } from './auth';
+import { calculatorReducer } from './calculator';
 
 import {
   persistStore,
@@ -37,11 +38,18 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const calculatorPersistConfig = {
+  key: 'userInfo',
+  storage,
+  whitelist: ['height', 'currentWeight', 'desiredWeight', 'bloodType', 'age'],
+};
+
 const store = configureStore({
   reducer: {
     //   userCurrentDate: currentDateData,
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
+    calculator: persistReducer(calculatorPersistConfig, calculatorReducer),
   },
   middleware,
   devtols,
