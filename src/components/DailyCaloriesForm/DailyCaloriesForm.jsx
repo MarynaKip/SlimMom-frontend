@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './DailyCaloriesForm.module.css';
 import Modal from '../Modal/Modal';
+import { connect } from 'react-redux';
+import { getModalIsOpen } from '../../redux/modal/modal-selector';
+import modalOperations from '../../redux/modal/modal-operations';
 
 const SignupSchema = Yup.object().shape({
   height: Yup.number()
@@ -43,29 +45,11 @@ const SignupSchema = Yup.object().shape({
 //     bloodType: '', // группа крови
 // };
 
-const DailyCaloriesForm = () => {
-  const [show, setShow] = useState(false);
-  const toggleModal = () => setShow(prevSetShow => !prevSetShow);
-
-  // useEffect(() => {
-  //     const handleKeyDown = event => {
-  //         if (event.code === 'Escape') {
-  //             setShow(false);
-  //         }
-  //     };
-  //     window.addEventListener('keydown', handleKeyDown);
-  //     return () => {
-  //         window.removeEventListener('keydown', handleKeyDown);
-  //     };
-  // }, []);
-
-  const modalHandler = values => {
-    setShow(true);
-  };
+const DailyCaloriesForm = ({ isModalOpen, modalOpen }) => {
   return (
     <div>
       <h1 className={styles.dailyForm_title}>
-                Просчитай свою суточную <br /> норму калорий
+        Просчитай свою суточную <br /> норму калорий
       </h1>
       <Formik
         initialValues={{
@@ -76,9 +60,7 @@ const DailyCaloriesForm = () => {
           bloodType: '', // группа крови}
         }}
         validationSchema={SignupSchema}
-        // onSubmit = {modalHandler}
         onSubmit={values => {
-          modalHandler,
           localStorage.setItem('user', JSON.stringify(values));
         }}
       >
@@ -86,7 +68,7 @@ const DailyCaloriesForm = () => {
           <Form className={styles.dailyForm} onSubmit={handleSubmit}>
             <div className="">
               <label htmlFor="age" className={styles.dailyLabel}>
-                                Рост *
+                Рост *
                 <Field
                   value={values.height}
                   onChange={handleChange}
@@ -96,16 +78,12 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="height">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
               <label htmlFor="age" className={styles.dailyLabel}>
-                                Возраст *
+                Возраст *
                 <Field
                   value={values.age}
                   onChange={handleChange}
@@ -115,19 +93,12 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="age">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
-              <label
-                htmlFor="currentWeight"
-                className={styles.dailyLabel}
-              >
-                                Текущий вес *
+              <label htmlFor="currentWeight" className={styles.dailyLabel}>
+                Текущий вес *
                 <Field
                   value={values.currentWeight}
                   onChange={handleChange}
@@ -137,19 +108,12 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="currentWeight">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
-              <label
-                htmlFor="desiredWeight"
-                className={styles.dailyLabel}
-              >
-                                Желаемый вес *
+              <label htmlFor="desiredWeight" className={styles.dailyLabel}>
+                Желаемый вес *
                 <Field
                   value={values.desiredWeight}
                   onChange={handleChange}
@@ -159,17 +123,13 @@ const DailyCaloriesForm = () => {
                   className={styles.daily_input}
                 />
                 <ErrorMessage name="desiredWeight">
-                  {err => (
-                    <p className={styles.errorMessage}>
-                      {err}
-                    </p>
-                  )}
+                  {err => <p className={styles.errorMessage}>{err}</p>}
                 </ErrorMessage>
               </label>
 
               <div id="bloodType" className={styles.check_label}>
                 <label className={styles.dailyLabel}>
-                                    Группа крови *
+                  Группа крови *
                   <br />
                   <Field
                     value="1"
@@ -179,7 +139,7 @@ const DailyCaloriesForm = () => {
                     type="radio"
                     checked={true}
                   />
-                                    1
+                  1
                   <Field
                     // value={values.bloodType}
                     value="2"
@@ -188,7 +148,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    2
+                  2
                   <Field
                     //value={values.bloodType}
                     value="3"
@@ -197,7 +157,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    3
+                  3
                   <Field
                     //value={values.bloodType}
                     value="4"
@@ -206,7 +166,7 @@ const DailyCaloriesForm = () => {
                     name="bloodType"
                     type="radio"
                   />
-                                    4
+                  4
                 </label>
               </div>
 
@@ -215,13 +175,11 @@ const DailyCaloriesForm = () => {
                   type="submit"
                   //disabled={!isValid || !dirty}
                   className={styles.dailyButton}
-                  onClick={() => setShow(true)}
+                  onClick={modalOpen}
                 >
-                                    Похудеть
+                  Похудеть
                 </button>
-                {show && (
-                  <Modal active={show} setActive={setShow} />
-                )}
+                {isModalOpen && <Modal />}
               </div>
             </div>
           </Form>
@@ -231,4 +189,8 @@ const DailyCaloriesForm = () => {
   );
 };
 
-export default DailyCaloriesForm;
+const mapStateToProps = state => ({ isModalOpen: getModalIsOpen(state) });
+
+const mapDispatchToProps = { modalOpen: modalOperations.openModal };
+
+export default connect(mapStateToProps, mapDispatchToProps)(DailyCaloriesForm);
