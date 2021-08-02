@@ -1,133 +1,141 @@
 .login {
-    padding-top: 40px;
+  width: 290px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 40px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .login {
-        padding-top: 191px;
-        padding-left: 72px;
-    }
+  .login {
+    width: auto;
+    padding-top: 191px;
+    padding-left: 77px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .login {
-        padding-top: 213px;
-    }
+  .login {
+    width: auto;
+    padding-top: 213px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .login__title {
-    margin: 0;
-    font-family: Gotham Pro, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 1.07;
-    text-align: center;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #fc842d;
+  margin: 0;
+  font-family: Gotham Pro, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.07;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fc842d;
 }
 
 @media screen and (min-width: 768px) {
-    .login__title {
-        text-align: left;
-    }
+  .login__title {
+    text-align: left;
+  }
 }
 
 .login__form {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .input-wrapper {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
-    .login__form {
-        margin-top: 39px;
-        width: 239px;
-    }
+  .login__form {
+    margin-top: 39px;
+    width: 239px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .login__form {
-        margin-top: 50px;
-    }
+  .login__form {
+    margin-top: 50px;
+  }
 }
 
 .login__labe-email,
 .login__labe-password {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
 
 .login__labe-email::after,
 .login__labe-password::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -2px;
-    left: -200%;
-    width: 320px;
-    height: 2px;
-    background-color: rgb(25, 138, 231);
-    transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  left: -200%;
+  width: 320px;
+  height: 2px;
+  background-color: rgb(25, 138, 231);
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
 
 .login__email-input,
 .login__password-input {
-    display: block;
-    width: 100%;
-    height: 56px;
-    padding: 0;
-    font-family: Verdana, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.21;
-    letter-spacing: 0.04em;
-    color: #000000;
-    background: transparent;
+  display: block;
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #000000;
+  background: transparent;
 
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    border-radius: 0;
-    outline: none;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+  outline: none;
 }
 
 .box {
-    position: relative;
+  position: relative;
 }
 
 .login__error {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 14px;
-    color: red;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 14px;
+  color: red;
 }
 
 @media screen and (min-width: 768px) {
-    .login__email-input,
-    .login__password-input {
-        width: 239px;
-    }
+  .login__email-input,
+  .login__password-input {
+    width: 239px;
+  }
 }
 
 .login__email-input:hover + .login__labe-email::after,
 .login__password-input:hover + .login__labe-password::after,
 .login__email-input:focus + .login__labe-email::after,
 .login__password-input:focus + .login__labe-password::after {
-    left: 0;
-    transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  left: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
 
 .login__email-input:not(:placeholder-shown) + .login__labe-email::after,
 .login__password-input:not(:placeholder-shown) + .login__labe-password::after {
-    left: 0;
-    transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  left: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
 }
-
 
 .registration__button-reg,
 .registration__button-login {
@@ -161,7 +169,45 @@
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: inset 0 0 0 50px #fff !important; /* Цвет фона */
-    -webkit-text-fill-color: rgb(0, 0, 0) !important; /* цвет текста */
-    /* color: rgb(0, 0, 0) !important; цвет текста */
+  -webkit-box-shadow: inset 0 0 0 50px #fff !important; /* Цвет фона */
+  -webkit-text-fill-color: rgb(0, 0, 0) !important; /* цвет текста */
+  /* color: rgb(0, 0, 0) !important; цвет текста */
+}
+
+@keyframes error {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.error-login {
+  position: absolute;
+  width: 290px;
+  height: 50px;
+  top: 115px;
+  left: 0;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  text-decoration: underline;
+
+  animation: error 0.4s ease-in;
+  animation-fill-mode: forwards;
+
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: rgb(255, 24, 24);
+}
+
+@media screen and (min-width: 768px) {
+  .error-login {
+    width: 239px;
+  }
 }

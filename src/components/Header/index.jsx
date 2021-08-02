@@ -38,6 +38,7 @@ const Header = ( {isAuthenticated, userName,onLogOut} ) => {
         </div>
         {/* </Container> */}
         <BurgerMenu active={menuActive} />
+        <div className="underline"></div>
         {isAuthenticated && (
           <div className="mobile_background">
             <div className="mobile user_auth_sub_container">
@@ -53,8 +54,9 @@ const Header = ( {isAuthenticated, userName,onLogOut} ) => {
             </div>
           </div>
         )}
+        
       </header>
-      <div className="underline"></div>
+      {/* <div className="underline"></div> */}
     </>
   );
 };
