@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './styles.css';
 // import desctopLogo from '../../images/logo-desctop-mini.png';
 // import tabletLogo from '../../images/logo-tablet-mini.png';

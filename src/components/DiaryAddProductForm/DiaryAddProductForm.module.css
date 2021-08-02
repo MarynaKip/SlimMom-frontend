@@ -1,25 +1,65 @@
-/* .inputAddProductForm {
-    max-width: 320px;
-    padding: 40px 0 60px 15px;
-    margin: 0 auto;
-  } */
-@media screen and (max-width: 768px) {
-  .addProductForm {
-    text-align: center;
-  }
-  .inputAddProductFormName,
-  .inputAddProductFormAmount {
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    font-size: 14px;
-    color: #212121;
-    width: 290px;
-    padding: 30px 0 10px 0;
-    text-align: left;
-  }
-  .buttonAddProductMobile{
-    background-color: red;
-  }
+.buttonToForm {
+  /* красота */
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 50%;
+  border: none;
+  text-align: bottom;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+/* позиционирование */
+  position: absolute; 
+  bottom:60px;
+  right:50%;
+  left:50%;
+
+
+}
+.addProductForm {
+  text-align: center;
+}
+.addProductFormSleep {
+display: none;
+}
+.inputAddProductFormName,
+.inputAddProductFormAmount {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #212121;
+  width: 290px;
+  padding: 30px 0 10px 0;
+  text-align: left;
+}
+
+.buttonAddProductMobile {
+  display: block;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  padding: 0;
+  width: 176px;
+  height: 44px;
+
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+
+  background: #fc842d;
+  border: 2px solid #fc842d;
+  box-sizing: border-box;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.5, 1.25);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

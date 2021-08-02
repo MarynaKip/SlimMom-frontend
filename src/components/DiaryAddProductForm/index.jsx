@@ -1,73 +1,124 @@
-import React from 'react';
-import {useFormik} from 'formik';
-import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
-const isMobile = window.screen.width < 768;
-console.log(isMobile);
+import { useState, useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { diaryOperations } from '../../redux/diary';
+import {authSelectors} from '../../redux/auth';
+import { v4 as uuidv4 } from 'uuid';
 
-const DiaryAddProductForm = () => {
-  // Pass the useFormik() hook initial form values
-  // and a submit function that will
-  // be called when the form is submitted
-  const formik = useFormik({
-    initialValues: {
-      productName: '',
-      grams: Number,
-    },
-    onSubmit: (values) => {
-      // понять что значит эта строка
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+import axios from 'axios';
+import { DebounceInput } from 'react-debounce-input';
+
+import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
+
+// axios.defaults.headers.common['Authorization'] =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTA2NjhhZDg2YWRmYTAwMWNlNjM3MjAiLCJlbWFpbCI6ImxhaW1hMUB1a3IubmV0IiwiaWF0IjoxNjI3ODA5OTY1fQ.l02q3sziD6ZLNIfDY6wflKfTsAQWDwo9aRGUbwttZg0';
+
+const isMobile = window.screen.width < 768;
+
+export default function DiaryAddProductForm() {
+  const [productName, setProductName] = useState('');
+  const [productWeight, setProductWeight] = useState('');
+  const [query, setQuery] = useState('');
+  const [datalist, setDatalist] = useState([]);
+
+  const dispatch = useDispatch();
+
+  // const ifProductAccess = datalist.find(elem => elem.title.ru === query);
+
+  const handleFormSubmit = event => {
+    event.preventDefault();
+    setProductName(query);
+    dispatch(diaryOperations.addProduct({ query, productWeight }));
+  };
+
+  useEffect(() => {
+    if (query !== '') {
+      fetchProducts(query);
+    }
+  }, [query]);
+
+  const token = useSelector(authSelectors.getToken);
+  const header = `Authorization: Bearer ${token}`;
+
+  const fetchProducts = async searchQuery => {
+    try {
+      const { data } = await axios.get(
+        `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
+        { headers: { header } });
+      setDatalist(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onChangeProductWeight = useCallback(event => {
+    setProductWeight(event.target.value);
+  }, []);
+
+  const handleChange = useCallback(event => {
+    setQuery(event.target.value);
+  }, []);
+
+  // const resetInput = () => {
+  //   setProductWeight('');
+  //   setQuery('');
+  //   setProductName('');
+  // };
+
   return (
     <div>
-      <form onSubmit={formik.handleSubmit} className={styles.addProductForm}>
-        <input
+      <form className={styles.addProductForm} onSubmit={handleFormSubmit}>
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={1000}
           className={styles.inputAddProductFormName}
-          id='productName'
-          name='productName'
-          type='productName'
-          onChange={formik.handleChange}
-          value={formik.values.productName}
-          placeholder='Введите название продукта'
+          id="productName"
+          name="productName"
+          type="productName"
+          value={productName}
+          onChange={handleChange}
+          placeholder="Введите название продукта"
           required
-          list='products-for-add'
-          autoComplete='off'
+          list="products-for-add"
+          autoComplete="off"
         />
 
-        <datalist id='products-for-add'>
-          <option>gre4ka</option>
-          <option value='jaico'></option>
-          <option value='salo'></option>
-          <option value='moloko'></option>
-          <option value='grechka'></option>
+        <datalist id="products-for-add">
+          {datalist.map(({ title }) => (
+            <option value={title.ru} key={uuidv4()}></option>
+          ))}
         </datalist>
-        {/* <Field name="color" component="select">
-   <option value="red">Red</option>
-   <option value="green">Green</option>
-   <option value="blue">Blue</option>
- </Field> */}
+
         <input
           className={styles.inputAddProductFormAmount}
-          id='grams'
-          name='grams'
-          type='grams'
-          onChange={formik.handleChange}
-          value={formik.values.grams}
-          placeholder='Граммы'
+          id="grams"
+          name="productWeight"
+          type="grams"
+          value={productWeight}
+          onChange={onChangeProductWeight}
+          placeholder="Граммы"
           required
-          autoComplete='off'
+          autoComplete="off"
         />
-        {isMobile ?
-          (<button type='submit' className={styles.buttonAddProductMobile}>
-          Добавить
-          </button>) :
-          <button type='submit' className={styles.buttonAddProduct}>
-          +
-          </button>}
-
+        {isMobile ? (
+          <button type="submit" className={styles.buttonAddProductMobile}>
+            Добавить
+          </button>
+        ) : (
+          <button type="submit" className={styles.buttonAddProduct}>
+            +
+          </button>
+        )}
       </form>
+
+      {isMobile ? (
+        <button
+          className={styles.buttonToForm}
+          type="button"
+          onClick={null}
+        >
+          +
+        </button>
+      ) : null}
     </div>
   );
-};
-
-export default DiaryAddProductForm;
+}

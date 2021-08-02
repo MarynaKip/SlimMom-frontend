@@ -1,4 +1,4 @@
-import {container, open} from './styles.module.css';
+import { container, open } from './styles.module.css';
 import UserNavigation from '../UserNavigation';
 const BurgerMenu = ({active, menuHandler}) => {
   return (

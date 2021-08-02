@@ -2,9 +2,9 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 // import process from 'process';
 import logger from 'redux-logger';
-import contactsReducer from '../redux/diaryData/contacts-reducer';
 import { authReducer } from './auth';
 import { calculatorReducer } from './calculator';
+import { diaryReducer } from './diary';
 
 import {
   persistStore,
@@ -17,11 +17,16 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import modalReducer from './modal/modal-reducers';
 import registration from './auth/auth-reducers';
 import currentDateData from './sidebar/sidebar-reducers';
 
 const devtols =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+// const devtols =
+//     window.__REDUX_DEVTOOLS_EXTENSION__ &&
+//     window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -46,10 +51,10 @@ const calculatorPersistConfig = {
 
 const store = configureStore({
   reducer: {
-    //   userCurrentDate: currentDateData,
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer,
     calculator: persistReducer(calculatorPersistConfig, calculatorReducer),
+    diary: diaryReducer,
+    modal: modalReducer,
   },
   middleware,
   devtols,
