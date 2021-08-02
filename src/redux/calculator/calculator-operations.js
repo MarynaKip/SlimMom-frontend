@@ -55,7 +55,10 @@ const getDailyRatePrivate = dataFromCalculator => async (
   dispatch(calculatorActions.getDailyRateRequest());
 
   try {
-    const response = await axios.post('/api/daily/privateRate', dataForRequest);
+    const response = await axios.post(
+      '/api/daily/private_rate',
+      dataForRequest,
+    );
     console.log(response.data);
     dispatch(calculatorActions.getDailyRateSuccess(response.data));
   } catch (error) {
