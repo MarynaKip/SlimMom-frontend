@@ -20,28 +20,20 @@ const DiaryPageView = isloading => {
     <div className="bg-wrapper__diary">
       <Header />
       <div className="diarypage-container">
-        {isloading ? (
+        {/* {isloading ? (
           <div className="spinner-wrapper__diary">
             <Spinner />
           </div>
-        ) : (
-          <ContainerForDiary>
-            <DiaryAddProductForm />
+        ) : (          
+        )} */}
+        <ContainerForDiary>
             <div className="data-picker">
               <DiaryDateСalendar />
             </div>
-            {isToday ? <DiaryAddProductForm /> : null}
+            {renderForm ? <DiaryAddProductForm /> : null}
             <DiaryProductsList />
           </ContainerForDiary>
-        )}
-
-        <ContainerForDiary>
-          <DiaryDateСalendar />
-          {renderForm ? <DiaryAddProductForm /> : null}
-          <DiaryProductsList />
-        </ContainerForDiary>
-
-        <Sidebar />
+       <Sidebar />
       </div>
     </div>
   );
