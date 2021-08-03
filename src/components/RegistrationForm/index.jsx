@@ -6,6 +6,7 @@ import Button from '../Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { authSelectors } from '../../redux/auth';
+import { calculatorSelectors } from '../../redux/calculator';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
@@ -28,7 +29,7 @@ const initialValues = {
   password: '',
 };
 
-const Registration = ({onRegister, error}) => {
+const Registration = ({onRegister, error, userCredentials}) => {
   return (
     <div className="registration">
       <h1 className="registration__title">Регистрация</h1>
@@ -36,7 +37,7 @@ const Registration = ({onRegister, error}) => {
         initialValues={initialValues}
         validationSchema={SignupSchema}
         onSubmit={async (values) => {
-          const payload = { ...values };
+          const payload = { ...values, ...userCredentials };
           onRegister(payload);
         }}
       >
@@ -128,6 +129,7 @@ const Registration = ({onRegister, error}) => {
 
 const mapStateToProps = (state, props) => ({
   error: authSelectors.getError(state),
+  userCredentials: calculatorSelectors.getUserCredentials(state)
 });
 
 const mapDispatchToProps = {
