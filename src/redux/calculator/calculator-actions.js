@@ -1,14 +1,17 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getDailyRateRequest = createAction('auth/getDailyRateRequest');
-const getDailyRateSuccess = createAction('auth/getDailyRateSuccess');
-const getDailyRateError = createAction('auth/getDailyRateError');
+const saveUserCredentials = createAction('calculator/saveUserCredentials');
 
-const getDailyRatePrivateRequest = createAction('auth/getDailyRatePrivateRequest');
-const getDailyRatePrivateSuccess = createAction('auth/getDailyRatePrivateSuccess');
-const getDailyRatePrivateError = createAction('auth/getDailyRatePrivateError');
+const getDailyRateRequest = createAction('calculator/getDailyRateRequest');
+const getDailyRateSuccess = createAction('calculator/getDailyRateSuccess');
+const getDailyRateError = createAction('calculator/getDailyRateError');
+
+const getDailyRatePrivateRequest = createAction('calculator/getDailyRatePrivateRequest');
+const getDailyRatePrivateSuccess = createAction('calculator/getDailyRatePrivateSuccess');
+const getDailyRatePrivateError = createAction('calculator/getDailyRatePrivateError');
 
 export default {
+  saveUserCredentials,
   getDailyRateRequest,
   getDailyRateSuccess,
   getDailyRateError,

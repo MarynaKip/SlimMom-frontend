@@ -78,9 +78,9 @@ const DailyCaloriesForm = () => {
           bloodType: '', // группа крови}
         }}
         validationSchema={SignupSchema}
-        // onSubmit = {modalHandler}
-        onSubmit={values => {
-          modalHandler, localStorage.setItem('user', JSON.stringify(values));
+        onSubmit={async values => {
+          await sendRequestDaily(values);
+          await modalOpen();
         }}
       >
         {({ values, handleChange, isValid, dirty, handleSubmit }) => (
