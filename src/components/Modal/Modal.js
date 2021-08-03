@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import modalOperations from '../../redux/modal/modal-operations';
 import routes from '../../routes';
 import './modal.css';
+import calculatorSelectors from '../../redux/calculator/calculator-selectors';
 
 const modalRoot = document.querySelector('#modal-root');
 
-function Modal({ modalClose }) {
+function Modal({ modalClose, dailyNorm, categories }) {
+  console.log(dailyNorm, categories);
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     return function reset() {
@@ -45,24 +47,26 @@ function Modal({ modalClose }) {
         </h2>
         <div className="modal_container">
           <p className="modal_text">
-            <span className="modal_number">2800</span> ккал
+            <span className="modal_number">{dailyNorm}</span> ккал
           </p>
           <div className="modal_underline"></div>
           <p className="modal_products">
             Продукты, которые вам <br />
             не рекомендуется употреблять
           </p>
-          {/* <ol className="modal_categories">
-              {categories.map((category) => (() => history.push(routes.register)
-                <li className="modal_categories-item" key="product.category"></li>
-              ))}
-            </ol> */}
           <ol className="modal_categories">
+            {categories.map(category => (
+              <li className="modal_categories-item" key={category}>
+                {category}
+              </li>
+            ))}
+          </ol>
+          {/* <ol className="modal_categories">
             <li className="modal_categories-item">Мучные продукты</li>
             <li className="modal_categories-item">Молоко</li>
             <li className="modal_categories-item">Красное мясо </li>
             <li className="modal_categories-item">Копчености</li>
-          </ol>
+          </ol> */}
         </div>
         <Link
           to={routes.register}
@@ -77,6 +81,11 @@ function Modal({ modalClose }) {
   );
 }
 
+const mapStateToProps = state => ({
+  dailyNorm: calculatorSelectors.getDailyNorm(state),
+  categories: calculatorSelectors.getNotAllowedProducts(state),
+});
+
 const mapDispatchToProps = { modalClose: modalOperations.closeModal };
 
-export default connect(null, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
