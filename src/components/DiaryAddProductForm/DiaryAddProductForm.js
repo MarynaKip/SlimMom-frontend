@@ -1,10 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { diaryOperations } from '../../redux/diary';
-import { authSelectors } from '../../redux/auth';
+import { diarySelectors } from '../../redux/diary';
 import { v4 as uuidv4 } from 'uuid';
 
-import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
 
 import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
@@ -12,16 +11,15 @@ import styles from '../DiaryAddProductForm/DiaryAddProductForm.module.css';
 const isMobile = window.screen.width < 768;
 
 export default function DiaryAddProductForm() {
-  const [productName, setProductName] = useState('');
   const [productWeight, setProductWeight] = useState('');
   const [query, setQuery] = useState('');
-  const [datalist, setDatalist] = useState([]);
   const [isActive, setActive] = useState(true);
+  const searchList = useSelector(diarySelectors.getSearchList);
+  const dispatch = useDispatch();
 
-  
-    useEffect(() => {
+  useEffect(() => {
     if (query !== '') {
-      fetchProducts(query);
+      dispatch(diaryOperations.fetchProductsList(query ));
     }
   }, [0, query]);
 
@@ -33,32 +31,11 @@ export default function DiaryAddProductForm() {
     setActive(true);
   };
 
-  const ifProductAccess = datalist.find(elem => elem.title.ru === query);
-
+  const ifProductAccess = searchList.find(elem => elem.title.ru === query);
 
   const handleChange = useCallback(event => {
     setQuery(event.target.value);
   }, []);
-
-
-  const dispatch = useDispatch();
-
-
-
-  const token = useSelector(authSelectors.getToken);
-  const header = `Authorization: Bearer ${token}`;
-
-  const fetchProducts = async searchQuery => {
-    try {
-      const { data } = await axios.get(
-        `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
-        { headers: { header } },
-      );
-      setDatalist(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const onChangeProductWeight = useCallback(event => {
     setProductWeight(event.target.value);
@@ -66,27 +43,19 @@ export default function DiaryAddProductForm() {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    setProductName(query);
     if (ifProductAccess) {
       dispatch(diaryOperations.addProduct({ query, productWeight }));
-       resetInput();
-    setActive(true);
-    }
-    else alert('Пожалуйста, введите название продукта из списка');
+      resetInput();
+      setActive(true);
+    } else alert('Пожалуйста, введите название продукта из списка');
+    
   };
-   
-
 
   const resetInput = () => {
     setProductWeight('');
     setQuery('');
-    setDatalist([]);
-    setProductName('');
-  
+    
   };
-// const clearInput =  useCallback(event => {
-//   event.target.value = '';
-//   }, []);
 
 
   return (
@@ -106,7 +75,7 @@ export default function DiaryAddProductForm() {
           id="productName"
           name="productName"
           type="productName"
-          value={productName}
+          value={query}
           onChange={handleChange}
           placeholder="Введите название продукта"
           required
@@ -115,7 +84,7 @@ export default function DiaryAddProductForm() {
         />
 
         <datalist id="products-for-add">
-          {datalist.map(({ title }) => (
+          {searchList.map(({ title }) => (
             <option value={title.ru} key={uuidv4()}></option>
           ))}
         </datalist>
