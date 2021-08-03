@@ -11,7 +11,7 @@ const initialUserState = {
 };
 
 const userInfo = createReducer(initialUserState, {
-  [calculatorActions.getDailyRateRequest]: (_, { payload }) => payload,
+  [calculatorActions.saveUserCredentials]: (_, { payload }) => payload,
 });
 
 const dailyMeal = createReducer(null, {
@@ -27,8 +27,18 @@ const error = createReducer(null, {
   [calculatorActions.getDailyRatePrivateError]: setError,
 });
 
+const loading = createReducer(false, {
+  [calculatorActions.getDailyRateRequest]: () => true,
+  [calculatorActions.getDailyRateSuccess]: () => false,
+  [calculatorActions.getDailyRateError]: () => false,
+  [calculatorActions.getDailyRatePrivateRequest]: () => true,
+  [calculatorActions.getDailyRatePrivateSuccess]: () => false,
+  [calculatorActions.getDailyRatePrivateError]: () => false,
+});
+
 export default combineReducers({
   userInfo,
   dailyMeal,
   error,
+  loading
 });

@@ -5,12 +5,13 @@ const path = 'https://obscure-shelf-16384.herokuapp.com';
 axios.defaults.baseURL = path;
 
 const getDailyRate = dataFromCalculator => async dispatch => {
-  dispatch(calculatorActions.getDailyRateRequest(dataFromCalculator));
+  dispatch(calculatorActions.getDailyRateRequest());
+
+  dispatch(calculatorActions.saveUserCredentials(dataFromCalculator));
 
   try {
-    console.log(dataFromCalculator);
     const response = await axios.post('/api/daily/rate', dataFromCalculator);
-    console.log(response.data);
+    
     dispatch(calculatorActions.getDailyRateSuccess(response.data));
   } catch (error) {
     dispatch(calculatorActions.getDailyRateError(error.message));
