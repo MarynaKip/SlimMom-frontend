@@ -1,7 +1,11 @@
 import modalActions from './modal-actions';
 
+const isMobile = window.screen.width < 400;
+
 const openModal = () => async dispatch => {
-  document.body.classList.add('modal-open');
+  if (!isMobile) {
+    document.body.classList.add('modal-open');
+  }
   dispatch(modalActions.modalOpenSuccess());
 };
 

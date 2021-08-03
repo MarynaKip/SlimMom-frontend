@@ -48,9 +48,9 @@ const SignupSchema = Yup.object().shape({
 
 const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
   return (
-    <div>
+    <div className={styles.caloriesWrapper}>
       <h1 className={styles.dailyForm_title}>
-        Просчитай свою суточную <br /> норму калорий
+        Просчитай свою суточную норму калорий прямо сейчас
       </h1>
       <Formik
         initialValues={{
@@ -69,7 +69,7 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
         {
           (/*{ values, handleChange, isValid, dirty, handleSubmit }*/) => (
             <Form className={styles.dailyForm} /*onSubmit={handleSubmit}*/>
-              <div className="">
+              <div className={styles.currentUserData}>
                 <label htmlFor="age" className={styles.dailyLabel}>
                   Рост *
                   <Field
@@ -84,7 +84,6 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                     {err => <p className={styles.errorMessage}>{err}</p>}
                   </ErrorMessage>
                 </label>
-
                 <label htmlFor="age" className={styles.dailyLabel}>
                   Возраст *
                   <Field
@@ -99,7 +98,6 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                     {err => <p className={styles.errorMessage}>{err}</p>}
                   </ErrorMessage>
                 </label>
-
                 <label htmlFor="currentWeight" className={styles.dailyLabel}>
                   Текущий вес *
                   <Field
@@ -114,7 +112,8 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                     {err => <p className={styles.errorMessage}>{err}</p>}
                   </ErrorMessage>
                 </label>
-
+              </div>
+              <div className={styles.desiredWeightAndBloodType}>
                 <label htmlFor="desiredWeight" className={styles.dailyLabel}>
                   Желаемый вес *
                   <Field
@@ -129,7 +128,6 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                     {err => <p className={styles.errorMessage}>{err}</p>}
                   </ErrorMessage>
                 </label>
-
                 <div id="bloodType" className={styles.check_label}>
                   <label className={styles.dailyLabel}>
                     Группа крови *
@@ -172,8 +170,7 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                     4
                   </label>
                 </div>
-
-                <div>
+                <div className={styles.buttonWrapper}>
                   <button
                     type="submit"
                     //disabled={!isValid || !dirty}
@@ -182,13 +179,13 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
                   >
                     Похудеть
                   </button>
-                  {isModalOpen && <Modal />}
                 </div>
               </div>
             </Form>
           )
         }
       </Formik>
+      {isModalOpen && <Modal />}
     </div>
   );
 };

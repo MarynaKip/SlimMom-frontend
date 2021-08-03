@@ -1,7 +1,8 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
-// import Modal from './components/Modal';
+import Modal from './components/Modal';
+import getModalIsOpen from './redux/modal/modal-operations';
 import routes from './routes';
 import './App.css';
 import PromoView from './pages/PromoView';
@@ -14,7 +15,7 @@ import { authOperations, authSelectors } from './redux/auth';
 import { calculatorOperations, calculatorSelectors } from './redux/calculator';
 import { useEffect, Suspense, lazy } from 'react';
 
-const App = ({ onGetCurrentUser, onGetDailyRate }) => {
+const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
   useEffect(() => {
     onGetCurrentUser();
   }, []);
@@ -52,7 +53,7 @@ const App = ({ onGetCurrentUser, onGetDailyRate }) => {
           redirectTo={routes.home}
           component={CalculatorPageView}
         />
-        {/* {modal && <Modal />} */}
+        {isModalOpen && <Modal />}
         <Redirect to={routes.home} />
       </Switch>
     </>
@@ -63,8 +64,9 @@ const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
   onGetDailyRate: calculatorOperations.getDailyRate,
 };
-// const mapStateToProps = state => ({
-//   isAuthenticated: authSelectors.getIsAuthenticated(state),
-// });
+const mapStateToProps = state => ({
+  // isAuthenticated: authSelectors.getIsAuthenticated(state),
+  isModalOpen: getModalIsOpen(state),
+});
 
 export default connect(null, mapDispatchToProps)(App);
