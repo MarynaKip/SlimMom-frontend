@@ -48,7 +48,7 @@ const SignupSchema = Yup.object().shape({
 
 const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
   return (
-    <div>
+    <div className={styles.caloriesWrapper}>
       <h1 className={styles.dailyForm_title}>
         Просчитай свою суточную <br /> норму калорий
       </h1>
@@ -132,44 +132,45 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
 
                 <div id="bloodType" className={styles.check_label}>
                   <label className={styles.dailyLabel}>
-                    Группа крови *
-                    <br />
-                    <Field
-                      value="1"
-                      // onChange={handleChange}
-                      className={styles.radio}
-                      name="bloodType"
-                      type="radio"
-                      checked={true}
-                    />
-                    1
-                    <Field
-                      // value={values.bloodType}
-                      value="2"
-                      // onChange={handleChange}
-                      className={styles.radio}
-                      name="bloodType"
-                      type="radio"
-                    />
-                    2
-                    <Field
-                      //value={values.bloodType}
-                      value="3"
-                      // onChange={handleChange}
-                      className={styles.radio}
-                      name="bloodType"
-                      type="radio"
-                    />
-                    3
-                    <Field
-                      //value={values.bloodType}
-                      value="4"
-                      // onChange={handleChange}
-                      className={styles.radio}
-                      name="bloodType"
-                      type="radio"
-                    />
-                    4
+                    Группа крови *{/* <br /> */}
+                    <div className={styles.radioContainer}>
+                      <Field
+                        value="1"
+                        // onChange={handleChange}
+                        className={styles.radio}
+                        name="bloodType"
+                        type="radio"
+                        checked={true}
+                      />
+                      1
+                      <Field
+                        // value={values.bloodType}
+                        value="2"
+                        // onChange={handleChange}
+                        className={styles.radio}
+                        name="bloodType"
+                        type="radio"
+                      />
+                      2
+                      <Field
+                        //value={values.bloodType}
+                        value="3"
+                        // onChange={handleChange}
+                        className={styles.radio}
+                        name="bloodType"
+                        type="radio"
+                      />
+                      3
+                      <Field
+                        //value={values.bloodType}
+                        value="4"
+                        // onChange={handleChange}
+                        className={styles.radio}
+                        name="bloodType"
+                        type="radio"
+                      />
+                      4
+                    </div>
                   </label>
                 </div>
 

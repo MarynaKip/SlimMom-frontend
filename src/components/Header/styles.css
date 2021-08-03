@@ -1,91 +1,139 @@
 .header-container {
-  max-width: 320px;
-  padding: 18px 15px 0 15px;
-  margin: 0 auto;
-  z-index: 60;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .header-container {
-    max-width: 768px;
-    padding: 23px 87px 0 87px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .header-container {
-    max-width: 1280px;
-    padding: 134px 115px 0 115px;
-  }
-}
-.header {
-  position: relative;
+  min-width: 290px;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 17px;
+  padding: 18px 15px 15px;
+  /* margin: 0 auto; */
   z-index: 60;
 }
 
-.separator {
-  display: none;
-}
-.underline {
-  display: block;
-  width: 100%;
-  height: 2px;
-  /* padding-bottom: 14px; */
-  background-color: #e0e0e0;
-  /* border-bottom: 2px solid #e0e0e0; */
-  z-index: 60;
-}
+/* .header-wrapper {
+  padding: 18px 15px 15px;
+} */
+
 .mobile_background {
-  display: none;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+  min-width: 320px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #eff1f3;
 }
-@media screen and (max-width: 767px) {
-  .mobile.user_auth_sub_container {
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .mobile_background {
+    display: none;
+  }
+  .header-container {
+    min-width: 768px;
+    padding: 23px 87px 0 87px;
     display: flex;
-    justify-content: flex-end;
-    max-width: 320px;
-    padding: 4px 15px;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
   }
-  .mobile_background {
-    display: block;
-    /* width: 320px; */
-    margin: 0 auto;
-    background-color: #eff1f3;
+  .header-wrapper {
+    display: flex;
   }
   .underline {
-    /* width: 320px; */
-    margin: 0 auto;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-  .header {
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-bottom: 24px;
+    border-bottom: 2px solid #e0e0e0;
+    width: 100%;
   }
 }
 @media screen and (min-width: 1280px) {
+  .header-container {
+    min-width: 1280px;
+    padding: 134px 115px 0 115px;
+  }
+
   .header {
-    /* display: flex;
-    flex-wrap: nowrap; */
-    justify-content: flex-start;
-    /* align-items: flex-end; */
-    padding-bottom: 0;
-    max-width: 1280px;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 17px;
+    z-index: 60;
   }
+
   .separator {
-    display: block;
-    width: 2px;
-    height: 32px;
-    margin: 0 22px 0 163px;
-    background-color: #e0e0e0;
-  }
-  .underline {
     display: none;
+  }
+  /* .underline {
+    display: block;
+    width: 100%;
+    height: 2px;
+    padding-bottom: 14px;
+    background-color: #e0e0e0;
+    border-bottom: 2px solid #e0e0e0;
+    z-index: 60;
+  } */
+  .mobile_background {
+    display: none;
+  }
+  @media screen and (max-width: 767px) {
+    .mobile_background {
+      display: flex;
+      justify-content: right;
+      width: 100%;
+      height: 40px;
+      margin: 0 auto;
+      background-color: #1565b6;
+    }
+    .mobile.user_auth_sub_container {
+      display: flex;
+      justify-content: flex-end;
+      min-width: 320px;
+      padding: 4px 15px;
+      margin: 0 auto;
+      background-color: green;
+    }
+
+    .underline {
+      /* width: 320px; */
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    .header-container {
+      padding: 18px 15px 0 15px;
+      margin: 0 auto;
+      z-index: 60;
+    }
+    .header {
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding-bottom: 24px;
+    }
+    .separator {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    /* .header-container {
+      display: flex;
+      justify-content: space-between;
+    } */
+    .header {
+      /* display: flex;
+    flex-wrap: nowrap; */
+      justify-content: flex-start;
+      /* align-items: flex-end; */
+      padding-bottom: 0;
+      min-width: 1280px;
+      max-width: 100%;
+    }
+    .separator {
+      display: block;
+      width: 2px;
+      height: 32px;
+      margin: 0 22px 0 163px;
+      background-color: #e0e0e0;
+    }
+    .underline {
+      display: none;
+    }
   }
 }

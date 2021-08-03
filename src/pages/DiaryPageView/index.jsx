@@ -6,6 +6,7 @@ import DiaryDateСalendar from '../../components/DiaryDateСalendar';
 import DiaryAddProductForm from '../../components/DiaryAddProductForm';
 import DiaryProductsList from '../../components/DiaryProductsList';
 import Sidebar from '../../components/Sidebar';
+// import Spinner from '../../components/Spinner';
 import './styles.css';
 import Header from '../../components/Header';
 

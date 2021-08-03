@@ -1,17 +1,23 @@
 import './styles.css';
 // import Login from '../../components/LoginForm';
 import Header from '../../components/Header';
+import Spinner from '../../components/Spinner';
 import DailyCaloriesForm from '../../components/DailyCaloriesForm';
 
-const PromoView = () => {
+const PromoView = isLoading => {
   return (
-    <div className="bg-wrapper__promo">
+    <main className="bg-wrapper__promo">
       <Header />
-      {/* <Login /> */}
-      <div className="promopage-container">
-        <DailyCaloriesForm />
-      </div>
-    </div>
+      {!isLoading ? (
+        <div className="spinner-wrapper">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="calories-promo-wrapper">
+          <DailyCaloriesForm />
+        </div>
+      )}
+    </main>
   );
 };
 export default PromoView;

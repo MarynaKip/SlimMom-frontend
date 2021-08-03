@@ -2,7 +2,7 @@
 import './styles.css';
 import UserNavigation from '../UserNavigation';
 import { connect } from 'react-redux';
-import { authSelectors,authOperations } from '../../redux/auth';
+import { authSelectors, authOperations } from '../../redux/auth';
 
 // заглушки
 const name = 'Zinoviy';
@@ -13,7 +13,9 @@ const onLogout = () => {
 // const togleMenu = () => {
 //   burgerOpen = burgerOpen ? false : true;
 // };
-const UserMenu = ({userName,onLogOut,
+const UserMenu = ({
+  userName,
+  onLogOut,
   menuHandler,
   active /* burgerOpened */,
 }) => {
@@ -21,15 +23,11 @@ const UserMenu = ({userName,onLogOut,
     <div className="user_menu_container">
       <UserNavigation />
       <div className="user_auth_container">
-        <div className="user_auth_sub_container">
+        <div className="user_auth_sub_container hide_auth_container">
           <p className="user_name">{userName}</p>
           <div className="user_menu_separator"></div>
-          <button
-            className="logout_button"
-            type="button"
-            onClick={onLogOut}
-          >
-                        Выйти
+          <button className="logout_button" type="button" onClick={onLogOut}>
+            Выйти
           </button>
         </div>
         <button
@@ -58,16 +56,8 @@ const UserMenu = ({userName,onLogOut,
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M6 6L18 18"
-                stroke="#212121"
-                strokeWidth="2"
-              />
-              <path
-                d="M6 18L18 6"
-                stroke="#212121"
-                strokeWidth="2"
-              />
+              <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+              <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
             </svg>
           )}
         </button>
@@ -79,7 +69,7 @@ const mapDispatchToProps = {
   onLogOut: authOperations.logOut,
 };
 const mapStateToProps = state => ({
-//   isAuthenticated: authSelectors.getIsAuthenticated(state),
-  userName: authSelectors.getUserName(state) 
+  //   isAuthenticated: authSelectors.getIsAuthenticated(state),
+  userName: authSelectors.getUserName(state),
 });
-export default connect(mapStateToProps,mapDispatchToProps)(UserMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

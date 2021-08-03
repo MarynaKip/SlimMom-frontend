@@ -1,30 +1,46 @@
+.spinner-wrapper__diary {
+  position: relative;
+  /* margin-top: 150px; */
+  max-width: 605px;
+  min-width: 320px;
+  /* margin-bottom: 150px; */
+  margin: 150px auto;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .bg-wrapper__promo {
-        background-image: url(../../images/bg-promo-tablet.jpg);
-        background-position: right bottom;
-        background-repeat: no-repeat;
-        background-size: auto auto;
-        height: 1024px;
-        padding: 0 15px 0;
-    }
+  .bg-wrapper__promo {
+    background-image: url(../../images/bg-promo-tablet.jpg);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 1024px;
+    padding: 0 15px 0;
+  }
 }
 @media screen and (min-width: 1280px) {
-    .bg-wrapper__promo {
-        display: block;
-        min-width: 1280px;
-        min-height: 850px;
-        height: 100vh;
-        padding: 0 115px 0;
-        margin-left: auto;
-        margin-right: auto;
-        /* background: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 1) 800px,
-            rgba(240, 241, 243, 1) 800px
-        ); */
-        background-image: url(../../images/bg-promo-desktop.jpg);
-        background-position: right bottom;
-        background-repeat: no-repeat;
-        background-size: auto auto;
-    }
+  .bg-wrapper__promo {
+    display: block;
+    min-width: 1280px;
+    min-height: 850px;
+    height: 100vh;
+    /* padding: 0 115px 0; */
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../../images/bg-promo-desktop.jpg);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    /* outline: 1px solid tomato; */
+  }
+
+  .calories-promo-wrapper {
+    margin-left: 115px;
+  }
+  .spinner-wrapper__diary {
+    position: relative;
+    /* margin-top: 150px; */
+    width: 605px;
+    /* margin-bottom: 150px; */
+    margin: 150px 0;
+  }
 }
