@@ -89,6 +89,8 @@ const fetchHistory =
       }
     };
 
+    
+
 //eslint-disable-next-line
 export default { addProduct, deleteProduct, fetchProducts, fetchHistory };
 // https://obscure-shelf-16384.herokuapp.com/api/products?input=Хлебцы

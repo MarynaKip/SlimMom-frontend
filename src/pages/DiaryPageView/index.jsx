@@ -11,9 +11,8 @@ import Header from '../../components/Header';
 
 export default function DiaryPageView() {
   const historyDate = useSelector(diarySelectors.getHistoryDate);
-  const today = new Date().toLocaleDateString().split('.').reverse().join('-');
-  const isToday = historyDate === today;
-
+  const today = useSelector(diarySelectors.getToday);
+  const renderForm = historyDate === today;
 
   return (
     <div className="bg-wrapper__diary">
@@ -21,9 +20,8 @@ export default function DiaryPageView() {
       <div className="diarypage-container">
         <ContainerForDiary>
           <DiaryDateСalendar />
-          {isToday ? <DiaryAddProductForm /> : null}
+          {renderForm ? <DiaryAddProductForm /> : null}
           <DiaryProductsList />
-         
         </ContainerForDiary>
         <Sidebar />
       </div>
