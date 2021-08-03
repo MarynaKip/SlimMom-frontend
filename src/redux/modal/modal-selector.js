@@ -1,3 +1,3 @@
-const getModalIsOpen = state => state.modal.isOpened;
+const getModalIsOpen = state => state.modal;
 
 export { getModalIsOpen };
