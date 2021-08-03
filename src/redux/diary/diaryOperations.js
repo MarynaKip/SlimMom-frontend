@@ -76,23 +76,23 @@ const fetchHistory =
       }
     };
 
-    const fetchProducts =
-  ({ searchQuery }) =>
+    const fetchProductsList =
+  ( searchQuery ) =>
     async dispatch => {
-      dispatch(actions.productSearchRequest());
+      dispatch(actions.productListRequest());
 
       try {
         const { data } = await axios.get(
           `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
         );
-        dispatch(actions.productSearchSuccess(data));
+        dispatch(actions.productListSuccess(data));
       } catch (error) {
-        dispatch(actions.productSearchError(error.message));
+        dispatch(actions.productListError(error.message));
       }
     };
 
     
 
 //eslint-disable-next-line
-export default { addProduct, deleteProduct, fetchProducts, fetchHistory };
+export default { addProduct, deleteProduct, fetchProductsList, fetchHistory };
 // https://obscure-shelf-16384.herokuapp.com/api/products?input=Хлебцы
