@@ -1,3 +1,8 @@
 const getUserCredentials = state => state.calculator.userInfo;
 
-export default { getUserCredentials };
+const getDailyNorm = state => state.calculator.dailyMeal.dailyNorm;
+
+const getNotAllowedProducts = state =>
+  state.calculator.dailyMeal.notAllowedProduct;
+
+export default { getUserCredentials, getDailyNorm, getNotAllowedProducts };
