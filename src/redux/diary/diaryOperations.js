@@ -54,20 +54,7 @@ const deleteProduct =
       }
     };
 
-const fetchProducts =
-  ({ searchQuery }) =>
-    async dispatch => {
-      dispatch(actions.productSearchRequest());
 
-      try {
-        const { data } = await axios.get(
-          `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
-        );
-        dispatch(actions.productSearchSuccess(data));
-      } catch (error) {
-        dispatch(actions.productSearchError(error.message));
-      }
-    };
 
 const fetchHistory =
   ({ value }) =>
@@ -86,6 +73,21 @@ const fetchHistory =
         dispatch(actions.fetchHistorySuccess(payload));
       } catch (error) {
         dispatch(actions.fetchHistoryError(error.message));
+      }
+    };
+
+    const fetchProducts =
+  ({ searchQuery }) =>
+    async dispatch => {
+      dispatch(actions.productSearchRequest());
+
+      try {
+        const { data } = await axios.get(
+          `https://obscure-shelf-16384.herokuapp.com/api/products?input=${searchQuery}`,
+        );
+        dispatch(actions.productSearchSuccess(data));
+      } catch (error) {
+        dispatch(actions.productSearchError(error.message));
       }
     };
 

@@ -18,8 +18,7 @@ export default function DiaryAddProductForm() {
   const [datalist, setDatalist] = useState([]);
   const [isActive, setActive] = useState(true);
 
-  
-    useEffect(() => {
+  useEffect(() => {
     if (query !== '') {
       fetchProducts(query);
     }
@@ -35,15 +34,11 @@ export default function DiaryAddProductForm() {
 
   const ifProductAccess = datalist.find(elem => elem.title.ru === query);
 
-
   const handleChange = useCallback(event => {
     setQuery(event.target.value);
   }, []);
 
-
   const dispatch = useDispatch();
-
-
 
   const token = useSelector(authSelectors.getToken);
   const header = `Authorization: Bearer ${token}`;
@@ -69,25 +64,20 @@ export default function DiaryAddProductForm() {
     setProductName(query);
     if (ifProductAccess) {
       dispatch(diaryOperations.addProduct({ query, productWeight }));
-       resetInput();
-    setActive(true);
-    }
-    else alert('Пожалуйста, введите название продукта из списка');
+      resetInput();
+      setActive(true);
+    } else alert('Пожалуйста, введите название продукта из списка');
   };
-   
-
 
   const resetInput = () => {
     setProductWeight('');
     setQuery('');
     setDatalist([]);
     setProductName('');
-  
   };
-// const clearInput =  useCallback(event => {
-//   event.target.value = '';
-//   }, []);
-
+  // const clearInput =  useCallback(event => {
+  //   event.target.value = '';
+  //   }, []);
 
   return (
     <div>
