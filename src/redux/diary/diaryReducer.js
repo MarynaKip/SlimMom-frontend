@@ -18,11 +18,7 @@ const initialDiaryState = {
 };
 
 const initialHistoryState = {
-  date: new Date()
-  .toLocaleDateString()
-  .split('.')
-  .reverse()
-  .join('-'),
+  date:'1970-01-01',
   itemsHistory: [],
 };
 
