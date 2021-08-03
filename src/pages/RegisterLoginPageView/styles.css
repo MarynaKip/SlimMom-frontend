@@ -1,6 +1,11 @@
 .bg-wrapper__reg {
   min-width: 320px;
 }
+.spinner-wrapper__reg {
+  position: relative;
+  min-width: 320px;
+  margin: 150px auto;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .bg-wrapper__reg {

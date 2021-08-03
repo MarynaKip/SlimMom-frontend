@@ -1,3 +1,12 @@
+.spinner-wrapper__diary {
+  position: relative;
+  /* margin-top: 150px; */
+  max-width: 605px;
+  min-width: 320px;
+  /* margin-bottom: 150px; */
+  margin: 150px auto;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .bg-wrapper__promo {
     background-image: url(../../images/bg-promo-tablet.jpg);
@@ -21,10 +30,17 @@
     background-position: right bottom;
     background-repeat: no-repeat;
     background-size: auto 100%;
-    outline: 1px solid tomato;
+    /* outline: 1px solid tomato; */
   }
 
   .calories-promo-wrapper {
     margin-left: 115px;
+  }
+  .spinner-wrapper__diary {
+    position: relative;
+    /* margin-top: 150px; */
+    width: 605px;
+    /* margin-bottom: 150px; */
+    margin: 150px 0;
   }
 }

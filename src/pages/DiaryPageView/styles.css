@@ -1,3 +1,7 @@
+.spinner-wrapper {
+  position: relative;
+  top: 15%;
+}
 @media screen and (max-width: 767px) {
   .data-picker {
     margin-left: 15px;
