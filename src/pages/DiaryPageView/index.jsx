@@ -12,13 +12,16 @@ import Header from '../../components/Header';
 
 const DiaryPageView = isloading => {
   const historyDate = useSelector(diarySelectors.getHistoryDate);
-  const today = new Date().toLocaleDateString().split('.').reverse().join('-');
-  const isToday = historyDate === today;
+
+  const today = useSelector(diarySelectors.getToday);
+  const renderForm = historyDate === today;
+
 
   return (
     <div className="bg-wrapper__diary">
       <Header />
       <div className="diarypage-container">
+
         {isloading ? (
           <div className="spinner-wrapper__diary">
             <Spinner />
@@ -33,6 +36,13 @@ const DiaryPageView = isloading => {
             <DiaryProductsList />
           </ContainerForDiary>
         )}
+
+
+        <ContainerForDiary>
+          <DiaryDateСalendar />
+          {renderForm ? <DiaryAddProductForm /> : null}
+          <DiaryProductsList />
+        </ContainerForDiary>
 
         <Sidebar />
       </div>

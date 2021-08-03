@@ -18,7 +18,7 @@ const dailyMeal = createReducer(null, {
   [calculatorActions.getDailyRateSuccess]: (_, { payload }) =>
     payload.dailyMeal,
   [calculatorActions.getDailyRatePrivateSuccess]: (_, { payload }) =>
-    payload.currentUser,
+    payload.current,
 });
 
 const setError = (_, { payload }) => payload;
@@ -40,5 +40,5 @@ export default combineReducers({
   userInfo,
   dailyMeal,
   error,
-  loading
+  loading,
 });
