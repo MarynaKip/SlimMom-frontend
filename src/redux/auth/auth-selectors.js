@@ -6,4 +6,15 @@ const getError = state => state.auth.error;
 
 const getToken = state => state.auth.user.token;
 
-export default { getIsAuthenticated, getUserName, getError, getToken };
+const getNotAllowedProducts = state => state.auth.user.notAllowedProduct;
+
+const getDailyNorm = state => state.auth.user.dailyNorm;
+
+export default {
+  getIsAuthenticated,
+  getUserName,
+  getError,
+  getToken,
+  getNotAllowedProducts,
+  getDailyNorm,
+};

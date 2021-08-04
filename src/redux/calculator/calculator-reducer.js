@@ -18,7 +18,7 @@ const dailyMeal = createReducer(null, {
   [calculatorActions.getDailyRateSuccess]: (_, { payload }) =>
     payload.dailyMeal,
   [calculatorActions.getDailyRatePrivateSuccess]: (_, { payload }) =>
-    payload.current,
+    payload.user,
 });
 
 const setError = (_, { payload }) => payload;

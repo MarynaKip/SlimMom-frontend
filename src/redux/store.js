@@ -46,7 +46,7 @@ const authPersistConfig = {
 const calculatorPersistConfig = {
   key: 'calculator',
   storage,
-  whitelist: ['userInfo'],
+  whitelist: ['userInfo', 'dailyMeal'],
 };
 
 const store = configureStore({
