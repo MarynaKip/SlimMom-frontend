@@ -1,52 +1,50 @@
 .logo {
-    position: relative;
-    transform: translate(0, 0);
+  position: relative;
+  transform: translate(0, 0);
 }
 .logo_image {
-    width: 46px;
-    height: 44px;
-    background: center/contain no-repeat
-        url('../../images/logo-mobile-mini.png');
+  width: 46px;
+  height: 44px;
+  background: center/contain no-repeat url('../../images/logo-mobile-mini.png');
 }
 .auth_logo_image {
+  width: 162px;
+  height: 44px;
+  background: center/contain no-repeat url('../../images/logo-tablet-mini.png');
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .logo_image {
+    width: 162px;
+    background: center/contain no-repeat
+      url('../../images/logo-tablet-mini.png');
+  }
+  .logo {
+    position: absolute;
+    top: 12px;
+    left: 69px;
+    transform: translate(-18px, -4px);
+  }
+  .auth_logo_image {
     width: 162px;
     height: 44px;
     background: center/contain no-repeat
-        url('../../images/logo-tablet-mini.png');
-}
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-    .logo_image {
-        width: 162px;
-        background: center/contain no-repeat
-            url('../../images/logo-tablet-mini.png');
-    }
-    .logo {
-        position: absolute;
-        top: 22px;
-        left: 69px;
-        transform: translate(-18px, -4px);
-    }
-    .auth_logo_image {
-        width: 162px;
-        height: 44px;
-        background: center/contain no-repeat
-            url('../../images/logo-tablet-mini.png');
-    }
+      url('../../images/logo-tablet-mini.png');
+  }
 }
 @media screen and (min-width: 1280px) {
-    .logo_image,
-    .auth_logo_image {
-        width: 170px;
-        height: 67px;
+  .logo_image,
+  .auth_logo_image {
+    width: 170px;
+    height: 67px;
 
-        background: center/contain no-repeat
-            url('../../images/logo-desctop-mini.png');
-    }
-    .logo {
-        position: absolute;
-        bottom: 7px;
-        /* margin-right: 22px; */
-        /* margin-bottom: 7px; */
-        transform: translateX(-25px);
-    }
+    background: center/contain no-repeat
+      url('../../images/logo-desctop-mini.png');
+  }
+  .logo {
+    position: absolute;
+    bottom: 7px;
+    /* margin-right: 22px; */
+    /* margin-bottom: 7px; */
+    transform: translateX(-25px);
+  }
 }
