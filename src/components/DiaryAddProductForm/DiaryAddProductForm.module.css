@@ -1,6 +1,8 @@
+
 .buttonComeBack {
   position: absolute;
-  top: -70px;
+  top:-70px;
+border: none
 }
 .buttonToForm {
   /* красота */
