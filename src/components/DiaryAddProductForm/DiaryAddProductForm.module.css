@@ -31,8 +31,8 @@ border: none
   background-color: white;
   display: block;
   padding: 80px 16px 180px 15px;
-  top:0;
-  bottom:0;
+  top: 0;
+  bottom: 0;
 }
 .addProductFormSleep {
   display: none;
@@ -80,19 +80,16 @@ border: none
     align-items: center;
     margin-bottom: 60px;
 
-  position: static;
-  padding: 0;
-  background-color: inherit ;
+    position: static;
+    padding: 0;
+    background-color: inherit;
 
-
-
-      /* text-align: center;
+    /* text-align: center;
   z-index: 95;
   background-color: white;
   display: block;
   padding: 80px 16px 180px 15px;
   top:0; */
-
   }
   .inputAddProductFormName,
   .inputAddProductFormAmount {

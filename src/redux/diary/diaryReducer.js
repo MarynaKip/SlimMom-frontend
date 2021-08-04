@@ -11,6 +11,9 @@ const {
   fetchHistoryRequest,
   fetchHistorySuccess,
   fetchHistoryError,
+    productListRequest,
+  productListSuccess,
+productListError
 } = actions;
 
 const initialDiaryState = {
@@ -28,7 +31,12 @@ const initialDateState = new Date()
   .reverse()
   .join('-');
 
+const initialSearchState = [];
+
+
 const today = new Date().toLocaleDateString().split('.').reverse().join('-');
+
+
 
 const currentProducts = createReducer(initialDiaryState.currentProducts, {
   [fetchHistorySuccess]: (state, { payload }) => {
@@ -53,10 +61,20 @@ const history = createReducer(initialHistoryState, {
   [addProductSuccess]: (state, { payload }) => {},
 });
 
+
+const search = createReducer(initialSearchState, {
+  [productListSuccess]: (state, { payload }) => {
+    return payload.data;
+  },
+ 
+});
+
+
 const currentDate = createReducer(initialDateState, {});
 
 export default combineReducers({
   currentDate,
   currentProducts,
   history,
+  search
 });
