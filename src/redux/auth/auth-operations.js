@@ -75,4 +75,74 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export default { register, logOut, logIn, getCurrentUser };
+const getDailyRate = dataFromCalculator => async dispatch => {
+  dispatch(authActions.getDailyRateRequest());
+
+  dispatch(authActions.saveUserCredentials(dataFromCalculator));
+
+  try {
+    const response = await axios.post('/api/daily/rate', dataFromCalculator);
+    console.log(response.data);
+    dispatch(authActions.getDailyRateSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getDailyRateError(error.message));
+  }
+};
+
+const getDailyRatePrivate = dataFromCalculator => async (
+  dispatch,
+  getState,
+) => {
+  if (!dataFromCalculator) {
+    const {
+      userInfo: {
+        height: persistedHeight,
+        currentWeight: persistedCurrentWeight,
+        desiredWeight: persistedDesiredWeight,
+        bloodType: persistedBloodType,
+        age: persistedAge,
+      },
+    } = getState();
+
+    if (
+      !persistedHeight ||
+      !persistedCurrentWeight ||
+      !persistedDesiredWeight ||
+      !persistedBloodType ||
+      !persistedAge
+    ) {
+      return;
+    }
+    const dataForRequest = {
+      height: persistedHeight,
+      currentWeight: persistedCurrentWeight,
+      desiredWeight: persistedDesiredWeight,
+      bloodType: persistedBloodType,
+      age: persistedAge,
+    };
+  }
+
+  const dataForRequest = dataFromCalculator;
+
+  dispatch(authActions.getDailyRateRequest());
+
+  try {
+    const response = await axios.post(
+      '/api/daily/private_rate',
+      dataForRequest,
+    );
+    console.log(response.data);
+    dispatch(authActions.getDailyRateSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getDailyRateError(error.message));
+  }
+};
+
+export default {
+  register,
+  logOut,
+  logIn,
+  getCurrentUser,
+  getDailyRate,
+  getDailyRatePrivate
+};

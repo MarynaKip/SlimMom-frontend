@@ -4,19 +4,23 @@ import authActions from './auth-actions';
 
 const initialUserState = {
   token: null,
-  verify: null,
   _id: null,
   email: null,
-  password: null,
   name: null,
-  __v: null,
+  // dailyMeal: null,
+  // credentials: null
 };
 
-const user = createReducer(initialUserState, {
+const user = createReducer({}, {
   [authActions.registerSuccess]: (_, { payload }) => payload.user,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: (_, __) => initialUserState,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+  //
+  [authActions.getDailyRateSuccess]: (state, { payload }) => ({...state, ...payload.dailyMeal}),
+  [authActions.getDailyRatePrivateSuccess]: (_, { payload }) =>
+    payload.current,
+  [authActions.saveUserCredentials]: (state, { payload }) => ({...state, ...payload})
 });
 
 const token = createReducer(null, {
@@ -31,6 +35,9 @@ const error = createReducer(null, {
   [authActions.loginError]: setError,
   [authActions.logoutError]: setError,
   [authActions.getCurrentUserError]: setError,
+  //
+  [authActions.getDailyRateError]: setError,
+  [authActions.getDailyRatePrivateError]: setError,
 });
 
 const isAuthenticated = createReducer(false, {
@@ -53,6 +60,13 @@ const loading = createReducer(false, {
   [authActions.logoutRequest]: () => true,
   [authActions.logoutSuccess]: () => false,
   [authActions.logoutError]: () => false,
+  //
+  [authActions.getDailyRateRequest]: () => true,
+  [authActions.getDailyRateSuccess]: () => false,
+  [authActions.getDailyRateError]: () => false,
+  [authActions.getDailyRatePrivateRequest]: () => true,
+  [authActions.getDailyRatePrivateSuccess]: () => false,
+  [authActions.getDailyRatePrivateError]: () => false,
 });
 
 export default combineReducers({

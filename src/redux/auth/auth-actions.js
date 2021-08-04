@@ -16,6 +16,18 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+//
+
+const saveUserCredentials = createAction('auth/saveUserCredentials');
+
+const getDailyRateRequest = createAction('auth/getDailyRateRequest');
+const getDailyRateSuccess = createAction('auth/getDailyRateSuccess');
+const getDailyRateError = createAction('auth/getDailyRateError');
+
+const getDailyRatePrivateRequest = createAction('auth/getDailyRatePrivateRequest');
+const getDailyRatePrivateSuccess = createAction('auth/getDailyRatePrivateSuccess');
+const getDailyRatePrivateError = createAction('auth/getDailyRatePrivateError');
+
 export default {
   registerRequest,
   registerSuccess,
@@ -29,4 +41,11 @@ export default {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  saveUserCredentials,
+  getDailyRateRequest,
+  getDailyRateSuccess,
+  getDailyRateError,
+  getDailyRatePrivateRequest,
+  getDailyRatePrivateSuccess,
+  getDailyRatePrivateError
 };

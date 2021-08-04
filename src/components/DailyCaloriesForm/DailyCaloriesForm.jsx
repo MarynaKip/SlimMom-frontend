@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 import { connect } from 'react-redux';
 import { getModalIsOpen } from '../../redux/modal/modal-selector';
 import modalOperations from '../../redux/modal/modal-operations';
-import calculatorOperations from '../../redux/calculator/calculator-operations';
+import calculatorOperations from '../../redux/auth/auth-operations';
 
 const SignupSchema = Yup.object().shape({
   height: Yup.number()
@@ -194,7 +194,7 @@ const mapStateToProps = state => ({ isModalOpen: getModalIsOpen(state) });
 
 const mapDispatchToProps = {
   modalOpen: modalOperations.openModal,
-  sendRequestDaily: calculatorOperations.getDailyRate,
+  sendRequestDaily: calculatorOperations.getDailyRate, 
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DailyCaloriesForm);

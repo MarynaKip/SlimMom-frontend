@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import modalOperations from '../../redux/modal/modal-operations';
 import routes from '../../routes';
 import './modal.css';
-import calculatorSelectors from '../../redux/calculator/calculator-selectors';
+import calculatorSelectors from '../../redux/auth/auth-selectors';
 
 const modalRoot = document.querySelector('#modal-root');
 const isMobile = window.screen.width < 400;

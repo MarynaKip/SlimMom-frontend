@@ -9,7 +9,7 @@ const getDailyMealLocal = state => {
     currentWeight,
     desiredWeight,
     bloodType,
-  } = state.calculator.userInfo;
+  } = state.auth.user;
   const dailyMealLocal =
     10 * currentWeight +
     6.25 * height -
