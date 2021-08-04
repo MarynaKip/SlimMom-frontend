@@ -25,19 +25,33 @@ code {
 }
 
 @font-face {
-  font-family: 'GothamPro-Bold';
-  src: local('GothamPro-Bold'), url(./fonts/GothamPro-Bold.ttf) format('ttf');
+  font-family: "GothamPro-Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/GothamPro-Bold.eot");
+  src: local("GothamPro-Bold"), url("./fonts/GothamPro-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/GothamPro-Bold.woff2") format("woff2"),
+    url("./fonts/GothamPro-Bold.woff") format("woff"), url("./fonts/GothamPro-Bold.ttf") format("truetype"), url("./fonts/GothamPro-Bold.svg#") format("svg");
 }
 
 @font-face {
-  font-family: 'Verdana';
-  src: local('Verdana'), url(./fonts/Verdana.ttf) format('ttf');
+  font-family: "Verdana";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Verdana.eot");
+  src: local("Verdana"), url("./fonts/Verdana.eot?#iefix") format("embedded-opentype"), url("./fonts/Verdana.woff2") format("woff2"),
+    url("./fonts/Verdana.woff") format("woff"), url("./fonts/Verdana.ttf") format("truetype"), url("./fonts/Verdana.svg#") format("svg");
 }
 
+
 @font-face {
-  font-family: 'Verdana';
-  src: local('Verdana'), url(./fonts/VerdanaBold.ttf) format('ttf');
+  font-family: "Verdana";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Verdana-Bold.eot");
+  src: local("Verdana"), url("./fonts/Verdana-Bold.eot?#iefix") format("embedded-opentype"), url("./fonts/Verdana-Bold.woff2") format("woff2"),
+    url("./fonts/Verdana-Bold.woff") format("woff"), url("./fonts/Verdana-Bold.ttf") format("truetype"), url("./fonts/Verdana-Bold.svg#") format("svg");
 }
+
 p {
   margin: 0;
   padding: 0;
