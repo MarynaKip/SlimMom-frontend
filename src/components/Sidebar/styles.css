@@ -3,100 +3,102 @@ h2,
 h3,
 ul,
 p {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar-container {
-    background-color: #f0f1f3;
+  background-color: #f0f1f3;
 }
 .main-font {
-    font-family: Verdana;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.9;
-    letter-spacing: 0.04em;
-    color: #9b9faa;
+  font-family: Verdana;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
 }
 
 .list {
-    list-style: none;
+  list-style: none;
 }
 
 .sidebar-summary__title,
 .sidebar-disrecommended__title {
-    margin-bottom: 15px;
-    font-family: Verdana;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.9;
-    letter-spacing: 0.04em;
-    color: #212121;
+  margin-bottom: 15px;
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  color: #212121;
 }
 .sidebar-summary__container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 .sidebar-summary__cal {
-    text-align: right;
+  text-align: right;
 }
 
 @media screen and (max-width: 767px) {
-    .sidebar {
-        width: 290px;
-        display: block;
-        padding: 40px 15px;
-        margin: 0 auto;
-        background-color: #f0f1f3;
-    }
+  .sidebar {
+    width: 290px;
+    display: block;
+    padding: 40px 15px;
+    margin: 0 auto;
+    background-color: #f0f1f3;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .sidebar {
-        /* width: 588px; */
-        padding: 90px 90px;
-        margin: 0 auto;
-        display: flex;
-        flex-basis: 50%;
-        justify-content: space-between;
-        background: url(../../images/bg-diary-tablet.png) no-repeat right bottom,
-            #f0f1f3;
-    }
+  .sidebar {
+    width: 768px;
+    padding: 90px 90px;
+    margin: 0 auto;
+    display: flex;
+    flex-basis: 50%;
+    justify-content: space-between;
+    background: url(../../images/bg-diary-tablet.png) no-repeat right bottom,
+      #f0f1f3;
+  }
 
-    .sidebar-summary {
-        margin-right: 60px;
-        width: 250px;
-    }
-    .sidebar-disrecommended {
-        display: block;
-        width: 280px;
-    }
+  .sidebar-summary {
+    margin-right: 60px;
+    width: 250px;
+    height: 168px;
+  }
+  .sidebar-disrecommended {
+    display: block;
+    width: 280px;
+    height: 168px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .sidebar-container {
-        background-color: transparent;
-    }
-    .sidebar {
-        width: 270px;
-        display: block;
-        margin: 135px 85px 175px 90px;
-        background-color: transparent;
-    }
+  .sidebar-container {
+    background-color: transparent;
+  }
+  .sidebar {
+    width: 270px;
+    display: block;
+    margin: 135px 85px 175px 90px;
+    background-color: transparent;
+  }
 
-    .sidebar-summary,
-    .sidebar-disrecommended {
-        width: 270px;
-        margin-right: 60px;
-    }
-    .sidebar-summary__container {
-        margin-bottom: 60px;
-    }
+  .sidebar-summary,
+  .sidebar-disrecommended {
+    width: 270px;
+    margin-right: 60px;
+  }
+  .sidebar-summary__container {
+    margin-bottom: 60px;
+  }
 
-    .sidebar-summary__title,
-    .sidebar-disrecommended__title {
-        margin-bottom: 40px;
-    }
+  .sidebar-summary__title,
+  .sidebar-disrecommended__title {
+    margin-bottom: 40px;
+  }
 }
