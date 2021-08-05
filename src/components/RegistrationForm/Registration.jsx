@@ -103,7 +103,7 @@ const Registration = ({onRegister, error, userCredentials}) => {
                   </label>
                 </div>
               </div>
-              { error && (
+              { (error === 'Request failed with status code 400') && (
                 <div className="error">Incorrect input data!</div>)}
             </Form>
             <div className="registration__button-reg">
