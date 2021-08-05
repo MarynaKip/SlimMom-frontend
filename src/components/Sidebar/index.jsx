@@ -36,8 +36,8 @@ const Sidebar = ({
           </h2>
           <p className="main-font">
             {notRecommended}
-            Все бульоны/отвары, жирная рыба, икра и мясо, грибы, крупы (пшено,
-            перловая, пшеничная)
+            {/* Все бульоны/отвары, жирная рыба, икра и мясо, грибы, крупы (пшено,
+            перловая, пшеничная) */}
           </p>
         </div>
       </div>
@@ -47,9 +47,9 @@ const Sidebar = ({
 
 const mapStateToProps = state => ({
   currentDate: sidebarSelectors.getCurrentDate(state),
-  dailyAmount: sidebarSelectors.getDailyMealLocal(state),
+  dailyAmount: sidebarSelectors.getDailyMeal(state),
   consumedCal: sidebarSelectors.getConsumedCal(state),
-  // notRecommended: sidebarSelectors.notAllowedProducts(state),
+  notRecommended: sidebarSelectors.notAllowedProducts(state),
   leftCal: sidebarSelectors.getLeftCal(state),
   percentage: sidebarSelectors.getPercentage(state),
 });

@@ -18,7 +18,7 @@ import { useEffect, Suspense, lazy } from 'react';
 const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
   useEffect(() => {
     onGetCurrentUser();
-    onGetDailyRate();
+    // onGetDailyRate();
   }, []);
 
   return (

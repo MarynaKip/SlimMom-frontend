@@ -11,17 +11,28 @@ const initialUserState = {
   // credentials: null
 };
 
-const user = createReducer({}, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.user,
-  [authActions.loginSuccess]: (_, { payload }) => payload.user,
-  [authActions.logoutSuccess]: (_, __) => initialUserState,
-  [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
-  //
-  [authActions.getDailyRateSuccess]: (state, { payload }) => ({...state, ...payload.dailyMeal}),
-  [authActions.getDailyRatePrivateSuccess]: (_, { payload }) =>
-    payload.current,
-  [authActions.saveUserCredentials]: (state, { payload }) => ({...state, ...payload})
-});
+const user = createReducer(
+  {},
+  {
+    [authActions.registerSuccess]: (_, { payload }) => payload.user,
+    [authActions.loginSuccess]: (_, { payload }) => payload.user,
+    [authActions.logoutSuccess]: (_, __) => initialUserState,
+    [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
+    //
+    [authActions.getDailyRateSuccess]: (state, { payload }) => ({
+      ...state,
+      ...payload.dailyMeal,
+    }),
+    [authActions.getDailyRatePrivateSuccess]: (state, { payload }) => ({
+      ...state,
+      ...payload,
+    }),
+    [authActions.saveUserCredentials]: (state, { payload }) => ({
+      ...state,
+      ...payload,
+    }),
+  },
+);
 
 const token = createReducer(null, {
   [authActions.registerSuccess]: (_, { payload }) => payload.user.token,
