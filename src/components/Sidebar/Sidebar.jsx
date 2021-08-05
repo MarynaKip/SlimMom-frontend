@@ -23,7 +23,7 @@ const Sidebar = ({
               <li>n% от нормы</li>
             </ul>
             <ul className="sidebar-summary__cal list main-font ">
-              <li>{leftCal} ккал</li>
+              <li>{leftCal >= 0 ? leftCal : 'Остановись!'} ккал</li>
               <li>{consumedCal} ккал</li>
               <li>{dailyAmount} ккал</li>
               <li>{percentage}% ккал</li>
@@ -34,11 +34,7 @@ const Sidebar = ({
           <h2 className="sidebar-disrecommended__title">
             Нерекомендуемые продукты
           </h2>
-          <p className="main-font">
-            {notRecommended}
-            {/* Все бульоны/отвары, жирная рыба, икра и мясо, грибы, крупы (пшено,
-            перловая, пшеничная) */}
-          </p>
+          <p className="main-font">{notRecommended}</p>
         </div>
       </div>
     </div>
