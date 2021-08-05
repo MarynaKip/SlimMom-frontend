@@ -5,15 +5,33 @@ import Modal from './components/Modal';
 import getModalIsOpen from './redux/modal/modal-operations';
 import routes from './routes';
 import './App.css';
-import PromoView from './pages/PromoView';
-import DiaryPageView from './pages/DiaryPageView';
-import RegisterLoginPageView from './pages/RegisterLoginPageView';
+//import PromoView from './pages/PromoView';
+// import DiaryPageView from './pages/DiaryPageView';
+// import RegisterLoginPageView from './pages/RegisterLoginPageView';
 // import Header from './components/Header';
-import CalculatorPageView from './pages/CalculatorPageView';
+// import CalculatorPageView from './pages/CalculatorPageView';
 import { connect } from 'react-redux';
 import { authOperations, authSelectors } from './redux/auth';
 import { calculatorOperations, calculatorSelectors } from './redux/calculator';
 import { useEffect, Suspense, lazy } from 'react';
+
+const PromoView = lazy(
+  () => import("./pages/PromoView") /* webpackChunkName: "PromoView" */
+);
+
+const DiaryPageView = lazy(
+  () => import("./pages/DiaryPageView") /* webpackChunkName: "DiaryPageView" */
+);
+
+const CalculatorPageView = lazy(
+  () => import("./pages/CalculatorPageView") /* webpackChunkName: "CalculatorPageView" */
+);
+
+const RegisterLoginPageView = lazy(
+  () => import("./pages/RegisterLoginPageView") /* webpackChunkName: "RegisterLoginPageView" */
+);
+
+
 
 const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
   useEffect(() => {
@@ -23,6 +41,7 @@ const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
 
   return (
     <>
+      <Suspense fallback={<p>loading</p>}>
       <Switch>
         <PublicRoute
           exact
@@ -49,6 +68,8 @@ const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
           redirectTo={routes.home}
           component={DiaryPageView}
         />
+
+
         <PrivateRoute
           path={routes.calculator}
           redirectTo={routes.home}
@@ -57,7 +78,8 @@ const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
         {isModalOpen && <Modal />}
         <Redirect to={routes.home} />
       </Switch>
-    </>
+      </Suspense>
+       </>
   );
 };
 
