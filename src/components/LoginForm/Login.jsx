@@ -76,7 +76,7 @@ const Login = ({onLogin, error}) => {
                 </div>
 
               </div>
-              { (error === 'Request failed with status code 400') && (
+              { (error === "Request failed with status code 400") && (
                 <div className="error-login">Incorrect input data!</div>)}
             </Form>
             <div className="registration__button-reg">
