@@ -5,7 +5,8 @@ import Modal from '../Modal/Modal';
 import { connect } from 'react-redux';
 import { getModalIsOpen } from '../../redux/modal/modal-selector';
 import modalOperations from '../../redux/modal/modal-operations';
-import calculatorOperations from '../../redux/calculator/calculator-operations';
+import authSelectors from '../../redux/auth/auth-selectors';
+import authOperations from '../../redux/auth/auth-operations';
 
 const SignupSchema = Yup.object().shape({
   height: Yup.number()
@@ -39,14 +40,20 @@ const SignupSchema = Yup.object().shape({
 });
 
 // const initialValues = {
-//     height: '', // рост
-//     age: '', // возвраст
-//     currentWeight: '', // текущий вес
-//     desiredWeight: '', // желаемый вес
-//     bloodType: '', // группа крови
+//   height: '', // рост
+//   age: '', // возвраст
+//   currentWeight: '', // текущий вес
+//   desiredWeight: '', // желаемый вес
+//   bloodType: '1', // группа крови
 // };
 
-const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
+const DailyCaloriesForm = ({
+  isAuthenticated,
+  isModalOpen,
+  modalOpen,
+  sendRequestDaily,
+  sendRequestDailyPrivate,
+}) => {
   return (
     <div className={styles.caloriesWrapper}>
       <h1 className={styles.dailyForm_title}>
@@ -61,9 +68,13 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
           bloodType: '1', // группа крови}
         }}
         validationSchema={SignupSchema}
-        onSubmit={async values => {
-          await sendRequestDaily(values);
-          await modalOpen();
+        onSubmit={async (values, { resetForm }) => {
+          if (!isAuthenticated) {
+            await sendRequestDaily(values);
+            await modalOpen();
+          }
+          await sendRequestDailyPrivate(values);
+          resetForm();
         }}
       >
         {
@@ -190,11 +201,15 @@ const DailyCaloriesForm = ({ isModalOpen, modalOpen, sendRequestDaily }) => {
   );
 };
 
-const mapStateToProps = state => ({ isModalOpen: getModalIsOpen(state) });
+const mapStateToProps = state => ({
+  isModalOpen: getModalIsOpen(state),
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
 
 const mapDispatchToProps = {
   modalOpen: modalOperations.openModal,
-  sendRequestDaily: calculatorOperations.getDailyRate,
+  sendRequestDaily: authOperations.getDailyRate,
+  sendRequestDailyPrivate: authOperations.getDailyRatePrivate,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DailyCaloriesForm);

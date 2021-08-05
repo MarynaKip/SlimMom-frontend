@@ -18,6 +18,7 @@ import { useEffect, Suspense, lazy } from 'react';
 const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
   useEffect(() => {
     onGetCurrentUser();
+    // onGetDailyRate();
   }, []);
 
   return (
@@ -62,7 +63,7 @@ const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
 
 const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
-  onGetDailyRate: calculatorOperations.getDailyRate,
+  onGetDailyRate: authOperations.getDailyRate,
 };
 const mapStateToProps = state => ({
   // isAuthenticated: authSelectors.getIsAuthenticated(state),

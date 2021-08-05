@@ -3,13 +3,8 @@ import { createSelector } from '@reduxjs/toolkit';
 //10 * вес + 6.25 * рост - 5 * возраст - 161 - 10 * (вес - желаемый вес)
 
 const getDailyMealLocal = state => {
-  const {
-    height,
-    age,
-    currentWeight,
-    desiredWeight,
-    bloodType,
-  } = state.calculator.userInfo;
+  const { height, age, currentWeight, desiredWeight, bloodType } =
+    state.auth.user;
   const dailyMealLocal =
     10 * currentWeight +
     6.25 * height -
@@ -18,7 +13,7 @@ const getDailyMealLocal = state => {
     10 * (currentWeight - desiredWeight);
   return dailyMealLocal;
 };
-const getDailyMeal = state => state.auth.currentUser.dailyMeal;
+const getDailyMeal = state => state.auth.user.dailyNorm;
 const getConsumedCal = state => {
   const allCurrentProducts = state.diary.currentProducts;
   if (!allCurrentProducts) {
@@ -26,28 +21,27 @@ const getConsumedCal = state => {
   } else {
     const kKalArray = allCurrentProducts.map(prod => Number(prod.productKkal));
     const total = kKalArray.reduce((acc, kKal) => acc + kKal, 0);
-    console.log(kKalArray);
     return total;
   }
 };
 const notAllowedProducts = state => {
-  if (!state.calculator.dailyMeal.notAllowedProducts) {
+  if (!state.auth.user.notAllowedProduct) {
     return;
   } else {
-    return state.calculator.dailyMeal.notAllowedProducts.join();
+    return state.auth.user.notAllowedProduct.join(', ');
   }
 };
 
 const getCurrentDate = state => state.diary.currentDate;
 
 const getLeftCal = createSelector(
-  [getDailyMealLocal, getConsumedCal],
-  (dailyAmount, consumedCal) => dailyAmount - consumedCal,
+  [getDailyMeal, getConsumedCal],
+  (dailyNorm, consumedCal) => dailyNorm - consumedCal,
 );
 
 const getPercentage = createSelector(
-  [getDailyMealLocal, getConsumedCal],
-  (dailyAmount, consumedCal) => Math.round((consumedCal * 100) / dailyAmount),
+  [getDailyMeal, getConsumedCal],
+  (dailyNorm, consumedCal) => Math.round((consumedCal * 100) / dailyNorm),
 );
 
 const sidebarSelectors = {

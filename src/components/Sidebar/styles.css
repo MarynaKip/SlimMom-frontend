@@ -17,6 +17,11 @@ p {
   line-height: 1.9;
   letter-spacing: 0.04em;
   color: #9b9faa;
+
+}
+
+.main-font::first-letter {
+  text-transform: capitalize;
 }
 
 .list {
@@ -55,7 +60,7 @@ p {
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .sidebar {
-    width: 768px;
+    /* width: 588px; */
     padding: 90px 90px;
     margin: 0 auto;
     display: flex;
@@ -68,12 +73,10 @@ p {
   .sidebar-summary {
     margin-right: 60px;
     width: 250px;
-    height: 168px;
   }
   .sidebar-disrecommended {
     display: block;
     width: 280px;
-    height: 168px;
   }
 }
 
