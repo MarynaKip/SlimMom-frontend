@@ -19,7 +19,7 @@ export default function DiaryAddProductForm() {
 
   useEffect(() => {
     if (query !== '') {
-      dispatch(diaryOperations.fetchProductsList(query ));
+      dispatch(diaryOperations.fetchProductsList(query));
     }
   }, [0, query]);
 
@@ -48,15 +48,12 @@ export default function DiaryAddProductForm() {
       resetInput();
       setActive(true);
     } else alert('Пожалуйста, введите название продукта из списка');
-    
   };
 
   const resetInput = () => {
     setProductWeight('');
     setQuery('');
-    
   };
-
 
   return (
     <div>
@@ -70,7 +67,7 @@ export default function DiaryAddProductForm() {
       >
         <DebounceInput
           minLength={2}
-          debounceTimeout={500}
+          debounceTimeout={50}
           className={styles.inputAddProductFormName}
           id="productName"
           name="productName"
@@ -124,13 +121,22 @@ export default function DiaryAddProductForm() {
       {!isActive ? (
         <button
           className={styles.buttonComeBack}
-          
           type="button"
           onClick={ToggleClassBack}
-        ><svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14 1.5V4.5H2M2 4.5L5.5 1M2 4.5L5.5 8" stroke="black" strokeWidth="2"/>
-</svg>
-
+        >
+          <svg
+            width="15"
+            height="9"
+            viewBox="0 0 15 9"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14 1.5V4.5H2M2 4.5L5.5 1M2 4.5L5.5 8"
+              stroke="black"
+              strokeWidth="2"
+            />
+          </svg>
         </button>
       ) : null}
     </div>
