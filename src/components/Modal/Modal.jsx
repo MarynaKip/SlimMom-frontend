@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import modalOperations from '../../redux/modal/modal-operations';
+import { connect, useDispatch } from 'react-redux';
+import modalActions from '../../redux/modal/modal-actions';
 import routes from '../../routes';
 import './modal.css';
 import calculatorSelectors from '../../redux/auth/auth-selectors';
@@ -11,24 +11,34 @@ const modalRoot = document.querySelector('#modal-root');
 const isMobile = window.screen.width < 400;
 
 function Modal({ modalClose, dailyNorm, categories }) {
-  console.log(dailyNorm, categories);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
+    if (!isMobile) {
+      document.body.classList.add('modal-open');
+    }
     return function reset() {
+     
       window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-open');
+
     };
   });
 
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
       modalClose();
+      // dispatch(modalActions.modalCloseSuccess);
     }
   };
 
   const handleOverlayClick = e => {
     if (e.target !== e.currentTarget) {
       return;
+      
     } else modalClose();
+    // dispatch(modalActions.modalCloseSuccess);
   };
   return createPortal(
     <div className="backdrop" onClick={handleOverlayClick}>
@@ -36,7 +46,7 @@ function Modal({ modalClose, dailyNorm, categories }) {
         <button
           className="modal_closeButton"
           type="button"
-          onClick={modalClose}
+          onClick={() => modalClose()}
         >
           <svg
             width="20"
@@ -93,6 +103,6 @@ const mapStateToProps = state => ({
   categories: calculatorSelectors.getNotAllowedProducts(state),
 });
 
-const mapDispatchToProps = { modalClose: modalOperations.closeModal };
+const mapDispatchToProps = { modalClose: modalActions.modalCloseSuccess };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

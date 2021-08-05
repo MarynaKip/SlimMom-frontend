@@ -4,7 +4,7 @@ import styles from './DailyCaloriesForm.module.css';
 import Modal from '../Modal/Modal';
 import { connect } from 'react-redux';
 import { getModalIsOpen } from '../../redux/modal/modal-selector';
-import modalOperations from '../../redux/modal/modal-operations';
+import modalActions from '../../redux/modal/modal-actions';
 import authSelectors from '../../redux/auth/auth-selectors';
 import authOperations from '../../redux/auth/auth-operations';
 
@@ -207,7 +207,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  modalOpen: modalOperations.openModal,
+  modalOpen: modalActions.modalOpenSuccess,
   sendRequestDaily: authOperations.getDailyRate,
   sendRequestDailyPrivate: authOperations.getDailyRatePrivate,
 };
