@@ -23,7 +23,7 @@ const Sidebar = ({
               <li>n% от нормы</li>
             </ul>
             <ul className="sidebar-summary__cal list main-font ">
-              <li>{leftCal >= 0 ? leftCal : 'Остановись!'} ккал</li>
+              <li>{leftCal >= 0 ? `${leftCal} ккал` : 'Остановись!'}</li>
               <li>{consumedCal} ккал</li>
               <li>{dailyAmount} ккал</li>
               <li>{percentage}% ккал</li>
