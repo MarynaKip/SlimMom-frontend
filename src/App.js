@@ -1,8 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
-import Modal from './components/Modal';
-import getModalIsOpen from './redux/modal/modal-operations';
 import routes from './routes';
 import './App.css';
 import PromoView from './pages/PromoView';
@@ -54,7 +52,7 @@ const App = ({ onGetCurrentUser, onGetDailyRate, isModalOpen }) => {
           redirectTo={routes.home}
           component={CalculatorPageView}
         />
-        {isModalOpen && <Modal />}
+        {/* {isModalOpen && <Modal />} */}
         <Redirect to={routes.home} />
       </Switch>
     </>
@@ -67,7 +65,6 @@ const mapDispatchToProps = {
 };
 const mapStateToProps = state => ({
   // isAuthenticated: authSelectors.getIsAuthenticated(state),
-  isModalOpen: getModalIsOpen(state),
 });
 
 export default connect(null, mapDispatchToProps)(App);
