@@ -1,25 +1,27 @@
 @media screen and (max-width: 767px) {
-    .diaryContainer {
-        width: 287px;
-        margin: 40px auto 60px;
-        position: relative;
-        padding-bottom: 170px;
-        /* padding: 0 auto; */
-    }
+  .diaryContainer {
+    width: 287px;
+    margin: 40px auto 60px;
+    position: relative;
+    padding-bottom: 170px;
+    /* padding: 0 auto; */
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .diaryContainer {
-        width: 589px;
-        margin: 100px auto 61px;
-        /* padding: 0 0; */
-        /* outline: 1px solid green; */
-    }
+  .diaryContainer {
+    width: 589px;
+    margin: 100px auto 61px;
+    /* padding: 0 0; */
+    /* outline: 1px solid green; */
+  }
 }
 @media screen and (min-width: 1280px) {
-    .diaryContainer {
-        width: 745px;
-        margin: 137px 31px 74px 115px;
-        padding: 0 0;
-        /* outline: 1px solid green; */
-    }
+  .diaryContainer {
+    /* width: 745px; */
+    width: 630px;
+    /* margin: 137px 31px 74px 115px; */
+    margin: 137px 0 115px 25px;
+    padding: 0 0;
+    /* outline: 1px solid green; */
+  }
 }

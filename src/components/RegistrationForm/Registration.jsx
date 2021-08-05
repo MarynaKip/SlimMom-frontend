@@ -1,14 +1,22 @@
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Button from '../Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 import { authSelectors } from '../../redux/auth';
+// import { calculatorSelectors } from '../../redux/calculator';
 import './styles.css';
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .max(25, 'Too Long!')
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
   password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -16,81 +24,100 @@ const SignupSchema = Yup.object().shape({
 });
 
 const initialValues = {
+  name: '',
   email: '',
   password: '',
 };
 
-const Login = ({onLogin, error}) => {
+const Registration = ({onRegister, error, userCredentials}) => {
   return (
-    <div className="login">
-      <h1 className="login__title">Вход</h1>
+    <div className="registration">
+      <h1 className="registration__title">Регистрация</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={SignupSchema}
         onSubmit={async (values) => {
-          const payload = { ...values };
-          console.log('payload', payload);
-          onLogin(payload);
+          const payload = { ...values, ...userCredentials };
+          
+          onRegister(payload);
         }}
       >
         {({errors, touched}) => (
           <>
-            <Form id="login" className="login__form" autoComplete="off">
+            <Form id="reg" className="registration__form" autoComplete="off">
               <div className="input-wrapper">
                 <div className="box">
                   <Field
-                    className="login__email-input"
+                    className="registration__name-input"
+                    id="name"
+                    name="name"
+                    placeholder="Имя *"
+                    autoComplete="off"
+                    required
+                  />
+                  { errors.name && touched.name ? (
+                    <div className="registration__error">{errors.name}</div>
+                  ) : null}
+                  <label
+                    htmlFor="name"
+                    className="registration__labe-name"
+                  >
+                  </label>
+                </div>
+                <div className="box">
+                  <Field
+                    className="registration__email-input"
                     id="email"
                     name="email"
                     type="email"
                     placeholder="Ел. адрес *"
                     autoComplete="off"
+                    required
                   />
                   { errors.email && touched.email ? (
-                    <div className="login__error">{errors.email}</div>
+                    <div className="registration__error">{errors.email}</div>
                   ) : null}
                   <label
                     htmlFor="email"
-                    className="login__labe-email"
+                    className="registration__labe-email"
                   >
                   </label>
                 </div>
-
                 <div className="box">
                   <Field
-                    className="login__password-input"
+                    className="registration__password-input"
                     id="password"
                     name="password"
                     type="password"
                     placeholder="Пароль *"
                     autoComplete="off"
+                    required
                   />
                   { errors.password && touched.password ? (
-                    <div className="login__error">{errors.password}</div>
+                    <div className="registration__error">{errors.password}</div>
                   ) : null}
                   <label
                     htmlFor="password"
-                    className="login__labe-password"
+                    className="registration__labe-password"
                   >
                   </label>
                 </div>
-
               </div>
-              { error && (
-                <div className="error-login">Incorrect input data!</div>)}
+              { (error === "Request failed with status code 400") && (
+                <div className="error">Incorrect input data!</div>)}
             </Form>
             <div className="registration__button-reg">
               <Button
                 type={'submit'}
-                title={'Вход'}
-                form={'login'}
+                title={'Регистрация'}
+                form={'reg'}
               />
             </div>
             <div className="registration__button-login">
-              <Link to="/register">
+              <Link to="/login">
                 <Button
                   type={'button'}
-                  title={'Регистрация'}
+                  title={'Вход'}
                 />
               </Link>
             </div>
@@ -103,11 +130,12 @@ const Login = ({onLogin, error}) => {
 
 const mapStateToProps = (state, props) => ({
   error: authSelectors.getError(state),
+  userCredentials: authSelectors.getUserCredentials(state)
 });
 
 const mapDispatchToProps = {
-//   onRegister: authOperations.register,
-  onLogin: authOperations.logIn,
+  onRegister: authOperations.register,
+//   onLogin: authOperations.logIn,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

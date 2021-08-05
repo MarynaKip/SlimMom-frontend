@@ -12,7 +12,7 @@ const {
   signOutRequest,
   signOutSuccess,
   signOutError,
-  // getCurrentUserRequest,
+  getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
 } = actions;
@@ -42,13 +42,17 @@ const token = createReducer(null, {
 
 const error = createReducer('', {
   [signUpError]: (_, { payload }) => payload,
+  [signUpRequest]: () => '',
   [signUpSuccess]: () => '',
   [signInError]: (_, { payload }) => payload,
   [signInSuccess]: () => '',
+  [signInRequest]: () => '',
   [signOutError]: (_, { payload }) => payload,
   [signOutSuccess]: () => '',
+  [signOutRequest]: () => '',
   [getCurrentUserError]: (_, { payload }) => payload,
   [getCurrentUserSuccess]: () => '',
+  [getCurrentUserRequest]: () => '',
 });
 
 const isAuthorized = createReducer(false, {

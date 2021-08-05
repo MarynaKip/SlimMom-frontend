@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import actions from './diaryActions';
+import authActions from '../auth/auth-actions';
+
 const {
   addProductRequest,
   addProductSuccess,
@@ -11,14 +13,19 @@ const {
   fetchHistoryRequest,
   fetchHistorySuccess,
   fetchHistoryError,
+  productListRequest,
+  productListSuccess,
+  productListError,
 } = actions;
+
+const { logoutSuccess } = authActions;
 
 const initialDiaryState = {
   currentProducts: [],
 };
 
 const initialHistoryState = {
-  date:'1970-01-01',
+  date: '1970-01-01',
   itemsHistory: [],
 };
 
@@ -27,6 +34,8 @@ const initialDateState = new Date()
   .split('.')
   .reverse()
   .join('-');
+
+const initialSearchState = [];
 
 const today = new Date().toLocaleDateString().split('.').reverse().join('-');
 
@@ -42,6 +51,7 @@ const currentProducts = createReducer(initialDiaryState.currentProducts, {
     const newState = state.filter(({ productName }) => productName !== payload);
     return [...newState];
   },
+  [logoutSuccess]: (_, __) => initialDiaryState.currentProducts,
 });
 
 const history = createReducer(initialHistoryState, {
@@ -51,6 +61,14 @@ const history = createReducer(initialHistoryState, {
     return { date, itemsHistory };
   },
   [addProductSuccess]: (state, { payload }) => {},
+  [logoutSuccess]: (_, __) => initialHistoryState,
+});
+
+const search = createReducer(initialSearchState, {
+  [productListSuccess]: (state, { payload }) => {
+    return payload.data;
+  },
+  [logoutSuccess]: (_, __) => initialSearchState,
 });
 
 const currentDate = createReducer(initialDateState, {});
@@ -59,4 +77,5 @@ export default combineReducers({
   currentDate,
   currentProducts,
   history,
+  search,
 });

@@ -9,13 +9,14 @@ const deleteProductRequest = createAction('diary/deleteProductRequest');
 const deleteProductSuccess = createAction('diary/deleteProductSuccess');
 const deleteProductError = createAction('diary/deleteProductError');
 
-// const productSearchRequest = createAction('diary/productSearchRequest');
-// const productSearchSuccess = createAction('diary/productSearchSuccess');
-// const productSearchError = createAction('diary/productSearchError');
 
 const fetchHistoryRequest = createAction('diary/fetchHistoryRequest');
 const fetchHistorySuccess = createAction('diary/fetchHistorySuccess');
 const fetchHistoryError = createAction('diary/fetchHistoryError');
+
+const productListRequest = createAction('diary/productListRequest');
+const productListSuccess = createAction('diary/productListSuccess');
+const productListError = createAction('diary/productListError');
 
 // const changeFilter = createAction('contacts/changeFilter');
 
@@ -27,8 +28,10 @@ export default {
   deleteProductRequest,
   deleteProductSuccess,
   deleteProductError,
-  
-  fetchHistoryRequest,
+    fetchHistoryRequest,
   fetchHistorySuccess,
-  fetchHistoryError
+  fetchHistoryError,
+  productListRequest,
+  productListSuccess,
+productListError
 };

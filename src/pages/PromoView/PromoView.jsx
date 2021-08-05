@@ -9,16 +9,11 @@ import { connect } from 'react-redux';
 const isMobile = window.screen.width < 400;
 
 const PromoView = ({ isModalOpen }) => {
-  console.log(isMobile, isModalOpen);
   return (
     <div className="bg-wrapper__promo">
       <Header />
-      {/* <Login /> */}
       <div className="promopage-container">
-        {
-          // isMobile &&
-          isModalOpen ? <Modal /> : <DailyCaloriesForm />
-        }
+        {isModalOpen ? <Modal /> : <DailyCaloriesForm />}
       </div>
     </div>
   );

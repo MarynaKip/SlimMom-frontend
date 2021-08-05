@@ -1,10 +1,11 @@
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import sidebarSelectors from '../../redux/sidebar/sidebar-selectors';
 import './styles.css';
 
 const Sidebar = ({
-  currentDate = '26/05/2021',
-  dailyAmount = 2800,
-  consumedCal = 1300,
+  currentDate,
+  dailyAmount,
+  consumedCal,
   notRecommended,
   leftCal,
   percentage,
@@ -13,9 +14,7 @@ const Sidebar = ({
     <div className="sidebar-container">
       <div className="sidebar">
         <div className="sidebar-summary">
-          <h2 className="sidebar-summary__title">
-                        Сводка за {currentDate}
-          </h2>
+          <h2 className="sidebar-summary__title">Сводка за {currentDate}</h2>
           <div className="sidebar-summary__container">
             <ul className="list main-font">
               <li>Осталось</li>
@@ -33,12 +32,12 @@ const Sidebar = ({
         </div>
         <div className="sidebar-disrecommended">
           <h2 className="sidebar-disrecommended__title">
-                        Нерекомендуемые продукты
+            Нерекомендуемые продукты
           </h2>
           <p className="main-font">
             {notRecommended}
-                        Все бульоны/отвары, жирная рыба, икра и мясо, грибы,
-                        крупы (пшено, перловая, пшеничная)
+            {/* Все бульоны/отвары, жирная рыба, икра и мясо, грибы, крупы (пшено,
+            перловая, пшеничная) */}
           </p>
         </div>
       </div>
@@ -46,4 +45,13 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar;
+const mapStateToProps = state => ({
+  currentDate: sidebarSelectors.getCurrentDate(state),
+  dailyAmount: sidebarSelectors.getDailyMeal(state),
+  consumedCal: sidebarSelectors.getConsumedCal(state),
+  notRecommended: sidebarSelectors.notAllowedProducts(state),
+  leftCal: sidebarSelectors.getLeftCal(state),
+  percentage: sidebarSelectors.getPercentage(state),
+});
+
+export default connect(mapStateToProps, null)(Sidebar);

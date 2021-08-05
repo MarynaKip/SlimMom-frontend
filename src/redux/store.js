@@ -40,19 +40,19 @@ const middleware = [
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
-const calculatorPersistConfig = {
-  key: 'calculator',
-  storage,
-  whitelist: ['userInfo'],
-};
+// const calculatorPersistConfig = {
+//   key: 'calculator',
+//   storage,
+//   whitelist: ['userInfo'],
+// };
 
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    calculator: persistReducer(calculatorPersistConfig, calculatorReducer),
+    // calculator: persistReducer(calculatorPersistConfig, calculatorReducer),
     diary: diaryReducer,
     modal: modalReducer,
   },
